@@ -1,0 +1,140 @@
+.set-layout-text-input {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.set-layout-text-input-2-input {
+  justify-content: center;
+  display: flex;
+}
+.set-card-add-control {
+  background: #f9f9f9;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding-top: 40px;
+  min-height: 39.938rem;
+}
+.set-margin-in-row-add-control {
+  margin-bottom: 17px;
+}
+.set-width-in-add-control {
+  width: 100%;
+}
+.set-font-size {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12.8px;
+  line-height: 19px;
+}
+.set-color-red {
+  color: red;
+}
+.set-height-input {
+  height: 38px;
+}
+.set-font-pixel {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
+
+  color: #7c7c7c;
+}
+.set-input-component-css {
+  width: 100%;
+  height: 38px;
+  border-radius: 6px;
+}
+.set-color-css-button-template {
+  color: #282f6a;
+  width: 201px;
+  height: 32px;
+  margin-left: 25px;
+  border: 1px solid #282f6a;
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  column-gap: 6px;
+}
+.hover-color-css-282f6a:hover {
+  color: white;
+  background-color: #282f6a;
+}
+.set-layout-check-box-create-control {
+  display: flex;
+  grid-column-gap: 10px;
+  align-items: center;
+}
+.set-text-check-box-create-control {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
+  color: rgb(0, 0, 0);
+}
+.set-css-checkbox-in-create-control .p-checkbox-box {
+  border-radius: 6px;
+}
+.set-layout-css-sm {
+  display: flex;
+}
+.set-radio-create {
+  display: flex;
+  align-items: center;
+}
+.set-checkbox-create {
+  display: flex;
+  align-items: center;
+
+  column-gap: 7px;
+}
+.set-radio-create-border {
+  background: #ffffff;
+  border: 1px solid #f0f0f2;
+  box-shadow: 0px 3px 10px rgb(0 0 0 / 10%);
+  border-radius: 6px;
+  overflow-y: scroll;
+  height: 141px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-x: hidden;
+}
+.set-layouttable-flex {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.set-cursor-pointer {
+  cursor: pointer;
+  padding: 1px 5px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  color: #b4b4b4;
+  font-size: 25px;
+}
+.hover-color-css:hover {
+  color: white;
+  background-color: #282f6a;
+}
+.set-css-dropdown-in-create-control {
+  width: 100%;
+  border-radius: 6px;
+}
+.set-color-css-button-add-column {
+  color: #282f6a;
+  width: 201px;
+  height: 32px;
+  margin-left: 25px;
+  border: 1px solid #282f6a;
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  column-gap: 10px;
+}

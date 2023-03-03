@@ -1,0 +1,19 @@
+.p-Create-Email-Template {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.button-container-Create-Email-Template {
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.confirm-container-Create-Email {
+  display: flex;
+  flex: 1 1;
+  justify-content: space-between;
+  border-bottom: 1px solid #cfcfcf;
+}
+.row-margin-bottom-Create-Email {
+  margin-bottom: 12px;
+}

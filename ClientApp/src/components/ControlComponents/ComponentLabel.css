@@ -1,0 +1,36 @@
+.headtext-form {
+    line-break: auto;
+    font-size: 14px;
+    margin-bottom: 0px;
+    color: rgb(38, 42, 45);
+    margin-left: 0.1rem;
+    font-weight: bold;
+  }
+  .table-control-header-span {
+    font-size: 12px;
+    color: rgb(124, 124, 124);
+    margin-bottom: 0px;
+    margin-left: 0.1rem;
+    font-weight: 400;
+
+  }
+  .subtext-form{
+    font-size: 12px;
+    color: rgb(124, 124, 124);
+    margin-bottom: 0px;
+    margin-left: 0.1rem;
+    font-weight: 400;
+  }
+  .label-text-container {
+    display: flex;
+  }
+  .label-text-container-table {
+    display: flex;
+    flex-direction: column;
+  }
+  .label-text-container .text-Is-require {
+    color: red;
+  }
+  .set-layout-required {
+    flex-direction: column;
+  }

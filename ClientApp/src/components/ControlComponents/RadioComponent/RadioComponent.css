@@ -1,0 +1,39 @@
+.margin-text {
+  margin-right: 10px;
+}
+.set-column {
+  column-gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+.label-text-container {
+  display: flex;
+}
+.label-text-container .text-Is-require {
+  color: red;
+}
+.radio-color .p-radiobutton-box.p-highlight {
+  border-color: rgb(40, 47, 106);
+  background: none !important;
+}
+
+.radio-color .p-radiobutton-icon {
+  background-color: rgb(40, 47, 106) !important;
+}
+.radio-color
+  .p-radiobutton
+  .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
+  border-color: rgb(40, 47, 106) !important;
+
+  background: none !important;
+}
+.radio-color .p-radiobutton-box.p-highlight:hover {
+  border-color: rgb(40, 47, 106) !important;
+}
+.radio-color .p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  box-shadow: none;
+  border-color: rgb(40, 47, 106) !important;
+}
+/* .radio-color .p-radiobutton-box.p-highlight {
+} */

@@ -1,0 +1,30 @@
+.set-width-input-cbdd.p-multiselect.p-component.p-inputwrapper.p-multiselect-chip.p-inputwrapper-filled {
+  width: 100%;
+}
+.setlayout-control-checkboxdropdown.p-multiselect.p-component.p-inputwrapper.p-multiselect-chip.set-width-input-cbdd {
+  width: 100%;
+}
+.set-layout-required {
+  flex-direction: column;
+}
+.label-text-container {
+  display: flex;
+}
+.label-text-container .text-Is-require {
+  color: red;
+}
+.p-multiselect.p-multiselect-chip .p-multiselect-token {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  padding: 4px 12px !important;
+  background-color: #455a64 !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  line-height: 1.6666667 !important;
+  border-radius: 6px !important;
+  padding-top: 2px !important;
+}
+.p-inputwrapper-filled.p-multiselect.p-multiselect-chip
+  .p-multiselect-label.p-multiselect-items-label {
+  padding: 3px 7px;
+}

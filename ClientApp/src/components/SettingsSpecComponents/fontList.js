@@ -1,0 +1,38 @@
+export const fontList =  [
+    "comic-sans",
+    "courier-new",
+    "georgia",
+    "helvetica",
+    "lucida",
+    "normal",
+    "notoserif",
+    "sans-serif",
+    "sans-serif-light",
+    "sans-serif-thin",
+    "sans-serif-condensed",
+    "sans-serif-medium",
+    "serif",
+    "Roboto",
+    "monospace",
+    "Aharoni",
+    "Angsana New",
+    "AngsanaUPC",
+    "Arial",
+    "Book Antiqua",
+    "Tahoma",
+    
+  ]
+  export const fontSize =  [
+    "8px",
+    "10px",
+    "12px",
+    "12px",
+    "14px",
+    "16px",
+    "18px",
+    "20px",
+    "22px",
+    "24px",
+    "36px",
+    
+  ]

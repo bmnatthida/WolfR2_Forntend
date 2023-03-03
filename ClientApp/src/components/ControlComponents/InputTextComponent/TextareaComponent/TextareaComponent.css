@@ -1,0 +1,27 @@
+.label-textarea-container {
+  display: flex;
+}
+.label-textarea-container .textarea-Is-require {
+  color: red;
+}
+.set-layout-required {
+  flex-direction: column;
+}
+.p-inputgroup .input.p-inputtext.p-component {
+  border-radius: 6px;
+}
+.textarea-height-text-none {
+  height: 38px !important;
+}
+.textarea-height-text-not-none {
+  height: 100%;
+}
+input.p-inputtext.p-component.p-filled {
+  font-size: 13px;
+}
+textarea.p-inputtextarea.p-inputtext.p-component.p-filled.p-inputtextarea-resizable {
+  font-size: 13px;
+}
+/* textarea.p-inputtextarea.p-inputtext.p-component.p-inputtextarea-resizable {
+  height: 38px !important;
+} */

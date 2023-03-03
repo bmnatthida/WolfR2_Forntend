@@ -1,0 +1,106 @@
+.headtext-form-requestor {
+  font-size: 14px;
+  margin-bottom: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 0.1rem;
+}
+.subtext-form-requestor {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 0px;
+  margin-left: 0.1rem;
+}
+.set-input-search-dialog {
+  width: 100%;
+}
+.set-span-search-dialog {
+  width: 40%;
+}
+
+.setrow-form-requestor {
+  margin-top: 10px !important;
+}
+.set-search-form-requestor
+  button.ant-btn.ant-btn-icon-only.ant-input-search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headtext {
+  font-size: 14px;
+  margin-bottom: 0px;
+  padding-left: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.subtext {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 0px;
+  padding-left: 12px;
+}
+hr {
+  border-top: 0.1px solid #262a2d;
+}
+.set-margin-header-creator {
+  margin-top: 20px;
+}
+.setrow-form-requestor .input.ant-input.ant-input-disabled {
+  height: 40px;
+}
+.requestor-height-input {
+  height: 38px;
+  border-radius: 6px;
+}
+.set-search-form-requestor .ant-input-group .ant-input {
+  height: 38px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.set-search-form-requestor
+  button.ant-btn.ant-btn-icon-only.ant-input-search-button {
+  height: 38px;
+  background-color: rgb(40, 47, 106);
+  border: 1px solid rgb(40, 47, 106);
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+}
+.set-search-form-requestor
+  button.ant-btn.ant-btn-icon-only.ant-input-search-button:hover {
+  height: 38px;
+  color: rgb(40, 47, 106);
+  background-color: #ffff;
+  border: 1px solid rgb(40, 47, 106);
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+}
+.set-search-form-requestor .ant-btn-icon-only {
+  color: rgb(40, 47, 106);
+}
+.set-search-form-requestor .ant-btn-icon-only > .anticon {
+  color: #fff;
+}
+.set-search-form-requestor .ant-btn-icon-only > .anticon:hover {
+  color: rgb(40, 47, 106);
+}
+.requestor-dialog input.p-inputtext.p-component.set-input-search-dialog {
+  border-radius: 6px;
+}
+.ant-input-search .ant-input:hover,
+.ant-input-search .ant-input:focus {
+  border: 1px solid #ced4da;
+}
+.ant-input:focus,
+.ant-input-focused {
+  box-shadow: none;
+}
+.ant-input-search
+  .ant-input:hover
+  + .ant-input-group-addon
+  .ant-input-search-button:not(.ant-btn-primary),
+.ant-input-search
+  .ant-input:focus
+  + .ant-input-group-addon
+  .ant-input-search-button:not(.ant-btn-primary) {
+  border-left-color: #40a9ff00;
+}

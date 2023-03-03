@@ -1,0 +1,30 @@
+.show-tablet-navbar-request-min-1024-create-control {
+    background-color: #fff;
+    position: sticky;
+    top: 11.688rem;
+    z-index: 999;
+    padding: 0 39px 10px;
+  }
+@media screen and (min-width: 1025px) {
+    .show-tablet-navbar-request-min-1024-create-control {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    .set-min-width-td{
+        display: none !important;
+    }
+}
+.set-css-images {
+    transform: none !important;
+}
+.set-text-header-on-edit-form{
+    font-size: 13px;
+    line-height: 15px;
+    margin-bottom: 2px;
+    color: rgb(124, 124, 124);
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}

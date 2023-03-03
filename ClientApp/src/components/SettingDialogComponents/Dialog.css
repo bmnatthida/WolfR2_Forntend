@@ -1,0 +1,29 @@
+.close-set-color-button-active-request {
+  background: #282f6a;
+  border-color: #282f6a;
+}
+.save-set-color-button-active-request {
+  background: #1f9625;
+  border-color: #1f9625;
+}
+
+.p-inputgroup .p-inputtext .p-component .p-invalid {
+  border-radius: 0px !important;
+}
+
+.set-layout-form-edit-table {
+  row-gap: 10px;
+}
+
+.image-box {
+  text-align: center;
+  margin: 0px 10px 10px 10px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.numberBody{
+  text-align: right !important;
+}

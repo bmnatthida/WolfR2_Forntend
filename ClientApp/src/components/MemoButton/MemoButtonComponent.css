@@ -1,0 +1,266 @@
+.memo-button-container {
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: wrap;
+}
+.memo-button {
+  background-color: #fff;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 7px;
+  transition: 0.25s;
+}
+.memo-button svg {
+  font-size: 18px;
+  margin-right: 5px;
+}
+/*-------------------Button-------------------------*/
+.memo-button.submit {
+  min-width: 91px;
+  height: 27px;
+  padding-top: 4px;
+  display: flex;
+  color: #ffffff;
+  border: 1px solid #28a745;
+  background-color: #28a745;
+  margin-bottom: 10px;
+}
+.memo-button.submit:hover {
+  transition: 0.25s;
+  color: #28a745 !important;
+  background-color: #ffffff !important;
+}
+.memo-button.draft {
+  color: white;
+  background-color: #17a2b8;
+  min-width: 110px;
+  height: 27px;
+  padding-top: 4px;
+  display: flex;
+  border: 1px solid #17a2b8;
+  margin-bottom: 10px;
+}
+.memo-button.draft:hover {
+  transition: 0.25s;
+  color: #17a2b8 !important;
+  background-color: #ffffff !important;
+}
+.memo-button.approve {
+  min-width: 100px;
+  height: 27px;
+  padding-top: 4px;
+  display: flex;
+  color: #ffffff;
+  background-color: #28a745;
+  border: 1px solid #28a745;
+  margin-bottom: 10px;
+}
+.memo-button.approve:hover {
+  transition: 0.25s;
+  color: #28a745 !important;
+  background-color: #ffffff !important;
+}
+.memo-button.approve:hover svg {
+  color: #28a745 !important;
+}
+.memo-button.cancel,
+.reject {
+  min-width: 91px;
+  height: 27px;
+  padding-top: 4px;
+  display: flex;
+  color: #ffffff;
+  border: 1px solid #e93445;
+  background-color: #e93445;
+  margin-bottom: 10px;
+}
+.memo-button.discard:hover,
+.cancel:hover,
+.reject:hover {
+  transition: 0.25s;
+  color: #e93445 !important;
+  background-color: #ffffff !important;
+}
+.memo-button.recall,
+.rework {
+  min-width: 91px;
+  height: 27px;
+  padding-top: 4px;
+  display: flex;
+  color: #212529;
+  border: 1px solid #ffc107;
+  background-color: #ffc107;
+  margin-bottom: 10px;
+}
+.memo-button.return:hover {
+  transition: 0.25s;
+  color: #fe7f10 !important;
+  background-color: #ffffff !important;
+}
+.memo-button.return {
+  min-width: 91px;
+  height: 27px;
+  padding-top: 4px;
+  display: flex;
+  color: #ffffff;
+  border: 1px solid #fe7f10;
+  background-color: #fe7f10;
+  margin-bottom: 10px;
+}
+.memo-button.recall:hover,
+.rework:hover {
+  transition: 0.25s;
+  color: #ffc107 !important;
+  background-color: #ffffff !important;
+}
+
+.memo-button.assign {
+  height: 27px;
+  display: flex;
+  border: 1px solid #007bff;
+  color: #ffffff;
+  padding-top: 4px;
+  margin-bottom: 10px;
+  background-color: #007bff
+}
+.memo-button.assign:hover {
+  color: #007bff;
+  transition: 0.25s;
+  background-color: #ffffff;
+}
+.memo-button.comment {
+  height: 27px;
+  display: flex;
+  border: 1px solid #17a2b8;
+  color: #ffffff;
+  background-color: #17a2b8;
+  padding-top: 4px;
+  margin-bottom: 10px;
+}
+.memo-button.comment:hover {
+  color: #17a2b8;
+  transition: 0.25s;
+  background-color: #ffffff;
+}
+.memo-button.copy:hover {
+  color: #0a89ff;
+  transition: 0.25s;
+  background-color: #e6e6e6;
+}
+.memo-button.print:hover {
+  color: #dc3545;
+  transition: 0.25s;
+  background-color: #e6e6e6;
+}
+/*----------------------------------------------------*/
+.memo-loading {
+  transition: 0.25s;
+  color: rgb(40, 47, 106) !important;
+  min-width: 91px !important;
+  height: 27px !important;
+  margin-top: 1px;
+}
+/* .dd span.p-button-label.p-c {
+  padding-right: 20px;
+} */
+.ss
+  span.p-button-icon.p-c.p-button-loading-icon.pi.pi-spinner.pi-spin.p-button-icon-left {
+  margin-bottom: 3px;
+}
+.set-preview-pdf{
+  width: 120px !important
+}
+@media screen and (max-width: 545px) {
+  .header-request .memo-button-container.mobile {
+    display: none;
+  }
+  .action-button .memo-button-container {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .header-request .memo-button-container {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .memo-button {
+    background-color: #fff !important;
+    border: none !important;
+    margin-bottom: 0 !important;
+  }
+  .memo-button.submit {
+    color: #28a745;
+  }
+  .memo-button.submit:hover {
+    transition: 0.25s;
+    color: #28a745 !important;
+    background-color: #ffffff !important;
+  }
+  .memo-button.draft {
+    color: #b4b4b4;
+  }
+  .memo-button.draft:hover {
+    transition: 0.25s;
+    color: #b4b4b4 !important;
+    background-color: #ffffff !important;
+  }
+  .memo-button.approve {
+    color: #282f6a;
+  }
+  .memo-button.approve:hover {
+    transition: 0.25s;
+    color: #282f6a !important;
+    background-color: #ffffff !important;
+  }
+  .memo-button.approve:hover svg {
+    color: #282f6a !important;
+  }
+  .memo-button.cancel,
+  .reject {
+    color: #e93445;
+  }
+  .memo-button.discard:hover,
+  .cancel:hover,
+  .reject:hover {
+    transition: 0.25s;
+    color: #e93445 !important;
+    background-color: #ffffff !important;
+  }
+  .memo-button.recall,
+  .rework {
+    color: #fe7f10;
+  }
+  .memo-button.return:hover {
+    transition: 0.25s;
+    color: #fe7f10 !important;
+    background-color: #ffffff !important;
+  }
+  .memo-button.return {
+    color: #ffc107;
+  }
+  .memo-button.recall:hover,
+  .rework:hover {
+    transition: 0.25s;
+    color: #ffc107 !important;
+    background-color: #ffffff !important;
+  }
+
+  .memo-button.assign {
+    color: #ffffff;
+    background-color: #007bff;
+  }
+  .memo-button.assign:hover {
+    color: #007bff;
+    transition: 0.25s;
+    background-color: #ffffff;
+  }
+  .memo-button.comment {
+    color: #17a2b8;
+  }
+  .memo-button.comment:hover {
+    color: #ffffff;
+    transition: 0.25s;
+    background-color: #17a2b8;
+  }
+}

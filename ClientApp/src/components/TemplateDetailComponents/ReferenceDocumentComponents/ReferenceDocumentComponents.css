@@ -1,0 +1,11 @@
+.referenceDocumentComponents-dataTable span.p-column-title {
+  text-align: start;
+}
+
+.dd .p-filter-column{
+display: none;
+}
+.set-margin-tttt span.p-button-label.p-c{
+  margin-left: 20px !important;
+  padding-right: 0px !important;
+}

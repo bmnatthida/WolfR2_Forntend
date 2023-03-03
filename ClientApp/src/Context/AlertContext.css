@@ -1,0 +1,23 @@
+.alert-custom .ant-notification-notice-message{
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.alert-custom.ant-notification-notice-error .ant-notification-notice-message{
+    color: #b34045;
+    font-weight: bold;
+}
+.alert-custom.ant-notification-notice-info .ant-notification-notice-message{
+    font-weight: bold;
+    color: #4091d7;
+}
+.alert-custom.ant-notification-notice-warning .ant-notification-notice-message{
+    font-weight: bold;
+    color:#fecf6d;
+}
+.alert-custom.ant-notification-notice-success .ant-notification-notice-message{
+    font-weight: bold;
+    color: #2d884d;
+}
+.ant-notification{
+    z-index: 2103!important;
+}

@@ -1,0 +1,40 @@
+.p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+  background-color: #282f6a;
+  width: 14px;
+  height: 14px;
+}
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  background: transparent;
+  border-color: #282f6a;
+}
+.p-radiobutton .p-radiobutton-box {
+  border: 1px solid #ced4da;
+}
+.p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+  border-color: #282f6a;
+  background: #ffffff;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
+  border: 1px solid #ced4da;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  box-shadow: none;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  border-color: #282f6a;
+}
+.p-radiobutton {
+  width: 31px;
+}
+.radiobutton-texrt-label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+
+  color: #000000;
+}
+.p-radiobutton .p-radiobutton-box {
+  width: 18px;
+  height: 18px;
+}

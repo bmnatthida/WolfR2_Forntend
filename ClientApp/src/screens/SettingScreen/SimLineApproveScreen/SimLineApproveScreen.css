@@ -1,0 +1,34 @@
+.text-header-css-sim-line {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 0px;
+  padding-left: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.set-row-gap-css-sim-line {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.text-header-css-sim-line-component {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.set-padding-css-left-sim-line {
+  padding-left: 7px;
+}
+.set-css-head-auto-approve {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+.display-flex-sim-line {
+  display: flex;
+}
+.asgsdagsda {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

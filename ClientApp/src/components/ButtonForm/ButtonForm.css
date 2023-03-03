@@ -1,0 +1,35 @@
+.button-form-container {
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+}
+.button-form-container img {
+  width: 14px;
+  height: 14px;
+}
+.button-form-container.default {
+  border: 1px solid #282f6a;
+  background-color: #282f6a;
+  color: #fff;
+}
+.button-form-container.cancle {
+  border: 1px solid #ff2626;
+  color: #ff2626;
+  background-color: #fff;
+}
+.button-form-container.cancle img {
+  /* background-color: #ff2626; */
+}
+.set-size.layout {
+  width: 90px;
+  height: 37px;
+}
+.button-form-container.unActive {
+  background-color: #e6e6e6;
+  color: #282f6a;
+}

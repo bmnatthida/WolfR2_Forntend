@@ -1,0 +1,36 @@
+.headtext-in-editor-render {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0px;
+  padding-left: 12px;
+  font-weight: bold;
+}
+.edittor-border-radius .tox.tox-tinymce {
+  border-radius: 6px;
+}
+.spinner-load-core-spinner-tiny-mce {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translateY(-40%);
+  z-index: 5;
+}
+.set-spinner-tiny-mce {
+  width: 113px;
+  height: 136px;
+}
+.tox-tinymce{
+  width: 100%;
+}
+.editor-invalid .tox-tinymce{
+  border-color: red;
+}
+.display-none-editor .tox-editor-header{
+  display: none;
+}
+#tinymce .ephox-snooker-resizer-cols {
+  cursor: col-resize!important;
+  }
+#tinymce .ephox-snooker-resizer-rows {
+  cursor: ns-resize!important;
+  }

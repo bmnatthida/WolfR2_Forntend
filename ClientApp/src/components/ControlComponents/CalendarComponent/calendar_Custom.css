@@ -1,0 +1,46 @@
+.p-timepicker {
+  display: none !important;
+}
+.calendar-border-radius input.p-inputtext.p-component.p-filled {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.calendar-border-radius
+  button.p-button.p-component.p-datepicker-trigger.p-button-icon-only {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: rgb(40, 47, 106);
+  border: 1px solid rgb(40, 47, 106);
+}
+.calendar-border-radius .p-button:focus {
+  box-shadow: 0 0 0 0.2rem #a6d5fa00;
+}
+.calendar-border-radius
+  button.p-button.p-component.p-datepicker-trigger.p-button-icon-only:focus {
+  box-shadow: "none" !important;
+}
+/* .calendar-border-radius
+  .p-datepicker
+  table
+  td.p-datepicker-today
+  > span.p-highlight {
+  background: #fbd79d;
+}*/
+.background-calendar {
+  background: #fbd79d;
+}
+.p-datepicker table td.p-datepicker-today > span {
+  background: none !important;
+}
+.p-datepicker table td > span.p-highlight {
+  background: #fbd79d !important;
+}
+.p-datepicker table td > span:focus {
+  box-shadow: none;
+}
+.p-datepicker table td {
+  padding: 0px;
+}
+.p-inputtext{
+  font-size: 13px;
+}

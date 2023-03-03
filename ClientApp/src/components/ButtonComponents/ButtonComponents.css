@@ -1,0 +1,20 @@
+.ButtonComponents-background {
+  background: rgb(40, 47, 106);
+  height: 38px;
+  border-radius: 6px;
+  border-color: rgb(40, 47, 106);
+}
+.ButtonComponents-background:hover {
+  background: #ffffff !important;
+  height: 38px;
+  color: rgb(40, 47, 106) !important;
+  border-radius: 0px 6px 0px 6px !;
+}
+
+.sort-icon{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  cursor: pointer;
+}

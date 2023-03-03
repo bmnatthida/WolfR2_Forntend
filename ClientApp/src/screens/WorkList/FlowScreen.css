@@ -1,0 +1,52 @@
+.flow-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.flow-container .flow-group-container {
+  display: flex;
+  flex-direction: column;
+}
+.flow-container .flow-group-container .text-header {
+  font-size: 15px;
+  margin: 0;
+  color: #262a2d;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.flow-container .flow-group-container .flow-card-container {
+  display: flex;
+  background-color: #f9fafe;
+  border: 1px solid #f5f6f9;
+  border-radius: 6px;
+  align-items: center;
+  padding: 20px;
+}
+.flow-card-container .img-flow-card {
+  align-self: flex-start;
+  margin-right: 15px;
+}
+.flow-card-container .img-flow-card img {
+  width: 43px;
+  height: 43px;
+  border-radius: 80px;
+}
+.flow-card-container .flow-card-detail p {
+  margin: 0;
+}
+.flow-card-container .flow-card-detail .text-user-name .user-name {
+  font-size: 15px;
+  color: #262a2d;
+  font-weight: 500;
+}
+.flow-card-container .flow-card-detail .text-user-name .user-role {
+  font-size: 13px;
+  color: #282f6a;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.flow-card-container .flow-card-detail .text-status {
+  font-size: 13px;
+  color: #b4b4b4;
+  font-weight: 500;
+}

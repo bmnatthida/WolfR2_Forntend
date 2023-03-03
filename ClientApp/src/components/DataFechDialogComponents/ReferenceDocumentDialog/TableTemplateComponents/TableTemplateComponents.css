@@ -1,0 +1,35 @@
+.tableTemplateComponents span.p-column-title {
+  text-align: start;
+}
+.tableTemplateComponents .p-column-title {
+  text-align: start;
+}
+.tableTemplateComponents tr.p-highlight.p-selectable-row {
+  background: #f2f2f2 !important;
+  color: #495057 !important;
+}
+/* .tableTemplateComponents tr.p-selectable-row:hover {
+  background: #971c1c !important;
+} */
+/* .tableTemplateComponents tr.p-selectable-row:hover {
+  background: #971c1c !important;
+}
+.tableTemplateComponents tr.p-selectable-row.p-row-odd:hover {
+  background: #971c1c !important;
+}
+.tableTemplateComponents .p-datatable .p-datatable-tbody > tr:hover {
+  background: #971c1c !important;
+} */
+
+.p-datatable.p-datatable-hoverable-rows
+  .p-datatable-tbody
+  > tr:not(.p-highlight):not(.p-datatable-emptymessage):hover {
+  background: #f2f2f2 !important;
+}
+.tableTemplateComponents .p-paginator {
+  border: 0px solid #e9ecef;
+}
+.ActionBody:hover {
+  color: #40a9ff !important;
+  border-bottom: 1px solid !important;
+}

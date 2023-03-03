@@ -1,0 +1,117 @@
+.delagate-container {
+  padding: 35px;
+  border: 1px solid #f0f0f2;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.delagate-container p {
+  margin: 0;
+}
+.create-delegate-input-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.create-delegate-input-container .input-row {
+  min-height: 41px;
+}
+.delagate-container,
+.create-delegate-input-container .input-label,
+.text-desc {
+  font-size: 13px;
+}
+/* .delagate-container, */
+.delagate-container .input-label  {
+  font-weight: 600;
+}
+.create-delagate-container .input-label{
+  font-weight: 600;
+}
+.delagate-container,
+.create-delegate-input-container .input-label .star {
+  color: red;
+}
+.delagate-container,
+.create-delegate-input-container .text-desc {
+  color: #7c7c7c;
+  margin: 0;
+}
+.delagate-container .button-group {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+.delagate-container .button-group .button-select-view {
+  height: 32px;
+  border: 1px solid rgb(239, 239, 239);
+
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  padding: 0 30px;
+  column-gap: 5px;
+  font-size: 16px;
+  background-color: #e6e6e6 padding-box;
+  color: black;
+}
+.button-delegate-reset:hover {
+  border-color: #fb3a3a !important;
+  color: #fb3a3a !important;
+  transition: 0.2s;
+}
+.delagate-container .button-group .button-select-view.-active {
+  background-color: rgb(40, 47, 106);
+  color: white;
+  transition: 0.2s;
+}
+.delagate-container .button-group .button-select-view svg {
+  font-size: 18px;
+}
+.delagate-container .button-group .button-select-view span {
+  transform: translateY(1px);
+}
+.delagate-container .button-group .button-select-view:hover {
+  background-color: rgb(40, 47, 106);
+  color: white;
+  transition: 0.2s;
+}
+
+.delagate-container .button-group .button-select-view:focus {
+  background-color: rgb(40, 47, 106);
+  color: white;
+  transition: 0.2s;
+}
+.BTNActive {
+  background-color: #282f6a;
+  color: white;
+}
+.worklist-container .header-container .create-delegate-button{
+  height: 32px;
+  border: 1px solid #f2f2f2;
+  background-color: #f2f2f2;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  padding: 0 24px;
+  grid-column-gap: 5px;
+  grid-column-gap: 5px;
+  column-gap: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition-duration: 0.25s;
+  margin-bottom: 10px;
+  color: #282f6a
+}
+.worklist-container .header-container .create-delegate-button:hover{
+  color: #fff;
+    background-color: #282f6a;
+    transition-duration: 0.25s;
+}

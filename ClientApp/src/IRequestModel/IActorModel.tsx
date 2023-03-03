@@ -1,0 +1,60 @@
+export interface IActorModel {
+  EmployeeId: number;
+  EmployeeCode: string;
+  Username: string;
+  NameTh: string;
+  NameEn: string;
+  Email: string;
+  IsActive: boolean;
+  PositionId: number;
+  PositionNameTh: string;
+  PositionNameEn: string;
+  DepartmentId: number;
+  DepartmentNameTh: string;
+  DepartmentNameEn: string;
+  SignPicPath: string;
+  Lang: string;
+  AccountId: number;
+  AccountCode: string;
+  AccountName: string;
+
+  DefaultLang: string;
+  RegisteredDate: string;
+  ExpiredDate: string;
+  CreatedDate: string;
+  CreatedBy: string;
+  ModifiedDate: string;
+  ModifiedBy: string;
+  ReportToEmpCode: string;
+  DivisionId: number;
+  DivisionNameTh: string;
+}
+export interface IActorModelCamel {
+  employeeId: number;
+  employeeCode: string;
+  username: string;
+  nameTh: string;
+  nameEn: string;
+  email: string;
+  isActive: boolean | null;
+  positionId: number;
+  positionNameTh: string;
+  positionNameEn: string;
+  departmentId: number;
+  departmentNameTh: string;
+  departmentNameEn: string;
+  signPicPath: string;
+  lang: string;
+  accountCode: string;
+  accountName: string;
+  adTitle: string;
+  defaultLang: string;
+  createdDate: string;
+  createdBy: string;
+  modifiedDate: string | null;
+  modifiedBy: string;
+  reportToEmpCode: string;
+  divisionId: number | null;
+  divisionNameEn: string;
+  divisionNameTh: string;
+}

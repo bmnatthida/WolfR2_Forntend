@@ -1,0 +1,120 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.2" />
+    <PackageReference Include="Microsoft.ApplicationInsights.Profiler.Core" Version="2.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.19" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\components\ControlComponents\MutiLineComponent\**" />
+    <Content Remove="ClientApp\src\components\ControlComponents\ShortTextComponent\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\components\ControlComponents\MutiLineComponent\**" />
+    <None Remove="ClientApp\src\components\ControlComponents\ShortTextComponent\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClientApp\src\components\ControlComponents\MutiLineComponent\**" />
+    <Compile Remove="ClientApp\src\components\ControlComponents\ShortTextComponent\**" />
+    <EmbeddedResource Remove="ClientApp\src\components\ControlComponents\MutiLineComponent\**" />
+    <EmbeddedResource Remove="ClientApp\src\components\ControlComponents\ShortTextComponent\**" />
+    <TypeScriptCompile Remove="ClientApp\src\components\ControlComponents\MutiLineComponent\**" />
+    <TypeScriptCompile Remove="ClientApp\src\components\ControlComponents\ShortTextComponent\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\components\ConfirmDialogComponent\ConfirmDialogComponents.tsx" />
+    <None Remove="ClientApp\src\components\ControlComponents\MainCheckboxComponents\CheckboxDropdownComponent\CheckboxDropdownComponent.tsx" />
+    <None Remove="ClientApp\src\components\ControlComponents\MainCheckboxComponents\MainCheckboxComponents.tsx" />
+    <None Remove="ClientApp\src\components\ControlComponents\MainTextComponents\MainTextComponents.tsx" />
+    <None Remove="ClientApp\src\components\ControlComponents\MainTextComponents\TextComponent\TextComponent.tsx" />
+    <None Remove="ClientApp\src\utill\ReviewPDF.tsx" />
+    <None Remove="Images\RenderAttachFiles\967493efb09f13646afb51485c2ea149a72967g" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\components\ControlComponents\EditorComponent\Image\" />
+    <Folder Include="ClientApp\src\components\ControlComponents\DropdownComponent\" />
+    <Folder Include="ClientApp\src\components\ControlComponents\TableComponent\" />
+    <Folder Include="ClientApp\src\components\ControlComponents\NumberComponent\" />
+    <Folder Include="ClientApp\src\Helper\FromControl\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\components\ConfirmDialogComponent\ConfirmDialogComponents.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\ControlComponents\MainCheckboxComponents\CheckboxDropdownComponent\CheckboxDropdownComponent.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\ControlComponents\MainCheckboxComponents\MainCheckboxComponents.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\ControlComponents\MainTextComponents\MainTextComponents.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\ControlComponents\MainTextComponents\TextComponent\TextComponent.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\utill\ReviewPDF.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Content Include="Entities\TemplateEmail\**">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Images\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+	<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+	  <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+	  <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)build\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

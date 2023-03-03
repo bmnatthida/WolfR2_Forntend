@@ -1,0 +1,25 @@
+.request-container #msdoc-renderer{
+    height: 100%;
+}
+/* #iframePdf[aria-disabled]
+{
+  pointer-events: none;
+  opacity: 0.7;
+}
+.iframe-div{
+  width: 50vw;
+  height: 50vh;
+  overflow: scroll;
+} */
+
+.block-div{
+  height: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .block-div {
+    height: calc(100% - 50px);
+
+  }
+  
+}

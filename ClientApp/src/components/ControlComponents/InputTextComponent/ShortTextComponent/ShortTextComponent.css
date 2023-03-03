@@ -1,0 +1,11 @@
+
+.p-inputtext:enabled:hover {
+  border: 1px solid #ced4da;
+}
+.p-inputtext:enabled:focus {
+  box-shadow: none;
+  border: 1px solid #ced4da;
+}
+/* .padding-controller {
+  padding: 0 40px;
+} */

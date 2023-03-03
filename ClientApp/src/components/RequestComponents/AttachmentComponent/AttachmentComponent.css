@@ -1,0 +1,234 @@
+.Col-text-header {
+  font-size: 24px;
+  color: #262a2d;
+  margin: 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+.Attach p {
+  margin-bottom: 0rem;
+}
+.attachForm {
+  width: 100%;
+  margin-top: 10px;
+  border: #f0f0f0 solid;
+  border-radius: 3px;
+  overflow: auto;
+}
+.innerAtt {
+  display: flex;
+  padding-left: 1rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.HeadATT {
+  display: flex;
+  padding: 1rem 1rem 0rem 1rem;
+  border-bottom: 1px #f2f2f2 solid;
+}
+.HeadATT h4 {
+  font-size: 13px;
+
+  margin-bottom: 15px;
+}
+
+.mergeAtt {
+  width: 10%;
+}
+.checkboxAtt {
+  display: flex;
+  justify-content: center;
+}
+.button-upload {
+  display: flex;
+  column-gap: 3px;
+}
+.button-upload svg {
+  font-size: 18px;
+}
+.sequenceAtt {
+  width: 5%;
+}
+.DateAtt {
+  width: 20%;
+}
+.FileAtt {
+  width: 30%;
+}
+.detail-FileAtt {
+  width: 30%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+}
+.DecripAtt {
+  width: 30%;
+}
+.detail-DecripAtt {
+  width: 29%;
+}
+.attachForm .preview-icon{
+  margin-bottom: calc(1rem - 5px);
+  cursor: pointer;
+  transition-duration: .25s;
+
+}
+.attachForm .preview-icon:hover{
+  color: #282f6a;
+  transition-duration: .25s;
+}
+.detail-DateAtt {
+  width: 19%;
+}
+.ActionAtt {
+  width: 6%;
+}
+.detail-ActionAtt {
+  display: flex;
+  justify-content: center;
+  width: 4%;
+  margin-left: 5%;
+}
+.detail-mergeAtt {
+  width: 5%;
+  margin-top: 2px;
+}
+.button-menu {
+  background-color: white;
+  border: 0;
+  margin-left: 50%;
+  margin-bottom: 50%;
+}
+.set-checkbox {
+  display: flex;
+  justify-content: center;
+}
+.attachForm .p-button.p-button-icon-only {
+  padding: 0 !important;
+}
+.attachForm .p-button {
+  padding: 0 !important;
+}
+.attachForm
+  button.p-button.p-component.p-splitbutton-menubutton.p-button-icon-only {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 2px;
+}
+.attachForm
+  button.p-button.p-component.p-splitbutton-menubutton.p-button-icon-only:hover {
+  background-color: white;
+}
+.setting-display {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.attachForm .p-button:focus {
+  box-shadow: 0 0 0 0 white !important;
+}
+.attachForm .p-button:focus-visible {
+  outline: none;
+}
+/* .attachForm .p-button:focus-visible {
+  border: white;
+} */
+
+/* Description Component */
+.des-header {
+  display: flex;
+  column-gap: 5px;
+  border-bottom: #d8d8d8 solid 2px;
+}
+.headtext-des {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.des-header svg {
+  font-size: 25px;
+}
+.Button-line-des {
+  display: flex;
+  column-gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+.Cancel-Button-des {
+  background-color: white;
+  border: none;
+  color: gray;
+  width: 30%;
+}
+.Cancel-Button-des:hover {
+  color: red;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.Confirm-Button-des {
+  background-color: white;
+  border: none;
+  color: #282f6a;
+  width: 30%;
+}
+.Confirm-Button-des:hover {
+  color: black;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.main-box-des {
+  margin-top: 3px;
+}
+.p-inputgroup .attachForm-border-fttach-file {
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+  border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important;
+}
+.p-inputgroup .attachForm-border-description-inputText {
+  border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important;
+  height: 38px;
+  /* border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important; */
+}
+.p-inputgroup .attachForm-border-description-button {
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+  height: 38px;
+  background-color: rgb(40, 47, 106);
+  border: 1px solid rgb(40, 47, 106);
+  /* border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important; */
+}
+.p-button:focus {
+  box-shadow: none;
+}
+.p-button:enabled:hover,
+.p-button:not(button):not(a):not(.p-disabled):hover {
+  background: rgb(40, 47, 106);
+  border-color: rgb(40, 47, 106);
+}
+.form-control:focus {
+  box-shadow: none;
+
+  border-color: #ced4da;
+}
+.set-pointer-css-attachment {
+  cursor: pointer;
+}
+.set-css-icon-alert-in-upload-file{
+  font-size: 26px;
+    color: #747474;
+    margin-left: 12px;
+}
+.set-css-icon-alert-in-upload-file:hover{
+    color: black;
+    cursor: pointer;
+}
+.set-layout-att-input{
+  align-items: center;
+}
+.set-css-content-attachment{
+  white-space: pre-line;
+}

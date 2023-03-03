@@ -1,0 +1,34 @@
+.pdf-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+}
+.pad-container .spinning {
+}
+.pdf-container .error-text-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #7c7c7c;
+  line-height: 90px;
+}
+.pdf-container .error-text-container p {
+  margin: 0;
+}
+.pdf-container .error-text-container .error-text {
+  font-size: 48px;
+}
+.pdf-container .error-text-container .not-found-text {
+  font-size: 16px;
+  text-align: center;
+  line-height: 2em;
+  width: 70%;
+  margin-bottom: 20px;
+}

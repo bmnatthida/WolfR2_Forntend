@@ -1,0 +1,52 @@
+.Col-text-header {
+  font-size: 24px;
+  color: #262a2d;
+  margin: 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+.set-icon-LineApprovalsComponent {
+  width: 39px;
+  border-radius: 10px;
+}
+
+.status-badge span {
+  color: #ffffff;
+  font-size: 12px;
+  background-color: #1c68be;
+  padding: 5px 18px;
+  border-radius: 15px;
+}
+
+.Lineapprove-loading {
+  text-align: center;
+  background-color: rgba(85, 85, 85, 0.144);
+}
+
+.dropdown-lineapprove {
+  width: 100%;
+}
+
+.lineapprove-confirm-button {
+  border-radius: 12px;
+  background: #dc3545 !important;
+}
+.p-button:focus {
+  box-shadow: none;
+}
+.p-button:enabled:hover,
+.p-button:not(button):not(a):not(.p-disabled):hover {
+  background: rgb(40, 47, 106);
+  border-color: rgb(40, 47, 106);
+}
+.table-control-headtext {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 425px) {
+ .desktop-clik{
+   display: none;
+ }
+}

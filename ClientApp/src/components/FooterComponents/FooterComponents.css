@@ -1,0 +1,22 @@
+.footerComponents-border {
+  font-size: 24px;
+  color: #262a2d;
+  margin: 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #cfcfcf;
+}
+.footerComponents-padding {
+  padding: bottom 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.footerComponents-padding-div {
+  background-color: rgb(255, 255, 255);
+  flex: 1 1;
+  width: 100%;
+  bottom: 0;
+  padding-top: 20px;
+}
+.footerComponents-color-a {
+  color: #2769b2;
+}

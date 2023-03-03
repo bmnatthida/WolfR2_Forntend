@@ -1,0 +1,88 @@
+.referenceDocumentDialog-renderFooter-display {
+  display: flex;
+  justify-content: end;
+}
+.referenceDocumentDialog-dialog .p-dialog-footer {
+  padding: 0 3.5rem 1.5rem 1.5rem;
+}
+.referenceDocumentDialog-dialog
+  button.p-dialog-header-icon.p-dialog-header-close.p-link {
+  display: none;
+}
+.referenceDocumentDialog-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #ffffff;
+  color: #495057;
+  padding: 11px 0px 7px 20px;
+  /* border-bottom: 1px solid #cfcfcf; */
+}
+.referenceDocumentDialog-dialog .p-dialog-content {
+  padding: 0 !important;
+}
+.referenceDocumentDialog-dialog .p-dialog-content {
+  padding: 4px 3.5rem 2rem 1.5rem;
+}
+.referenceDocumentDialog-dialog-p-textheader {
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 0;
+
+  /* line-height: 0px; */
+
+  color: #262a2d;
+}
+.referenceDocumentDialog-dialog-p-text-sub {
+  font-size: 18px;
+  color: #262a2d;
+}
+.referenceDocumentDialog-button:hover {
+  background: #ffffff;
+  color: rgb(255, 38, 38) !important;
+}
+.referenceDocumentDialog-dialog-media {
+  display: grid;
+  justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .referenceDocumentDialog-dialog-media {
+    display: initial;
+    padding-top: 10px;
+  }
+  .referenceDocumentDialog-dialog-media-padding {
+    padding-top: 10px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .referenceDocumentDialog-dialog-media {
+    display: initial;
+    padding-top: 10px;
+  }
+  .referenceDocumentDialog-dialog-media-padding {
+    padding-top: 10px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .referenceDocumentDialog-dialog-media {
+    display: initial;
+    padding-top: 10px;
+  }
+  .referenceDocumentDialog-dialog-media-padding {
+    padding-top: 10px;
+  }
+  .referenceDocumentDialog-renderFooter-display {
+    justify-content: center;
+    margin-top: 15px;
+  }
+  .referenceDocumentDialog-dialog .p-dialog-footer {
+    padding: 0 3.5rem 1.5rem 1.5rem;
+  }
+}
+.gutter-row-Reference {
+  margin-bottom: 25px !important;
+}
+span.p-paginator-pages {
+  display: flex;
+}
+.gutter-row-margin-bottom {
+  margin-bottom: 15px !important;
+}

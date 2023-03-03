@@ -1,0 +1,88 @@
+.editable-cell {
+    position: relative;
+  }
+  
+  .editable-cell-value-wrap {
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+  
+  .editable-row:hover .editable-cell-value-wrap {
+    padding: 4px 11px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+  }
+  
+  [data-theme='dark'] .editable-row:hover .editable-cell-value-wrap {
+    border: 1px solid #434343;
+  }
+  .input-component-container{
+    /* width: 100%; */
+  }
+  .input-component-container input,.ant-picker,.ant-radio-group,.ant-select,.ant-select-selector,.ant-checkbox-group{
+    /* height: 38px!important; */
+    /* height: 100%; */
+    width: 100%!important;
+  }
+  .input-component{
+    width: 100%;
+  }
+  .input-component-container .checkbox-invalid .ant-radio .ant-radio-inner{
+    border-color: #ff4d4f;
+  }
+  .input-component-container .checkbox-invalid .ant-checkbox .ant-checkbox-inner{
+    border-color: #ff4d4f;
+  }
+  .input-component-container .checkbox-invalid .ant-select:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input{
+    margin-left: 0;
+  }
+  .input-component-container .ant-select-selection-placeholder{
+    display: flex;
+    align-items: center;
+  }
+  .input-component-container .control-table .ant-select-selection-overflow{
+    transform: translateY(-2px)!important;
+  }
+
+  .ant-table-container{
+    border-radius: 6px 0px 6px 0px;
+  }
+
+  .ant-table-footer{
+    border-radius: 0px 0px 6px 6px;
+  }
+
+  .ant-table-header{
+    border-radius: 6px 6px 0px 0px !important;
+  }
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .ant-table-thead .ant-table-tbody .ant-table-tfooter > tr >td ,th {
+    border-right: none !important;
+  }
+  .ant-table-tbody > tr >td ,th {
+    border-right: none !important;
+  }
+  .ant-table-summary > tr >td ,th {
+    border-right: none !important;
+  }
+
+  .footer-layout{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .action-column{
+    cursor: pointer;
+  }
+  .control-table .ant-table-content {
+    border-radius: 6px 6px 0px 0px !important;
+  }
+
+  .error-table .ant-table{
+    border: 1px solid red;
+    border-radius: 6px;
+  }

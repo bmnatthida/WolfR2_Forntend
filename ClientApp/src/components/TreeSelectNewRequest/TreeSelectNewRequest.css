@@ -1,0 +1,174 @@
+.collapse-container .search-template-container {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  color: #b4b4b4;
+}
+.collapse-container .search-template-container svg {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 4px;
+}
+.search-template-container .input-custom {
+  border-radius: 6px !important;
+}
+.search-template-container .input-custom::placeholder {
+  color: #b4b4b4;
+}
+.collapse-container .search-template-container input {
+  padding-left: 34px;
+  width: 100%;
+  height: 35px;
+  font-size: 13px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  background-color: #e6e6e6;
+  font-weight: 200;
+}
+
+.collapse-container .ant-collapse {
+  background-color: #fff;
+  border: none;
+  height: 350px;
+  width: 80vw;
+  max-width: 490px;
+  font-size: 13px;
+  overflow: auto;
+}
+.collapse-container .ant-collapse > .ant-collapse-item {
+  border: 1px solid #d7d7d7;
+  margin: 10px 0;
+  border-radius: 3px;
+}
+.collapse-container .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+.collapse-container
+  .ant-collapse
+  > .ant-collapse-item
+  > .ant-collapse-header
+  .panel-header {
+  margin: 0;
+}
+.collapse-container .template-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  padding: 5px;
+  border-radius: 3px;
+  transition-duration: 0.25s;
+}
+.collapse-container .template-item-container:hover svg {
+  display: initial;
+  color: #fff;
+}
+.collapse-container .template-item-container svg {
+  font-size: 16px;
+  cursor: pointer;
+  color: #282f6a;
+}
+.collapse-container .template-item-container svg {
+  display: none;
+}
+.collapse-container .ant-collapse-content {
+  margin: 0 15px;
+}
+.collapse-container .ant-collapse-content-box {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px 2px;
+}
+.collapse-container .template-item-container p {
+  margin: 0;
+}
+.collapse-container .template-item-container .template-text {
+  flex: 1;
+  cursor: pointer;
+}
+.ant-picker-date-panel
+  .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start
+  .ant-picker-cell-inner::after,
+.ant-picker-date-panel
+  .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end
+  .ant-picker-cell-inner::after {
+  background-color: #f8a51c;
+}
+.ant-picker-cell-in-view.ant-picker-cell-in-range::before:focus {
+  background-color: #f8a51c !important;
+}
+td.ant-picker-cell.ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end:focus {
+  background-color: #f8a51c !important;
+}
+.collapse-container .template-item-container:hover {
+  background-color: #f8a51c;
+  color: #fff;
+  transition-duration: 0.25s;
+}
+.popover-border-Radius {
+  border-radius: 6px !important;
+}
+/* .ant-popover-inner {
+  border-radius: 6px;
+} */
+/* .rc-virtual-list-holder-inner:target {
+  background: #fbd79d;
+} */
+.ant-select-item-option-active:not(.ant-select-item-option-disabled):hover {
+  background: #fbd79d;
+}
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background: #f8a51c;
+}
+span.anticon.anticon-check {
+  color: #262a2d !important;
+}
+.TreeSelectNewRequest-media-department-display-initial {
+  display: none !important;
+}
+.TreeSelectNewRequest-background-color {
+  background-color: #f8a51c !important;
+  border-color: #f8a51c !important;
+  color: #fff !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .TreeSelectNewRequest-media-department {
+  }
+  .TreeSelectNewRequest-media-FormCategory {
+    padding-top: 0px;
+  }
+  .TreeSelectNewRequest-media-FormCategory1024px {
+    margin-top: 25px !important;
+  }
+}
+@media screen and (max-width: 426px) {
+  .TreeSelectNewRequest-media-department-display-initial {
+    display: inline-flex !important ;
+  }
+  /* .TreeSelectNewRequest-media-department-display-none-Request {
+    display: none !important ;
+  } */
+  /* .TreeSelectNewRequest-media-department-display-initial
+    .p-button:enabled:hover,
+  .p-button:not(button):not(a):not(.p-disabled):hover {
+    background-color: #f8a51c;
+    border-color: #f8a51c;
+    color: #fff;
+  } */
+  .TreeSelectNewRequest-media-department-display-none {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 426px) {
+  .TreeSelectNewRequest-media-department-display-none-Request {
+    display: none !important ;
+  }
+}

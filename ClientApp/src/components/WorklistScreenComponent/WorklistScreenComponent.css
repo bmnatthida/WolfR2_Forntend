@@ -1,0 +1,166 @@
+.flow-card-container {
+  display: flex;
+  background-color: #f9fafe;
+  border: 1px solid #f5f6f9;
+  border-radius: 6px;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+.flow-card-container .img-flow-card {
+  align-self: flex-start;
+  margin-right: 15px;
+}
+.flow-card-container .img-flow-card .circle-text {
+  background-color: #282f6a;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flow-card-container .img-flow-card .text-profile {
+  margin: 0;
+  padding: 10px;
+}
+.flow-card-container .img-flow-card img {
+  width: 43px;
+  height: 43px;
+  border-radius: 80px;
+}
+.flow-card-container .flow-card-detail p {
+  margin: 0;
+}
+.flow-card-container .flow-card-detail .text-user-name .user-name {
+  font-size: 15px;
+  color: #262a2d;
+  font-weight: 500;
+}
+.flow-card-container .flow-card-detail .text-user-name .user-role {
+  font-size: 13px;
+  color: #282f6a;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.flow-card-container .flow-card-detail .text-status {
+  font-size: 13px;
+  color: #b4b4b4;
+  font-weight: 500;
+}
+.flow-card-container .status-badge {
+  flex: 1;
+  align-self: flex-start;
+  display: flex;
+  justify-content: right;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 5px 15px;
+}
+.flow-card-container .status-badge span {
+  background-color: #1c68be;
+  padding: 5px 18px;
+  border-radius: 15px;
+}
+.history-group-container p {
+  margin: 0;
+}
+.history-group-container .history-card-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafe;
+  border: 1px solid #f5f6f9;
+  padding: 20px 25px 0;
+  border-radius: 6px;
+}
+.history-card-container .history-detail-container {
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+}
+.history-detail-container .left-container .text-name {
+  font-size: 15px;
+  color: #262a2d;
+  font-weight: 500;
+}
+.history-detail-container .left-container .text-role {
+  font-size: 13px;
+  color: #282f6a;
+  font-weight: 500;
+}
+.history-detail-container .left-container .text-date {
+  font-size: 13px;
+  color: #b4b4b4;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.history-detail-container .left-container .text-detail {
+  font-size: 13px;
+  color: #262a2d;
+  /* font-weight: 600; */
+  margin-bottom: 10px;
+}
+.history-detail-container .right-container .status-badge span {
+  color: #ffffff;
+  font-size: 12px;
+  background-color: #b4b4b4;
+  padding: 5px 18px;
+  border-radius: 15px;
+}
+.history-card-container .send-from-container {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b4b4b4;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.card-attachment-container {
+  display: flex;
+  background-color: #f9fafe;
+  border: 1px solid #f5f6f9;
+  border-radius: 6px;
+  padding: 25px;
+  cursor: pointer;
+}
+.card-attachment-container p {
+  margin: 0;
+}
+.card-attachment-container .show-img-container {
+  margin-right: 25px;
+}
+.show-img-container img {
+  width: 50px;
+  /* height: 37px; */
+}
+.card-attachment-container .detail-container .text-header {
+  font-size: 15px;
+  color: #262a2d;
+  font-weight: 600;
+}
+.card-attachment-container .detail-container .text-file-size {
+  font-size: 13px;
+  color: #b4b4b4;
+  font-weight: 500;
+}
+.card-attachment-container .detail-container .owner-file-name {
+  font-size: 13px;
+  color: #282f6a;
+  font-weight: 500;
+}
+.card-attachment-container .detail-container .text-detail {
+  font-size: 13px;
+  color: #262a2d;
+}
+.card-attachment-container .date-upload {
+  font-size: 13px;
+  color: #b4b4b4;
+  text-align: right;
+  flex: 1;
+}
+.content-container .content {
+  overflow: auto;
+}

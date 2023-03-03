@@ -1,0 +1,17 @@
+.summary-documentno-justify-conten-margin-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0px;
+  align-items: center;
+}
+.summary-documentno-flex-direction {
+  flex-direction: column;
+  margin-right: 10px !important;
+  display: flex;
+}
+
+.set-padding-summary-component .summary-input-number-border-radius {
+  border-radius: 6px;
+  height: 40px;
+  width: 100%;
+}

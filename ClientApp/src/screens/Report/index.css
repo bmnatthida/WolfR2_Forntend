@@ -1,0 +1,101 @@
+﻿.z-index-report-container {
+  z-index: 1;
+}
+.p-multiselect {
+  border-radius: 6px;
+  height: 38px !important;
+}
+
+.p-dropdown.p-component.p-inputwrapper.p-column-filter.p-dropdown-clearable {
+  border-radius: 6px;
+}
+.p-datatable .p-datatable-header {
+  background: #e6e6e6;
+}
+.p-datatable .p-datatable-thead > tr > th {
+  background: #e6e6e6 !important;
+}
+.tbody,
+tfoot,
+th,
+thead,
+tr {
+  border-radius: 0 !important;
+}
+
+.my-dialog-header .p-dialog-header {
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.dialog-content {
+  width: 1250px;
+  height: 594px;
+  padding-left: 37px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.report-input {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.report-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.report-card {
+  border: 1px solid #cfcfcf;
+  /* border-bottom: 1px solid #cfcfcf; */
+  border-radius: 6px;
+
+  width: 100%;
+  font-size: 13px;
+  color: white;
+  text-align: left;
+  /* background-color: #282f6a; */
+}
+
+.report-card .report-card-header {
+  width: 100%;
+  background-color: #282f6a;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.card-header-text {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-bottom: 0px;
+  padding-left: 25px;
+}
+
+.report-card-body {
+  padding-top: 25px;
+  padding-left: 24px;
+  padding-right: 26px;
+  padding-bottom: 25px;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+  border-radius: 6px !important;
+}
+
+.body-container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.report-progress{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+}
+.table-panel,.p-panel-content{
+  position: relative;
+}

@@ -1,0 +1,84 @@
+.display-flex-button {
+  display: flex;
+  justify-content: end;
+}
+.set-card-model {
+  border: 1px solid #f0f0f2;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+.footer-dialog-css {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0.5rem;
+  margin-right: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+  height: 2rem;
+}
+.set-margin-css-layout {
+  margin: 0px 35px 23px 15px;
+}
+.set-btn-create-form {
+  background: #f2f2f2;
+  color: #282f6a;
+  border-radius: 6px;
+  width: 104px;
+  height: 32px;
+  border: 1px solid #282f6a;
+}
+.set-btn-create-form-new {
+  background: #282f6a;
+  color: #f2f2f2;
+  border-radius: 6px;
+  width: 104px;
+  height: 32px;
+  border: 1px solid #282f6a;
+}
+.hover-color-css-red:hover {
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+}
+
+.hover-color-css-white:hover {
+  color: #282f6a;
+  background-color: white;
+}
+.hover-color-css-blue:hover {
+  color: white;
+  background-color: #282f6a;
+}
+.set-size-BsX {
+  font-size: x-large;
+}
+.set-css-wait-pointer {
+  cursor: wait;
+}
+.hover-color-css-white-2:hover {
+  color: #282f6a !important;
+  background-color: white !important;
+}
+.hover-color-css-white-3:hover {
+  color: red !important;
+  background-color: white !important;
+}
+.hover-color-css-red-3:hover {
+  color: white !important;
+  background-color: red !important;
+}
+.set-css-tss .p-datatable-thead tr th:nth-child(2) {
+  justify-content: center;
+}
+.set-padding-db .p-datatable .p-datatable-tbody > tr > td {
+  padding: 0.5rem 1rem !important;
+}
+.p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+  width: 40px !important;
+  height: 18px !important;
+  background-color: #f8a51c !important;
+  border: 10px solid #f8a51c !important;
+}

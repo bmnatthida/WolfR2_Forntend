@@ -1,0 +1,70 @@
+.close-set-color-button-active-request {
+    background: #282f6a;
+    border-color: #282f6a;
+  }
+  
+  .save-set-color-button-active-request {
+    background: #1f9625;
+    border-color: #1f9625;
+  }
+  .setmagin-at {
+    margin-top: 20px;
+  }
+  .display-none button.p-button.p-component.p-disabled {
+    display: none;
+  }
+  .display-none button.p-button.p-component {
+    display: none;
+  }
+  .display-none .p-progressbar.p-component.p-progressbar-determinate {
+    display: none;
+  }
+  .display-show button.p-button.p-component.p-button-icon-only {
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .set-flex-layout .p-fileupload-files .p-fileupload-row > div:last-child {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .set-button-close {
+    display: flex;
+    align-items: center;
+  }
+  .set-button-close .p-button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .set-button-close .border-icon {
+    border: 1px solid rgb(40, 47, 106);
+    height: 43.14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43.14px;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: rgb(40, 47, 106);
+    cursor: pointer;
+    color: #fff;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    height: 38px;
+  }
+  .set-button-close .border-icon:hover {
+    background-color: rgb(40, 47, 106);
+    border-color: rgb(40, 47, 106);
+    height: 38px;
+  }
+  .set-button-close .border-icon svg {
+    font-size: 20px;
+  }
+  
+  .hide-component {
+    display: none;
+  }

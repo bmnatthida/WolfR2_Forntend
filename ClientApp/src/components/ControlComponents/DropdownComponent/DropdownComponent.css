@@ -1,0 +1,19 @@
+.set-width-input-dd.p-dropdown.p-component.p-inputwrapper.p-inputwrapper-filled {
+  width: 100%;
+  border-radius: 6px;
+}
+.setdropdown-control.p-dropdown.p-component.p-inputwrapper {
+  width: 100%;
+}
+.set-layout-required-dropdown {
+  border: 1px solid red;
+}
+.label-text-container {
+  display: flex;
+}
+.label-text-container .text-Is-require {
+  color: red;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background: #fbd79d !important;
+}

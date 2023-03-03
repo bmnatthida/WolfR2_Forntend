@@ -1,0 +1,102 @@
+.set-margin-css-layout-column {
+  margin: 0px 35px 23px 15px;
+}
+.card-dnd-table-create-control {
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+  flex: 1 1;
+  background-color: white;
+  border: 1px solid #e6e6e6;
+}
+.set-margin-button-add-column {
+  margin-bottom: 30px;
+}
+.set-layout-card-dnd-table-create-control {
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+  min-height: 20px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0px 3px 10px rgb(0 0 0 / 10%);
+  padding: 16px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.set-layout-data-label-table {
+  margin-left: -9px;
+}
+.set-layout-data-label-table-icon {
+  border: 1px solid #e6e6e6;
+  display: flex;
+  align-content: center;
+  width: 100%;
+  margin-left: 0px;
+}
+.set-font-data-label-table {
+  font-weight: bold;
+}
+.flex-1-create-control {
+  flex: 1;
+}
+.set-border-css-layout {
+  background: #f2f2f2;
+  border: 1px dashed #b4b4b4;
+  box-sizing: border-box;
+  border-radius: 6px;
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+}
+.set-layout-css-icons {
+  margin-left: 21px;
+  margin-top: -2px;
+}
+.set-layout-is-doc {
+  margin-left: 10px;
+}
+.set-margin-0-css {
+  margin-left: 0px !important;
+}
+.display-flex-css {
+  display: flex;
+}
+.set-layout-create-control-config-column {
+  padding: 11px;
+  box-shadow: 0px 3px 10px rgb(0 0 0 / 10%);
+  background: #f1f1f1;
+  border-radius: 6px 6px 0px 0px;
+  margin-bottom: 17px;
+}
+.set-layout-ref-css-card {
+  border-radius: 6px;
+  padding-top: 6px;
+  min-height: 41.938rem;
+  margin-left: -43px;
+}
+.set-css-multi-select .p-multiselect-label.p-placeholder {
+  font-size: 13px !important;
+  padding-left: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.set-layout-ref-condition-css {
+  display: flex;
+  justify-items: center;
+  padding-top: 11px;
+  padding-left: 15px;
+}
+.card-create-control-table
+  .p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem
+  .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: none;
+}
+
+.set-font-text-tooltip-css {
+  font-size: 13px;
+}
+.set-padding-item .p-multiselect-label.p-multiselect-items-label{
+  padding-left: 1.5rem;
+}

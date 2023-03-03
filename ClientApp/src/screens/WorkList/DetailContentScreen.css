@@ -1,0 +1,86 @@
+.main-container .content-container {
+  background-color: #fff;
+  box-shadow: -1px 0px 10px 0.1px rgba(196, 196, 196, 0.5);
+  flex: 1;
+  margin-bottom: 20px;
+  border-bottom-left-radius: 12px;
+}
+.main-container .content-container .header-container {
+  border-bottom: 2px solid #f0f0f2;
+  display: flex;
+  column-gap: 10px;
+  padding: 10px 25px;
+  position: sticky;
+  top: 75px;
+  background-color: #fff;
+}
+.main-container .content-container .header-container .header-content-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: 0.25s;
+
+  /* background-color: #ffffff; */
+}
+.header-container .to-request-screen-button {
+  align-self: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 20px;
+  color: #707070;
+}
+.header-container .to-request-screen-button :hover {
+  cursor: pointer;
+}
+.header-content-button:hover {
+  transition: 0.25s;
+  background-color: #e6e6e6;
+}
+.main-container .content-container .header-container .header-content-button p {
+  margin: 0;
+  margin-left: 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.main-container
+  .content-container
+  .header-container
+  .header-content-button
+  svg {
+  font-size: 20px;
+}
+.main-container .content-container .content {
+  padding: 5px 25px 15px;
+  height: 100vh;
+}
+.webviewer {
+  height: 85vh;
+}
+.on-loading {
+  height: calc(100vh - 135px) !important;
+}
+.content-container .header-container .-active {
+  background-color: #e6e6e6;
+}
+.content-container .detail-content-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 25px;
+  margin-left: 25px;
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+  padding-bottom: 10px;
+  padding-block: 10px;
+  border-top: 1px solid #f0f0f2;
+}
+@media screen and (max-width: 1024px) {
+  .main-container .content-container {
+    display: none;
+  }
+}

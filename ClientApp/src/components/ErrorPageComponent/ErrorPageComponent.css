@@ -1,0 +1,58 @@
+.error-page-container {
+  background-image: url("../../assets/login-background.jpeg");
+
+  width: 100vw;
+  height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.all-text-container {
+  background-color: #fff;
+  width: 70vw;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+.error-page-container * {
+  /* font-family: "ABeeZee", sans-serif; */
+}
+.error-page-container .error-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #7c7c7c;
+  line-height: 90px;
+  /* row-gap: 10px; */
+}
+.error-text-container p {
+  margin: 0;
+}
+.error-page-container .text-404 {
+  font-size: 144px;
+}
+.error-page-container .error-text {
+  font-size: 64px;
+}
+.error-page-container .not-found-text {
+  font-size: 18px;
+  text-align: center;
+  line-height: 2em;
+  width: 70%;
+  margin-bottom: 20px;
+}
+.error-page-container .go-back-button {
+  border: none;
+  height: 40px;
+  width: 50%;
+  max-width: 313px;
+  background-color: #f8a51c;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+}

@@ -1,0 +1,22 @@
+.core-control-container
+  .p-dropdown.p-component.p-inputwrapper.p-inputwrapper-filled {
+  width: 100%;
+}
+.set-layout {
+  column-gap: 20px;
+  flex-wrap: wrap;
+}
+
+.p-field-checkbox .checkbox-gab {
+  margin-right: 5px;
+}
+
+.p-field-checkbox .row-gab {
+  margin-bottom: 5px;
+}
+.label-text-container {
+  display: flex;
+}
+.label-text-container .text-Is-require {
+  color: red !important;
+}

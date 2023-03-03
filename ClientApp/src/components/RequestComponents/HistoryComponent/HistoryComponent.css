@@ -1,0 +1,99 @@
+.Col-text-header {
+  font-size: 24px;
+  color: #262a2d;
+  margin: 0px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+.HistoryCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafe;
+  border: 1px solid #f5f6f9;
+  padding: 10px 25px 0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.HistoryCard .HistoryDetail {
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.HistoryDetail .content-left-side .content-text-name {
+  font-size: 15px;
+  color: #262a2d;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.HistoryDetail .content-left-side .content-text-role {
+  font-size: 13px;
+  color: #282f6a;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.HistoryDetail .content-left-side .content-text-date {
+  font-size: 13px;
+  color: #b4b4b4;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.HistoryDetail .content-left-side .content-text-status {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.HistoryDetail .content-left-side .content-text-detail {
+  font-size: 13px;
+  color: #262a2d;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.HistoryDetail .content-right-side .action-badge span {
+  color: #ffffff;
+  font-size: 12px;
+  background-color: #2769b2;
+  padding: 5px 18px;
+  border-radius: 15px;
+}
+
+.HistoryCard .send-from {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b4b4b4;
+  margin-top: 5px;
+}
+
+.HistoryCard .send-from p {
+  margin-bottom: 5px;
+}
+
+.text-send-from svg {
+  font-size: 15px;
+}
+.text-layout-detail{
+  color: #282f6a;
+  display: flex;
+  justify-content: end;
+}
+.text-pointer:hover{
+  color: white;
+  background-color: #282f6a;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.text-pointer{
+  height: 1.875rem;
+  width: 3.813rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+}

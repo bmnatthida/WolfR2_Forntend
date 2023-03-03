@@ -1,0 +1,33 @@
+.template-label {
+  font-weight: bold;
+}
+
+.addonText {
+  margin-bottom: 0px;
+}
+.label-container {
+  display: flex;
+}
+.label-container .this-require {
+  color: red;
+}
+.numberInput {
+  width: 100%;
+}
+
+.label-text-container {
+  display: flex;
+}
+.label-text-container .text-Is-require {
+  color: red;
+}
+.p-inputgroup.numberInput
+  span.p-inputnumber.p-component.p-inputwrapper.p-inputwrapper-filled
+  input.p-inputtext.p-component.p-filled.p-inputnumber-input {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.p-inputgroup.numberInput span.p-inputgroup-addon {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}

@@ -1,0 +1,59 @@
+#fontstyle {
+  font-size: 13px;
+}
+.textcolor {
+  color: #2769b2;
+}
+.textcolordate {
+  color: #b4b4b4;
+}
+.fontbold {
+  font-weight: bold;
+}
+.button {
+  float: right;
+  color: #282f6a;
+}
+.textalign {
+  float: right;
+  color: #282f6a;
+}
+.textcurrency {
+  float: right;
+  color: #f8a51c;
+  font-size: 20px;
+}
+.sizebutton {
+  width: 51;
+  height: 16;
+  border-radius: 8px;
+  color: #1b2282f6ab6c;
+  opacity: 1;
+}
+.cardcss {
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--unnamed-color-f0f0f2);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 10px #0000001a;
+  border: 1px solid #f0f0f2;
+  border-radius: 12px;
+  opacity: 1;
+  border-radius: 10px;
+}
+.pointer {
+  cursor: pointer;
+}
+.test {
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) /
+    var(--unnamed-line-spacing-16) var(--unnamed-font-family-helvetica-neue);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: left;
+  font: normal normal medium 13px/16px Helvetica Neue;
+  letter-spacing: 0px;
+  color: #2769b2;
+  opacity: 1;
+}
+.cardfoot {
+  background: #ffffff 0% 0% no-repeat padding-box;
+}

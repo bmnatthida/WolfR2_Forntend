@@ -1,0 +1,28 @@
+export type IUserModel = {
+  ADTitle: string;
+  AccountCode: string;
+  AccountName: string;
+  CreatedDate: string;
+  DefaultLang: string;
+  DepartmentId: number;
+  DepartmentNameEn: string;
+  DepartmentNameTh: string;
+  DivisionId: string;
+  DivisionNameEn: string;
+  DivisionNameTh: string;
+  Email: string;
+  EmployeeCode: string;
+  EmployeeId: number;
+  IsActive: boolean;
+  Lang: string;
+  ModifiedBy: string;
+  ModifiedDate: string;
+  NameEn: string;
+  NameTh: string;
+  PositionId: number;
+  PositionNameEn: string;
+  PositionNameTh: string;
+  ReportToEmpCode: string;
+  SignPicPath: string;
+  Username: string;
+};

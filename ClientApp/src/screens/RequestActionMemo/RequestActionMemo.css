@@ -1,0 +1,25 @@
+.set-request-action-memo{
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 80vh;
+}
+.layout-request-screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 50px;
+}
+.button-request-action-memo{
+    border: none;
+    border-radius: 6px;
+    background-color: #f8a51c;
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+    height: 50px;
+}

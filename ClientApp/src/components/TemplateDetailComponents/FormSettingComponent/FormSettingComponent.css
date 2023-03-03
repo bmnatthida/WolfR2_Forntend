@@ -1,0 +1,216 @@
+.informationComponents-line-border {
+  border: 1px solid #cfcfcf;
+
+  width: 100%;
+  height: 0px;
+}
+.set-layout-button {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+.set-card-create {
+  background: #f2f2f2;
+  border: 1px dashed #b4b4b4;
+  box-sizing: border-box;
+  border-radius: 6px;
+  width: 100%;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.set-font-in-card {
+  font-weight: 500;
+  font-size: 18px;
+  color: #b4b4b4;
+  margin: 0px;
+}
+.set-layout-in-setting-from {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.buntton-formsetting-setlayout {
+  height: 40px;
+  border: 0px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 13px;
+  padding-left: 10px;
+  padding-right: 12px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: left;
+  border-radius: 7px;
+  background-color: #e6e6e6 padding-box;
+  color: black;
+}
+.set-layout-add-control {
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: flex;
+  height: 68px;
+  flex-direction: row;
+  column-gap: 15px;
+  position: relative;
+  width: 100%;
+}
+.font-at-add-control {
+  font-weight: 500;
+  font-size: 18px;
+  color: #b4b4b4;
+  margin: 0px;
+  transform: translateY(2px);
+}
+.set-layout-flex-at-add-control {
+  flex: 1;
+  /* border: 1px solid #e6e6e6; */
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+}
+.set-css-in-icon {
+  color: #b4b4b4;
+  font-size: 20px;
+}
+.set-layout-add-control:hover .tool {
+  display: flex;
+}
+
+.set-layout-flex-at-add-control-layout:hover .tool2 {
+  display: flex;
+}
+.tool {
+  display: none;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  z-index: 3;
+}
+.tool2 {
+  display: none;
+  margin-left: -2.688rem;
+  margin-top: -4.313rem;
+  position: absolute;
+}
+.tool2 p {
+  margin: 0;
+}
+.tool p {
+  margin: 0;
+}
+.set-layout-in-add-control-grid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.set-cursor-pointer-css {
+  cursor: pointer !important;
+  padding: 1px 5px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  color: #b4b4b4;
+}
+.set-css-border-action-add-create-form {
+  width: 100%;
+  height: 100%;
+  padding-right: 20px;
+}
+.set-margin-button-add-control {
+  margin-bottom: 15px;
+}
+.set-layout-flex-at-add-control-layout {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+  flex: 1;
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  padding-left: 32px;
+  height: 76px;
+}
+
+p.set-cursor-pointer-css:hover {
+  color: white;
+  background-color: #282f6a;
+}
+.set-layout-button-field {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  column-gap: 15px;
+  width: 100%;
+}
+.set-bg-bttn {
+  background: #282f6a;
+  color: white;
+  border-radius: 6px;
+  width: 104px;
+  height: 32px;
+  border: 0px solid #282f6a;
+}
+.set-bg-bttn-glass {
+  background: #f2f2f2;
+  color: #282f6a;
+  border-radius: 6px;
+  width: 104px;
+  height: 32px;
+  border: 0px solid #282f6a;
+}
+.hover-color-css:hover {
+  color: white;
+  background-color: #282f6a;
+}
+.BTNActive {
+  background-color: #282f6a;
+  color: white;
+}
+.set-text-in-control-form-add {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  margin-left: -9px;
+}
+.set-color-label-create-control {
+  color: #262a2d;
+}
+.set-color-alt-label-create-control {
+  color: #7c7c7c;
+}
+.set-layout-form-control-font-at-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 14px;
+}
+.set-layout-control-edit-and-icon {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  /* background: #f2f2f2; */
+  border: 1px dashed #b4b4b4;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.set-color-bg-lay-out-control-edit {
+  background: #f0f0f0;
+  color: black;
+  border-radius: 6px;
+  width: 7.5rem;
+  padding-left: 10px;
+}
+.fontSize-Fa {
+  font-size: 1.188rem;
+}
+.set-padding-at-create-control {
+  padding: 10px;
+}
+.set-padding-at-create-control-6-padding {
+  padding: 6px;
+}

@@ -1,0 +1,39 @@
+.footer-dialog {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 20px;
+}
+.footer-dialog button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+}
+.p-dialog .p-dialog-header .p-dialog-header-icon:enabled:hover {
+  background: none !important;
+}
+.p-dialog .p-dialog-header .p-dialog-header-icon:focus {
+  box-shadow: none !important;
+}
+.p-button-danger-hover:hover {
+  color: #ff2626 !important;
+  background: #ffffff !important;
+  border-color: #ff2626 !important;
+}
+.p-button-danger-hover:focus {
+  box-shadow: none !important;
+}
+.p-button-text-position-hover:hover {
+  color: rgb(40, 47, 106) !important;
+  background: #ffffff !important;
+  border-color: rgb(40, 47, 106) !important;
+}
+.p-button-text-position-hover:focus {
+  box-shadow: none !important;
+}
+.p-toast{
+  z-index: 99999999999!important;
+}

@@ -1,0 +1,9 @@
+export const refreshTokenSetup = (res: any) => {
+  let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
+  const refrestToken = async () => {
+    const newAuthRes = await res.reloadAuthResponse();
+    refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
+    setTimeout(refrestToken, refreshTiming);
+  };
+  setTimeout(refrestToken, refreshTiming);
+};

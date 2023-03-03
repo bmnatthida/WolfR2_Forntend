@@ -1,0 +1,88 @@
+.comment-header {
+  display: flex;
+  column-gap: 5px;
+  border-bottom: #d8d8d8 solid 2px;
+}
+.headtext-comment {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.comment-header svg {
+  font-size: 25px;
+}
+.main-box-comment {
+  margin-top: 3px;
+}
+.Button-line {
+  display: flex;
+  column-gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+.Cancel-Button {
+  background-color: white;
+  border: none;
+  color: gray;
+  width: 30%;
+}
+.Cancel-Button:hover {
+  color: red;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.Confirm-Button {
+  background-color: white;
+  border: none;
+  color: #282f6a;
+  width: 30%;
+}
+.Confirm-Button:hover {
+  color: black;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+/* .dialog-setting .p-dialog .p-dialog-content {
+  padding: 0 1.5rem 1rem 1.5rem !important;
+} */
+.p-dialog {
+  background-color: #ffffff00;
+}
+.commment-dialog-main .p-dialog-header {
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px;
+}
+
+.commment-dialog-main .p-dialog-footer {
+  border-bottom-right-radius: 13px;
+  border-bottom-left-radius: 13px;
+  padding: 0 !important;
+}
+
+.main-box-comment .p-inputtextarea::placeholder {
+  color: #c7c7c7;
+}
+.set-font-require-comment {
+  font-size: 22px!important;
+  color: red!important;
+}
+.memo-button-padding {
+  padding: 0 1.5rem 1.5rem 1.5rem !important;
+}
+@media screen and (max-width: 320px) {
+  .memo-button-padding {
+    padding: 0 1.5rem 1.5rem 0.5rem !important;
+  }
+  .memo-button-display-768px {
+    display: none !important;
+  }
+}
+.set-width-100-editor-css .set-css-editor-comment {
+  width: 100%;
+}
+.set-css-editor-comment .p-editor-content.ql-container.ql-snow {
+  border-top: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+.set-css-editor-comment .p-editor-toolbar.ql-toolbar.ql-snow {
+  display: none;
+}

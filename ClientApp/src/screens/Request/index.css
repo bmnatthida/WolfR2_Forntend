@@ -1,0 +1,228 @@
+.request-main-container {
+  display: flex;
+  min-height: 100%;
+  position: relative;
+} /* main container in page */
+
+.request-main-container .request-container {
+  background-color: rgb(255, 255, 255);
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  flex: 1;
+  width: 100%;
+  margin-top: 10px;
+} /* sub container contain all component in this div */
+
+.request-container .header-request {
+  padding: 10px 0;
+  display: flex;
+  position: sticky;
+  background-color: #fff;
+  top: 75px;
+}
+.set-z-index {
+  z-index: 5;
+}
+
+.request-container .header-request .button-container {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  width: 238px;
+} /* this class contain two button left side of screen(menu & new request)*/
+
+.request-button-new {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 8px;
+  background-color: #f8a51c;
+  border: none;
+  padding: 6px 30px;
+  color: #fff;
+  min-width: 215.28px
+} /* reqeust button style */
+
+.request-button-new svg {
+  font-size: 26px;
+  margin-right: 12px;
+} /* icon size */
+
+.request-button-new p {
+  margin: 0;
+} /* <p> tag locating */
+
+.request-container .header-request .confirm-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f1f1;
+} /* submit bar upper from*/
+
+.checkaccess-container {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.request-container .inner-content .filter-container {
+  position: sticky;
+  top: 155px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  margin-top: 20px;
+  margin-right: 30px; /*push form component to right side*/
+} /*side bar sizing config*/
+
+.filter-container .all-filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+} /*sid bar button sizing*/
+
+.worklist-items-container {
+  display: flex;
+} /*div contain side bar and form inside*/
+
+.inner-content {
+  min-height: 100vh;
+}
+.inner-content .form-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  flex: 1;
+} /*form sizing config*/
+
+.request-container {
+  width: 100%;
+}
+.mobile-action-container {
+  display: none;
+  position: sticky;
+  bottom: 20px;
+  z-index: 99;
+}
+.request-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8a51c;
+  color: #fff;
+  font-size: 18px;
+  padding: 12px 0;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.action-button {
+  width: 70vw;
+}
+.RequestSideBarElement-display-none{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.RequestSideBarElement-display-none > div{
+  flex: 1;
+}
+.show-tablet-navbar-request-min-1024 {
+  background-color: #fff;
+  position: sticky;
+  top: 135px;
+  z-index: 999;
+  padding: 0 39px 10px;
+}
+.show-tablet-navbar-request-max-1024{
+  width: 18%;
+}
+@media screen and (max-width: 1024px) {
+  .show-tablet-navbar-request-max-1024 {
+    display: none !important;
+  }
+  .request-container-item{
+    width: 100%!important;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .show-tablet-navbar-request-min-1024 {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .show-tablet-navbar-request-min-1024 {
+    justify-content: center !important;
+    display: flex !important;
+    position: sticky;
+    background-color: #fff;
+    top: 130px;
+    z-index: 999;
+    background-color: white;
+    position: sticky;
+    top: 135px;
+    z-index: 999;
+    padding: 0 39px 10px;
+  }
+}
+
+.request-container-item {
+  white-space: 100%;
+  border: 1px solid var(--unnamed-color-f0f0f2);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 10px #0000001a;
+  border: 1px solid #f0f0f2;
+  border-radius: 12px;
+  opacity: 1;
+  padding: 35px;
+  width: 82%;
+}
+
+@media screen and (max-width: 600px) {
+  .mobile-action-container {
+    display: flex;
+  }
+  .request-container .header-request .button-container button {
+    display: none;
+  }
+}
+
+.logo-loading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  /* height: 100vh; */
+  background-color: rgba(85, 85, 85, 0.144);
+  transform: translate(-50%, -60%);
+  z-index: 999;
+}
+
+.cursor-loading {
+  cursor: progress;
+}
+.RequestSideBarElement-display-inline {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .RequestSideBarElement-display-inline {
+    display: inline-flex;
+  }
+  .RequestSideBarElement-display-none {
+    display: none;
+  }
+  
+}

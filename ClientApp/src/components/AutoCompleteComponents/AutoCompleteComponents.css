@@ -1,0 +1,32 @@
+.AutoCompleteComponents-autoComplete {
+  width: 100%;
+}
+.AutoCompleteComponents-autoComplete-notButton ul.p-autocomplete-multiple-container.p-component.p-inputtext {
+  width: 100%;
+  border-radius: 6px 6px 6px 6px;
+}
+ul.p-autocomplete-multiple-container.p-component.p-inputtext {
+  width: 100%;
+  border-radius: 6px 0px 0px 6px;
+}
+.p-autocomplete .p-autocomplete-multiple-container:not(.p-disabled):hover {
+  border: 1px solid #ced4da;
+}
+.p-autocomplete .p-autocomplete-multiple-container:not(.p-disabled).p-focus {
+  box-shadow: none;
+  border: 1px solid #ced4da !important;
+}
+ul.p-autocomplete-multiple-container.p-component.p-inputtext:focus {
+  border: 1px solid #ced4da;
+}
+.p-autocomplete
+  .p-autocomplete-multiple-container:not(.p-disabled).p-focus:focus {
+  border: 1px solid #ced4da;
+}
+.p-autocomplete
+  .p-autocomplete-multiple-container
+  .p-autocomplete-input-token
+  input {
+  margin-top: -4px;
+  font-size: 13px;
+}

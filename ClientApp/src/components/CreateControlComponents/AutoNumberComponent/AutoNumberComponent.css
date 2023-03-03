@@ -1,0 +1,49 @@
+.set-card-auto-number-css {
+  background: #f9f9f9;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 25%);
+  border-radius: 6px;
+  padding-top: 40px;
+  min-height: 16.938000000000002rem;
+}
+.set-button-layout-css-prefix {
+  display: flex;
+  justify-content: end;
+}
+
+.set-size-button-css-save-to-format {
+  width: 149px;
+  height: 37px;
+  background: #f2f2f2;
+  color: #282f6a;
+  border-radius: 6px;
+  border: 1px solid #282f6a;
+}
+.set-css-button-save-in-modal {
+  background: #f2f2f2;
+  color: #282f6a;
+  border-radius: 6px;
+  width: 104px !important;
+  height: 32px;
+  border: 1px solid #282f6a;
+}
+.set-bg-color-table-create-control {
+  background-color: #f1f1f1;
+}
+.table-layout-create-control {
+  width: 100%;
+}
+.set-css-pointer-css-atn {
+  cursor: pointer;
+}
+.set-layout-css-add-condition-number {
+  display: flex;
+  justify-content: end;
+}
+.set-css-layout-table-condition-css-padding {
+  padding: 45px;
+}
+.set-layout-in-condition-css {
+  width: 185px;
+  margin-top: 15px;
+  margin-right: -23px;
+}

@@ -1,0 +1,99 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+.timeout-screen{
+  background-color: rgba(0, 0, 0, 0.329);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timeout-screen .timeout-row{
+  position: relative;
+  width: 50vw;
+  max-width: 330px;
+}
+.timeout-screen .timeout-header{
+  color: #282f6a;
+  font-size: 46px;
+  margin-bottom: 10px;
+}
+.timeout-screen .timeout-row .dot{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  font-size: 36px;
+}
+.timeout-screen p {
+  color: white;
+}
+.time-timeout .dot{
+  font-size: 46px;
+  color: white;
+}
+.timeout-screen .time-timeout{
+  font-size: 46px;
+  color: white;
+  text-align: center;
+}
+.timeout-screen .time-timeout-text{
+  color: #e0e0e0;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* .Navbar {
+  color: #e6e6e6;
+  padding: 10px;
+  background: #4167b2;
+}
+
+.NavbarLayer {
+  color: #e6e6e6;
+  padding: 10px;
+  background: #2b8859;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0;
+}
+
+.Sidebar {
+  height: 100%;
+  width: 100%;
+  background-color: aqua;
+}
+
+.SidebarList {
+  height: auto;
+  padding: 0;
+  width: 100%;
+}
+
+.SidebarComponent {
+  top: 196px;
+  left: 40px;
+  width: 246px;
+  height: 40px;
+  background: #e6e6e6 0% 0% no-repeat padding-box;
+  border-radius: 7px;
+  opacity: 1;
+}
+
+.SidebarList {
+  height: 50px;
+  width: 100%;
+}
+
+.row {
+  padding-top: 10px;
+} */

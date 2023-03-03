@@ -1,0 +1,18 @@
+.card-header {
+  border-radius: 12px 12px 0 0 !important;
+  background-color: #f8a51c;
+  color: #fffff0;
+}
+.card.border-primary .color {
+  background-color: #1b2b6c !important;
+}
+.card-header {
+  padding: 0.3rem 1.5rem !important;
+}
+.label-header {
+  font-size: 13px;
+  font-weight: bold;
+}
+.alt-label-header {
+  font-size: 11px;
+}

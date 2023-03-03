@@ -1,0 +1,65 @@
+.approveMatrix-inputgroup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.approveMatrix-checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.matrix-confirmDialog {
+  height: 250px;
+  width: 500px;
+}
+
+.checkbox-lavel {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-formgroup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.sub-header {
+  /* margin-top: 25px; */
+}
+.row-radiobutton {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.table-button {
+  background: none;
+  border: none;
+}
+.approveMatrix-table {
+  text-align: center !important;
+}
+
+.conditions-invalid:hover {
+  border: 1px;
+  border-color: #f44336;
+  border-style: solid;
+}
+
+.conditions-invalid {
+  border: none;
+  border-style: none;
+}
+
+.p-datatable.p-invalid.p-component {
+  border: 1px;
+  border-color: #f44336;
+  border-style: solid;
+}
+.p-datatable:hover {
+  border-color: #fff !important;
+}

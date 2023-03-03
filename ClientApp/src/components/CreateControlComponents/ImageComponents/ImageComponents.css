@@ -1,0 +1,22 @@
+.set-layout-icon-css {
+  position: absolute;
+  display: flex;
+  font-size: 30px;
+  right: 5px;
+  top: 5px;
+}
+.set-pointer-icon-image:hover {
+  color: rgb(252, 78, 78);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.set-pointer-icon-image{
+  color: white;
+}
+.ant-image-preview-wrap{
+  z-index: 10080 !important;
+}
+.ant-image-preview-mask{
+  z-index: 10070;
+    background-color: rgba(0, 0, 0, 0.6);
+}

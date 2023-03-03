@@ -1,0 +1,20 @@
+.set-body-in-calendar{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.react-calendar-timeline .rct-dateHeader-primary{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px !important;
+    line-height: 18px;
+    color: blanchedalmond !important;
+}
+.rct-dateHeader{
+    color: currentColor  !important;
+}
