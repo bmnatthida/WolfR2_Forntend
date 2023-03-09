@@ -29,6 +29,7 @@ import {
   GetDashboardKeyEndpoint,
   GetDashboardFilterGroupBy,
   GetDashboardDefaultFilterConFig,
+  // GetDashboardFilterProject,
 } from "../../Services/ConfigurationService";
 import { RiFilterOffLine } from "react-icons/ri";
 import withPerMission from "../../components/HOC/withPermission";
@@ -74,6 +75,7 @@ const DashboardScreen = (props: Props) => {
   const [employeeList, setEmployeeList] = useState<any>();
   const [selectedEmployee, setSelectedEmployee] = useState<any>();
   const [dates, setDates] = useState<any>();
+  const [project, setProject] = useState<any>();
   const [selectedStatus, setSelectedStatus] = useState<any>();
   const [keyEnter, setKeyEnter] = useState<boolean>(false);
   const [onClickFilter, setOnClickFilter] = useState<boolean>(false);
@@ -90,6 +92,7 @@ const DashboardScreen = (props: Props) => {
   async function fetchData() {
     setIsFetchData(true);
     var _filter = await GetDashboardFilterStatus();
+    // var _filterProject = await GetDashboardFilterProject();
     var _responeDefaultAdvanced = await defaultAdvancedFilter(_filter);
     var _endpoint = await GetDashboardKeyEndpoint();
     var _advancedFilter = await GetDashboardAdvancedFilter();
@@ -108,6 +111,7 @@ const DashboardScreen = (props: Props) => {
     setStatusCard(_statusCard);
     setEndpoint(_endpoint);
     defaultFilterStatus(_filter);
+    // defaultFilterProject(_filterProject);
     setSelectedFilter(_advancedFilter[0]);
     setFilterGroupBy(_filterGroupBy[0]);
     setOnLoading(false);
@@ -355,7 +359,18 @@ const DashboardScreen = (props: Props) => {
   async function timeoutHandler() {
     await sleep(1);
   }
-
+  // async function defaultFilterProject(_filter: any) {
+  //   let _filterProject: any;
+  //   const resultCard = _filter.map((_data: any) => {
+  //     const [value, display, defaultValue] = _data.split("||");
+  //     _filterProject = {
+  //       value: value,
+  //       display: display,
+  //     };
+  //     return _filterProject;
+  //   });
+  //   setItemsStatus(resultCard);
+  // }
   function globalFilterInput(_data: any) {
     if (!filter) {
       return _data;
@@ -784,6 +799,36 @@ const DashboardScreen = (props: Props) => {
                           }}
                         />
                       )}
+                      {/* {filterAttribute?.items[idx]?.dropdown?.type ===
+                        "project" && (
+                        <MultiSelect
+                          style={{ borderRadius: "6px" }}
+                          display="chip"
+                          optionLabel={"display"}
+                          value={filterAttribute?.items[idx]?.value[0]}
+                          options={project}
+                          onChange={(e: any) => {
+                            setTimeout(timeoutHandler, 10000);
+                            setSelectedStatus(e.value);
+                            setFilterAttribute((prevState: any) => ({
+                              ...prevState,
+                              items: filterAttribute.items.map(
+                                (_val: any, _idx: any) => {
+                                  return _idx === idx
+                                    ? {
+                                        dropdown: _val.dropdown,
+                                        value: [e.value],
+                                      }
+                                    : _val;
+                                }
+                              ),
+                            }));
+                          }}
+                          placeholder="Select Project"
+                          filter
+                          className="set-layout-dd-filter-dashboard width-100-multi-select"
+                        />
+                      )} */}
                     </div>
 
                     {idx !== 0 && (

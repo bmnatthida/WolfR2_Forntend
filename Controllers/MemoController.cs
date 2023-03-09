@@ -251,7 +251,7 @@ namespace WolfR2.Controllers
         [HttpPost("GetMemoDetailOnlyById")]
         public async Task<ActionResult> GetMemoDetailOnlyById(List<MemoModel> memoModel)
         {
-            List<MemoDetailDto> listMemoDetail = new List<MemoDetailDto>();
+            List<MemoDetailForRefDto> listMemoDetail = new List<MemoDetailForRefDto>();
             foreach (var memo in memoModel)
             {
                 try
@@ -261,7 +261,7 @@ namespace WolfR2.Controllers
                     LogFile.WriteLogFile("MemoController GetMemoDetailOnlyById | api/Memo/MemoDetail | memo : " + Newtonsoft.Json.JsonConvert.SerializeObject(memo), module);
 
                     var memoDetail = await CoreAPI.post(_baseUrl + "api/Memo/MemoDetail", null, memo);
-                    var memoDetailDto = JsonConvert.DeserializeObject<List<MemoDetailDto>>(memoDetail);
+                    var memoDetailDto = JsonConvert.DeserializeObject<List<MemoDetailForRefDto>>(memoDetail);
                     listMemoDetail.Add(memoDetailDto[0]);
                 }
                 catch (Exception e)

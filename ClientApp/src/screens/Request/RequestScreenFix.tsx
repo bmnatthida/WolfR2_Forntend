@@ -1876,7 +1876,7 @@ const RequestScreenFix = () => {
           };
           setRefOptions([..._refDoc.filter((e: any) => e)]);
           setRefAttribute({ ...refObject });
-
+          console.log("ref=>listRefDocDetails", listRefDocDetails);
           if (_RefID !== "") {
             const results = refObject.option.filter(
               (refDoc: any) => refDoc.DocumentNo === _RefID
@@ -1885,14 +1885,20 @@ const RequestScreenFix = () => {
             previousRefTempSelected.current = results;
             setRefTempSelected(results);
           } else if (listRefDocDetails?.length > 0) {
-            const refDocsDetail = listRefDocDetails;
+            const refDocsDetail: any[] = listRefDocDetails;
             // DAR-EDIT-2022-000001
+            console.log("ref=>refObject.option", refObject.option);
 
-            let results = refObject.option.filter(
+            let results = refDocs.filter(
               (refDoc: any) =>
-                refDocsDetail.some(
-                  (docDetail: any) => docDetail.doc_no === refDoc.DocumentNo
+                refDocsDetail.find(
+                  (docDetail: any) => docDetail.memoRefdoc_id === refDoc.MemoId
                 ) || refDoc.DocumentNo === _RefID
+              // refDocsDetail.some((docDetail: any) => {
+              //   console.log("ref=>docDetail", docDetail);
+
+              //   return docDetail.Document_no === refDoc.DocumentNo;
+              // }) || refDoc.DocumentNo === _RefID
             );
 
             if (results.length === 0) {
@@ -1906,6 +1912,12 @@ const RequestScreenFix = () => {
                 });
               });
               results = await GetMemoDetailOnlyById(dataJson);
+              console.log(
+                "results",
+                display,
+                results,
+                display[2] !== "Information DocumentNo"
+              );
               if (display[2] !== "Information DocumentNo") {
                 results = results.map((ref: any) => {
                   if (ref !== null) {
@@ -1932,7 +1944,7 @@ const RequestScreenFix = () => {
                           }
                         });
                       });
-
+                      console.log("results", results, ref, refDocsDetail);
                       if (typeof ref[display[2]] === "string") {
                         let res: any = {
                           MemoId: ref.memoid,
@@ -1976,9 +1988,9 @@ const RequestScreenFix = () => {
     // console.log("listFileAttachDetails=>", listFileAttachDetails);
     // console.log("listRefDocDetails=>", listRefDocDetails);
     // console.log("---------------------RefDoc Attibute-----------------------");
-    // console.log("refAttibute=>", refAttribute);
-    // console.log("refTempSelected=>", refTempSelected);
-    // console.log("searchRefDocData=>", searchRefDocData);
+    console.log("refAttibute=>", refAttribute);
+    console.log("refTempSelected=>", refTempSelected);
+    console.log("searchRefDocData=>", searchRefDocData);
 
     // console.log("---------------------MasterData-----------------------");
     // console.log("masterSignature=>", masterSignature);

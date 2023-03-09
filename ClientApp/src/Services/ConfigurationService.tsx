@@ -32,6 +32,16 @@ export const GetDashboardFilterStatus = async () => {
     .catch((err) => {});
   return result;
 };
+
+// export const GetDashboardFilterProject = async () => {
+//   const result = await fetch("/api/Configuration/Dashboard/FilterProject")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       return data;
+//     })
+//     .catch((err) => {});
+//   return result;
+// };
 export const GetDashboardAdvancedFilter = async () => {
   const configuration = await fetch(
     "/api/Configuration/Dashboard/AdvancedFilter"
