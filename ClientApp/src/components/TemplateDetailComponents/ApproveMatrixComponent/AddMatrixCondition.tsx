@@ -2,9 +2,9 @@ import { Checkbox } from "primereact/checkbox";
 import { Column } from "primereact/column";
 import { confirmDialog } from "primereact/confirmdialog";
 import { DataTable } from "primereact/datatable";
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { FiPlus } from "react-icons/fi";
 import { ButtonComponents } from "../../ButtonComponents/ButtonComponents";
 import { TextHeaderComponents } from "../../TextHeaderComponents/TextHeaderComponents";
@@ -15,7 +15,6 @@ import { classNames } from "primereact/utils";
 import { GetAllDynamic } from "../../../Services/DynamicService";
 import { Dropdown } from "primereact/dropdown";
 import SelectDataFormTable from "./SelectDataFormTable";
-import { GetSignature } from "../../../Services/MasterDataService";
 import moment from "moment";
 
 interface Props {
@@ -131,9 +130,13 @@ export default function AddMatrixForm(props: Props) {
       } else if (rowData.Type === "Specific Approver") {
         setSpc(true);
         props.control._formValues.Specific_Approver = true;
+        console.log("rowdata", rowData);
+
         setSpecficApprovals(rowData.Specific_Approver);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log("matrix=>error", error);
+    }
   }
 
   const updateChanges = (data: any, componentName?: string) => {
@@ -150,6 +153,8 @@ export default function AddMatrixForm(props: Props) {
         } else if (data.EmployeeId !== undefined) {
           let specific_Approver: any[] = specficApprovals;
           const user = data;
+          console.log("matrix=>", user);
+
           specific_Approver.push({
             TemLineId:
               props.rowData !== undefined
@@ -921,7 +926,15 @@ export default function AddMatrixForm(props: Props) {
           <Col xs={10} md={10} lg={10} xl={10}>
             {spc && (
               <Row>
-                <Col xs={12} md={12} lg={12} xl={12}>
+                <Col
+                  xs={12}
+                  md={12}
+                  lg={12}
+                  xl={12}
+                  onClick={() => {
+                    console.log("matrix=>", specficApprovals);
+                  }}
+                >
                   <Controller
                     name="specific_Approver"
                     control={props.control}
@@ -981,6 +994,7 @@ export default function AddMatrixForm(props: Props) {
                               textSubProps={"ตำแหน่ง / รายละเอียดของกลุ่ม"}
                             />
                           }
+                          // body={statusBodyTemplate}
                         ></Column>
                         <Column
                           field="Signature_Wording"
