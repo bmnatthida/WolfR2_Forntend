@@ -6,7 +6,6 @@ import DelegateApplyTo from "./DelegateApplyTo";
 import DelegateInformation from "./DelegateInformation";
 import "./DelegateScreen.css";
 import { useLocation, useHistory } from "react-router-dom";
-import LogoLoading from "../../assets/LoadingWOLFmini.gif";
 import { DelegateSideBar } from "./DelegateSideBar";
 import { BiSend } from "react-icons/bi";
 import { FiSave } from "react-icons/fi";
@@ -16,7 +15,9 @@ import { confirmDialog } from "primereact/confirmdialog";
 import useLoading from "../../hooks/useLoading";
 import useAlert from "../../hooks/useAlert";
 
-type Props = {};
+type Props = {
+  responeConfig: any;
+};
 interface DelegateList {
   ApproverId: number;
   CreatedBy: string;
@@ -408,7 +409,7 @@ const DelegateScreen = (props: Props) => {
       <Toast ref={toast} />
       {isLoad && (
         <div className="logo-loading">
-          <img src={LogoLoading} alt="loading..." />
+          <img src={props.responeConfig?.pathLoading} alt="loading..." />
         </div>
       )}
       <div className="worklist-container">

@@ -2,13 +2,14 @@ import { Toast } from "primereact/toast";
 import React, { useRef, useState } from "react";
 import { TreeSelectNewRequest } from "../../../components/TreeSelectNewRequest/TreeSelectNewRequest";
 import { SimLineSideBar } from "./SimLineSideBar";
-import LogoLoading from "../../../assets/LoadingWOLFmini.gif";
 import { InitialComponent } from "./InitialComponent/InitialComponent";
 import { ResultComponent } from "./ResultComponent/ResultComponent";
 import { Button } from "antd";
 import { IoMenu } from "react-icons/io5";
 import withPerMission from "../../../components/HOC/withPermission";
-interface Props {}
+interface Props {
+  responeConfig: any;
+}
 
 const SimLineApproveScreen = (props: Props) => {
   const [selectView, setSelectView] = useState<string>("1");
@@ -29,7 +30,7 @@ const SimLineApproveScreen = (props: Props) => {
       <Toast ref={toast} />
       {onLoading && (
         <div className="logo-loading">
-          <img src={LogoLoading} alt="loading..." />
+          <img src={props.responeConfig?.pathLoading} alt="loading..." />
         </div>
       )}
       <div className="worklist-container">

@@ -6,7 +6,6 @@ import { useHistory, useRouteMatch, Switch, Route } from "react-router-dom";
 import { DynamicReport } from "./DynamicReport";
 import "./index.css";
 import { FooterComponents } from "../../components/FooterComponents/FooterComponents";
-import LogoLoading from "../../assets/LoadingWOLFmini.gif";
 import { ButtonComponents } from "../../components/ButtonComponents/ButtonComponents";
 import { ReportDialog } from "../../components/SettingDialogComponents/ReportDialog/ReportDialog";
 import {
@@ -26,9 +25,11 @@ import useLoading from "../../hooks/useLoading";
 import { useUserContext } from "../../Context/UserContext";
 import DynamicTable from "../../components/TableComponents/DynamicTableFix/DynamicTable";
 import DynamicReportFix from "./DynamicReportFix";
-interface Props {}
+interface Props {
+  responeConfig: any;
+}
 
-const ReportScreen: React.FC<Props> = () => {
+const ReportScreen = (props: Props) => {
   const text = "Report List";
   const location = useLocation();
   const [onLoading, setOnLoading] = useState<boolean>(true);
@@ -36,7 +37,9 @@ const ReportScreen: React.FC<Props> = () => {
     location.pathname.replace("/", "")
   );
   const { isLoad, setLoad } = useLoading();
-  const [imgLoading, setImgLoading] = useState<any>(LogoLoading);
+  const [imgLoading, setImgLoading] = useState<any>(
+    props.responeConfig?.pathLoading
+  );
   const [visibleDialog, setVisibleDialog] = useState<boolean>(false);
   const [template, setTemplate] = useState<any>([]);
   const [empList, setEmpList] = useState<any>([]);

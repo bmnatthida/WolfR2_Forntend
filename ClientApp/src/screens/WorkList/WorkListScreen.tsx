@@ -8,7 +8,6 @@ import { WorklistCardComponent } from "../../components/WorklistScreenComponent/
 // import Pagination from "react-bootstrap/Pagination";
 import { TreeSelectNewRequest } from "../../components/TreeSelectNewRequest/TreeSelectNewRequest";
 import moment, { Moment } from "moment";
-import LogoLoading from "../../assets/LoadingWOLFmini.gif";
 import { IMemoButtonModel } from "../../IRequestModel/IMemoButtonModel";
 import { FooterComponents } from "../../components/FooterComponents/FooterComponents";
 import { GetWorkListByTaskGroup } from "../../Services/WorklistService";
@@ -40,8 +39,10 @@ import { IUserModel } from "../../IRequestModel/IUserModel";
 import { getDateDeployConfiguration } from "../../Services/ConfigurationService";
 import { useTranslation } from "react-i18next";
 
-interface Props {}
-const WorkListScreen: React.FC<Props> = () => {
+interface Props {
+  responeConfig: any;
+}
+const WorkListScreen = (props: Props) => {
   const [userData] = useUserContext();
   const { toggleAlert } = useAlert();
 
@@ -631,7 +632,7 @@ const WorkListScreen: React.FC<Props> = () => {
         <div className="main-container">
           {isCardLoading && (
             <div className="logo-loading">
-              <img src={LogoLoading} alt="loading..." />
+              <img src={props.responeConfig?.pathLoading} alt="loading..." />
             </div>
           )}
           <div className="worklist-container">
