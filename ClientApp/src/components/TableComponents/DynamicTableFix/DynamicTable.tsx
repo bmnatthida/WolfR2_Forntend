@@ -489,6 +489,8 @@ const DynamicTable = ({
                     : key.toLowerCase() === "nameth" ||
                       key.toLowerCase() === "nameen"
                     ? 250
+                    : key.toLowerCase().includes("หน่วยงาน")
+                    ? 300
                     : colWidth,
               });
             }
