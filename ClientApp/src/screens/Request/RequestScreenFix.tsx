@@ -106,6 +106,7 @@ const RequestScreenFix = () => {
   const [dataTreeSelectProps, setDataTreeSelectProps] = useState<any>({});
   const [isControlLoading, setIsControlLoading] = useState(false);
   const [empByUserId, setEmpByUserId] = useState<any>();
+  const [templateDescrip, setTemplateDescrip] = useState<any[]>([]);
 
   //Check Can Edit
   const [canEditDoc, setCanEditDoc] = useState<boolean>(false);
@@ -2059,7 +2060,29 @@ const RequestScreenFix = () => {
 
     setTableSummaries([...sumIntable]);
   };
+  function CheckValidTable(formData: any) {
+    formData.items.map((item: any) => {
+      formData.layout.map((layout: any) => {
+        console.log("formdata=>", layout);
+        if (layout.template.attribute) {
+          if (layout.template.attribute.column !== undefined) {
+            console.log("formdataAtt=>", layout.template.attribute.column);
 
+            layout.template.attribute.column.map((column: any) => {
+              console.log("formdataCol=>", column);
+              if (column.control.template.attribute.require === "Y") {
+                toggleAlert({
+                  description: `Please fill ${column.label}`,
+                  message: `Require field warning.`,
+                  type: "warning",
+                });
+              }
+            });
+          }
+        }
+      });
+    });
+  }
   function CheckValidField(formData: any) {
     const getCheckValid = [];
     let datepicker1: any;
@@ -2108,6 +2131,9 @@ const RequestScreenFix = () => {
     // variables RequestScreen
     console.log(formData, "formData");
     console.log(data, "formData");
+    console.log("template", templateDescrip);
+    console.log("val=>templateDescrip", templateDescrip);
+
     const _submitType = data.buttonType;
     let _memoDetail: IMemoDetailModel = memoDetail;
     let _lineApproval: any[] = lineApproval;
@@ -2124,7 +2150,37 @@ const RequestScreenFix = () => {
     const rr = masterDataValidField[0];
 
     const _validation = Validation(_submitType, memoDetail, lineApproval);
+    console.log("val=>", _validation);
 
+    // formData.items.map((item: any) => {
+    //   item.layout.map((layout: any) => {
+    //     // console.log("formdata=>", layout);
+    //     // console.log("formdataData=>", layout.data);
+
+    //     // if (layout.data.value !== null) {
+    //     //   layout.data.row.map((row: any) => {
+    //     //     console.log("formRow", row);
+    //     //   });
+    //     // }
+
+    //     if (layout.template.attribute) {
+    //       if (layout.template.attribute.column !== undefined) {
+    //         console.log("formdataAtt=>", layout.template.attribute.column);
+
+    //         layout.template.attribute.column.map((column: any) => {
+    //           console.log("formdataCol=>", column);
+    //           if (column.control.template.attribute.require === "Y") {
+    //             toggleAlert({
+    //               description: `Please fill ${column.label}`,
+    //               message: `Require field warning.`,
+    //               type: "warning",
+    //             });
+    //           }
+    //         });
+    //       }
+    //     }
+    //   });
+    // });
     if (CheckValidField(formData)) {
       if (CheckValidField(formData)[0] > CheckValidField(formData)[1]) {
         toggleAlert({

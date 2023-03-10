@@ -174,6 +174,15 @@ export const InputTableComponent: React.FC<TableInputProps> = ({
       </div>
     );
   }
+  function toggleAlert(arg0: {
+    type: string;
+    message: string;
+    description: any;
+    duration: number;
+  }) {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <>
       <Tooltip title={children[1]} placement="topLeft">
@@ -189,6 +198,13 @@ export const InputTableComponent: React.FC<TableInputProps> = ({
                   ? true
                   : false,
               message: `${template.label} is required.`,
+            },
+            {
+              validator: (_, value) => {
+                console.log("val=>", value);
+
+                return Promise.resolve();
+              },
             },
           ]}
         >
