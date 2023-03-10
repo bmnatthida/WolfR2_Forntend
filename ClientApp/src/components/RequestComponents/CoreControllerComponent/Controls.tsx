@@ -369,7 +369,8 @@ const Controls: FC<Props> = ({
                               type: "error",
                               message: "Require field error",
                               description:
-                                "Please fill all Require field in table",
+                                "Please fill all Require field in table :" +
+                                layout.template.label,
                               duration: 6,
                             });
                           }
@@ -393,18 +394,7 @@ const Controls: FC<Props> = ({
                     console.log("table=>", { newData, column, layout, value });
 
                     return (
-                      <div
-                        className={`input-component-container  ${
-                          isSubmitted &&
-                          errors?.items &&
-                          errors?.items[nestIndex] &&
-                          errors?.items[nestIndex].layout[layoutIdx] &&
-                          errors?.items[nestIndex].layout[layoutIdx]?.data
-                            ? "set-layout-required"
-                            : ""
-                        }`}
-                      >
-                        {/* <div className={`set-layout-required`}> */}
+                      <div className={`set-layout-required`}>
                         <TableComponent
                           {...{
                             canEditDoc,

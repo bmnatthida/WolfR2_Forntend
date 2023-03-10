@@ -174,14 +174,6 @@ export const InputTableComponent: React.FC<TableInputProps> = ({
       </div>
     );
   }
-  function toggleAlert(arg0: {
-    type: string;
-    message: string;
-    description: any;
-    duration: number;
-  }) {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <>
