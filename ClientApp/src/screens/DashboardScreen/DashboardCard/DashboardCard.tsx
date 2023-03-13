@@ -58,8 +58,8 @@ export const DashboardCard = (props: Props) => {
             {props.dashboard?.map((_data: any, i: number) => {
               return (
                 <div className="set-layout-css-flex">
-                  <div className="set-bg-css-dash-board set-font-size-header-dashboard">
-                    {TextAbstract(_data.headData, 35)}
+                  <div className="set-bg-css-dash-board set-font-size-header-dashboard ">
+                    {TextAbstract(_data.headData, 80)}
                   </div>
                   <div className="set-card-list-calendar set-min-width-dash">
                     {_data.items?.map((_item: any, j: number) => {
