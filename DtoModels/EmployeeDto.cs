@@ -24,11 +24,10 @@ namespace WolfR2.DtoModels
 		public int? PositionId { get; set; }
 		public string PositionNameTh { get; set; }
 		public string PositionNameEn { get; set; }
-
+		public string Position {get; set;}
 		public int? DepartmentId { get; set; }
         public string DepartmentNameTh { get; set; }
         public string DepartmentNameEn { get; set; }
-
 		public int? DivisionId { get; set; }
 		public string DivisionNameTh { get; set; }
 		public string DivisionNameEn { get; set; }
