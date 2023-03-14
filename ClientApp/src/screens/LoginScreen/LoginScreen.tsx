@@ -234,7 +234,7 @@ export const LoginScreen = (props: Props) => {
     <div className="login-screens">
       <div className="login-container">
         <div className="image-slider-container">
-          <Carousel autoplay className="img-carousel">
+          {/* <Carousel autoplay className="img-carousel">
             {CarouItem.map((_carousel: any, idx: number) => {
               return (
                 <div className="slide-content">
@@ -242,19 +242,16 @@ export const LoginScreen = (props: Props) => {
                 </div>
               );
             })}
-          </Carousel>
+          </Carousel> */}
 
-          {/* <Carousel autoplay className="img-carousel">
-            <div className="slide-content">
-                 <img src={_carousel} alt="slide" />
-               </div> 
+          <Carousel autoplay className="img-carousel">
             <div className="slide-content">
               <img src={WolfSlideLeft} alt="slide" />
             </div>
             <div className="slide-content">
               <img src={WolfSlideRight} alt="slide" />
             </div>
-          </Carousel> */}
+          </Carousel>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
