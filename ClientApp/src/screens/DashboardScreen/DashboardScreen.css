@@ -24,9 +24,13 @@
   border-radius: 6px;
   min-height: 53px;
   display: flex;
+  position: sticky;
+  top: 0%;
   align-items: center;
   justify-content: center;
+  padding: 5px;
 }
+
 .set-layout-css-flex {
   display: flex;
   flex-direction: column;
@@ -47,8 +51,8 @@
   flex-direction: column;
   justify-content: space-between;
   white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .set-css-card-like-a-button {
   border-radius: 30px;
@@ -63,7 +67,7 @@
 .set-font-size-header-dashboard {
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 18px;
 
   color: #000000;
 }
@@ -121,7 +125,6 @@
   min-height: 43.14px;
   width: 305px !important;
   font-size: 13px;
-
 }
 .set-css-filter-dashboard {
   display: flex;
@@ -139,7 +142,7 @@
 
 .set-layout-dd-filter-dashboard {
   width: 100%;
-  height: 38px !important
+  height: 38px !important;
 }
 .set-text-css-dd-in-filter-dash-b span.p-dropdown-label.p-inputtext {
   display: flex;
@@ -292,7 +295,7 @@
   line-height: 30px;
   color: #000000;
 }
-.set-css-card-filter-adv{
+.set-css-card-filter-adv {
   width: 100px;
   height: 41px;
   display: flex;
@@ -300,103 +303,102 @@
   align-items: center;
   border-radius: 6px;
 }
-.set-css-card-filter-adv:hover{
+.set-css-card-filter-adv:hover {
   background-color: white;
   cursor: pointer;
 }
-.activeFilter{
+.activeFilter {
   background-color: #e5f4ff;
   cursor: pointer;
 }
-.set-css-card-filter-adv:target{
+.set-css-card-filter-adv:target {
   background-color: #e5f4ff;
 }
-.set-css-layout-filter-3{
+.set-css-layout-filter-3 {
   display: flex;
   flex-direction: row;
   column-gap: 7px;
 }
-.set-css-display-flex-dashboard{
+.set-css-display-flex-dashboard {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.set-css-display-space-between-dashboard{
+.set-css-display-space-between-dashboard {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
 }
-.set-css-pointer-db:hover{
+.set-css-pointer-db:hover {
   background-color: #e6e9ef;
   cursor: pointer;
 }
-.set-css-display-hd-filter-db-1{
+.set-css-display-hd-filter-db-1 {
   width: 115px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-.set-css-display-hd-filter-db-2{
-  width: 66px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-}
-.set-css-border-card-filter .p-overlaypanel-content{
+  height: 32px;
   display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
-.set-css-display-hd-filter-db-3{
+.set-css-display-hd-filter-db-2 {
+  width: 66px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+.set-css-border-card-filter .p-overlaypanel-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.set-css-display-hd-filter-db-3 {
   width: 115px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
 }
-.set-css-display-hd-filter-db-3:hover{
+.set-css-display-hd-filter-db-3:hover {
   background-color: #e6e9ef;
   cursor: pointer;
 }
-.set-css-dash-board-button-hover-2:hover{
-  background-color: #6366F1;
+.set-css-dash-board-button-hover-2:hover {
+  background-color: #6366f1;
   cursor: pointer;
 }
-.set-height-css-input-ant span.ant-input-affix-wrapper{
+.set-height-css-input-ant span.ant-input-affix-wrapper {
   height: 43.13px;
   border-radius: 6px;
-
 }
-.set-icon-delete-column-select{
+.set-icon-delete-column-select {
   font-size: 20px;
   margin-left: -8px;
   margin-top: 11px;
 }
-.set-icon-delete-column-select-hover :hover{
+.set-icon-delete-column-select-hover :hover {
   cursor: pointer;
 }
-.width-100-multi-select{
+.width-100-multi-select {
   width: 100%;
   font-size: 13px;
 }
-.set-css-calendar-layout{
+.set-css-calendar-layout {
   height: 38px;
-    width: 54px;
+  width: 54px;
 }
-.set-css-display-hd-filter-db-4{
+.set-css-display-hd-filter-db-4 {
   width: 115px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
 }
-.set-filter-select-container-date-icon-dashboard-css{
+.set-filter-select-container-date-icon-dashboard-css {
   font-size: 18px;
   position: absolute;
   top: 50%;
@@ -404,29 +406,29 @@
   transform: translateY(-50%);
   left: 15px;
 }
-.set-hover-dashboard-in-close:hover{
+.set-hover-dashboard-in-close:hover {
   border-radius: 8px;
-    background-color: #e6e9ef;
+  background-color: #e6e9ef;
 }
-.set-selected-in-current-view-dashboard{
+.set-selected-in-current-view-dashboard {
   color: white;
-    background-color: #282f6a;
-    border-radius: 6px;
+  background-color: #282f6a;
+  border-radius: 6px;
 }
 .set-css-border-card-filter-global-icon-search .ant-input-group-addon {
   border-radius: 0px 6px 6px 0px;
 }
-.set-css-button-view-dashboard-global{
+.set-css-button-view-dashboard-global {
   color: #ffffff;
-  background: #22C55E;
-  border: 1px solid #689F38;
+  background: #22c55e;
+  border: 1px solid #689f38;
 }
-.set-text-css-dashboard{
+.set-text-css-dashboard {
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-.set-border-css-filter{
+.set-border-css-filter {
   border-radius: 6px;
   border: 1px solid rgb(242, 242, 242);
   font-size: 13px;

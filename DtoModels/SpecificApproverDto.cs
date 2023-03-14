@@ -22,6 +22,7 @@ namespace WolfR2.DtoModels
         public int SpecificId { get; set; }
         public int? TemplateId { get; set; }
         public string? EmpId { get; set; }
+        public string? Position { get; set; }
         public string? EmployeeName { get; set; }
         public string? GroupName { get; set; }
         public int SignatureId { get; set; }

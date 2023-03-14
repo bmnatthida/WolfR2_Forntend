@@ -352,29 +352,35 @@ const ReferenceDocumentDialogFix: React.FC<Props> = ({
       },
     ];
     referenceDocumentDialogObject?.listRefTemplate?.map((temp: any) => {
-      const advanceForm = JSON.parse(temp.AdvanceForm);
-      advanceForm.items.forEach((item: any) => {
-        item.layout.forEach((_layout: any) => {
-          if (
-            !rowData.column &&
-            _layout.template.type !== "em" &&
-            _layout.template.type !== "l" &&
-            _layout.template.type !== "tb"
-          ) {
-            options.push({
-              selectedValue: temp.DocumentCode + "_" + _layout.template.label,
-              type: convertType(_layout.template.type),
-            });
-          } else if (rowData.column) {
-            if (_layout.template.type === "tb") {
+      const _refTemp = templateList.find(
+        (e) => e.TemplateId === temp.TemplateId
+      );
+      if (_refTemp) {
+        const advanceForm = JSON.parse(_refTemp.AdvanceForm);
+        advanceForm.items.forEach((item: any) => {
+          item.layout.forEach((_layout: any) => {
+            if (
+              !rowData.column &&
+              _layout.template.type !== "em" &&
+              _layout.template.type !== "l" &&
+              _layout.template.type !== "tb"
+            ) {
               options.push({
                 selectedValue: temp.DocumentCode + "_" + _layout.template.label,
                 type: convertType(_layout.template.type),
               });
+            } else if (rowData.column) {
+              if (_layout.template.type === "tb") {
+                options.push({
+                  selectedValue:
+                    temp.DocumentCode + "_" + _layout.template.label,
+                  type: convertType(_layout.template.type),
+                });
+              }
             }
-          }
+          });
         });
-      });
+      }
     });
     if (rowData.column) {
       options = options.filter((e) => e.type !== "system");
@@ -508,11 +514,17 @@ const ReferenceDocumentDialogFix: React.FC<Props> = ({
       display[5] = referenceDocumentDialogObject.ReferenceAttachment
         ? "Yes"
         : "No";
-      referenceDocumentDialogObject.listRefTemplate.map(
-        (e: any) =>
-          (e.IsDefaultLineApprove =
-            referenceDocumentDialogObject.IsDefaultLineApprove)
-      );
+      let RefTemplate: any[] = [];
+      referenceDocumentDialogObject.listRefTemplate.map((e: any) => {
+        RefTemplate.push({
+          TemplateId: e.TemplateId,
+          DocumentCode: e.DocumentCode,
+          TemplateName: e.TemplateName,
+          TemplateSubject: e.TemplateSubject,
+          IsDefaultLineApprove:
+            referenceDocumentDialogObject.IsDefaultLineApprove,
+        });
+      });
       const lstMastData = lstMastDataFunction(
         _controlModel.templateForm.TemplateId,
         _controlModel.lstMasterData
@@ -522,11 +534,8 @@ const ReferenceDocumentDialogFix: React.FC<Props> = ({
       _controlModel.lstMasterData = lstMastData;
       _controlModel.templateForm.RefDocDisplay = display.join(",");
       _controlModel.templateForm.RefDocColumn = JSON.stringify(_result);
-      _controlModel.templateForm.RefTemplate = JSON.stringify(
-        referenceDocumentDialogObject.listRefTemplate
-      );
-      _controlModel.listRefTemplate =
-        referenceDocumentDialogObject.listRefTemplate;
+      _controlModel.templateForm.RefTemplate = JSON.stringify(RefTemplate);
+      _controlModel.listRefTemplate = RefTemplate;
       console.log("ref=>listRefTemplate=>error", _controlModel);
       setControlModelObj({ ..._controlModel });
       setVisibleRefenceDocumentDialog(!visibleRefenceDocumentDialog);

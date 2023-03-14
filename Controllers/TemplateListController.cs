@@ -1034,10 +1034,12 @@ namespace WolfR2.Controllers
                                     if (user?.Lang == "EN")
                                     {
                                         approval.EmployeeName = empData.NameEn;
+                                        approval.Position=empData.PositionNameEn;
                                     }
                                     else
                                     {
                                         approval.EmployeeName = empData.NameTh;
+                                        approval.Position=empData.PositionNameTh;
                                     }
                                 }
                             }

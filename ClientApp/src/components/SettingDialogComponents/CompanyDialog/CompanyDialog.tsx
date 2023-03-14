@@ -223,6 +223,7 @@ export const CompanyDialog = (props: Props) => {
                   <TextHeaderComponents
                     textHeaderProps={"Company Code"}
                     textSubProps={"รหัสบริษัท"}
+                    isRequir
                   />
                 </Col>
                 <Col xs={10} sm={10} xl={10}>
@@ -251,6 +252,7 @@ export const CompanyDialog = (props: Props) => {
                   <TextHeaderComponents
                     textHeaderProps={"Name TH"}
                     textSubProps={"ชื่อภาษาไทย"}
+                    isRequir
                   />
                 </Col>
                 <Col xs={4} sm={4} xl={4}>
@@ -275,6 +277,7 @@ export const CompanyDialog = (props: Props) => {
                   <TextHeaderComponents
                     textHeaderProps={"Name EN"}
                     textSubProps={"ชื่อภาษาอังกฤษ"}
+                    isRequir
                   />
                 </Col>
                 <Col xs={4} sm={4} xl={4}>
@@ -326,6 +329,7 @@ export const CompanyDialog = (props: Props) => {
                   <TextHeaderComponents
                     textHeaderProps={"Fax"}
                     textSubProps={"โทรสาร"}
+                    isRequir
                   />
                 </Col>
                 <Col xs={4} sm={4} xl={4}>

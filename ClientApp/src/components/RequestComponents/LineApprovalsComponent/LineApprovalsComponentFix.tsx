@@ -143,6 +143,7 @@ const LineApprovalsComponentFix: FC<Props> = ({
         };
         raw.push(newData);
       }
+
       setLineApproval([...raw]);
       setDialogVisible(!isDialogVisible);
     } catch (error) {
@@ -152,6 +153,8 @@ const LineApprovalsComponentFix: FC<Props> = ({
 
   const statusBodyTemplate = (rowData: any, option: any) => {
     if (canEditLineApproval && currentLevel < rowData.sequence) {
+      console.log("line=>rowData", rowData);
+
       return (
         <Dropdown
           className="dropdown-lineapprove"
@@ -171,7 +174,11 @@ const LineApprovalsComponentFix: FC<Props> = ({
     } else {
       return (
         <div className="status-badge">
-          <span>{rowData.signature_en}</span>
+          <span>
+            {userData.Lang === "EN"
+              ? rowData.signature_en
+              : rowData.signature_th}
+          </span>
         </div>
       );
     }

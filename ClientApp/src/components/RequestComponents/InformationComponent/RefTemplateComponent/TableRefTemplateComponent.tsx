@@ -29,6 +29,13 @@ const TableReferenceComponent = (props: Props) => {
     );
   };
 
+  function ConvertSelectedtoTable(refTempSelected: any) {
+    console.log("refTempSelected", refTempSelected);
+  }
+  useEffect(() => {
+    ConvertSelectedtoTable(props.refTempSelected);
+  }, [props.refTempSelected]);
+
   return (
     <div>
       <DataTable
