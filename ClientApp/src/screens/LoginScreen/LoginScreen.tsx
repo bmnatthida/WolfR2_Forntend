@@ -19,12 +19,18 @@ import { useTranslation } from "react-i18next";
 interface Props {
   PathLogo: string;
   IsMulti: string;
+  responeConfig: any;
 }
 interface Emp {
   EmployeeCode: String;
   Username: String;
   Email: String;
 }
+
+const CarouItem = [
+  "https://qar2.wolfapprove.com/TempAttachment/ykhq1uf0oeaf9bl4kjg27/25660307171440_wolf-slide-left.png",
+  "https://qar2.wolfapprove.com/TempAttachment/ykhq1uf0oeaf9bl4kjg27/25660307171449_wolf-slide-right.png",
+];
 export const LoginScreen = (props: Props) => {
   const [currentUser, setCurrentUser] = useState<AccountInfo>();
   const [onLoading, setOnLoading] = useState<boolean>(false);
@@ -228,6 +234,16 @@ export const LoginScreen = (props: Props) => {
     <div className="login-screens">
       <div className="login-container">
         <div className="image-slider-container">
+          {/* <Carousel autoplay className="img-carousel">
+            {CarouItem.map((_carousel: any, idx: number) => {
+              return (
+                <div className="slide-content">
+                  <img src={_carousel} alt="slide" />
+                </div>
+              );
+            })}
+          </Carousel> */}
+
           <Carousel autoplay className="img-carousel">
             <div className="slide-content">
               <img src={WolfSlideLeft} alt="slide" />

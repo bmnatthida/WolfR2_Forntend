@@ -32,6 +32,8 @@ type InputAttachmentProps = {
   template: any;
   value?: any;
   status?: any;
+  rowIdx?: number;
+  colIdx?: number;
   onChange: (value: any) => void;
   canEditDoc: boolean;
   checkActionPage: string;
@@ -51,7 +53,6 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
   checkActionPage,
   ...props
 }: InputAttachmentProps) => {
-  
   const toast = useRef<any>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [checkHasValue, setCheckHasValue] = useState<boolean>(false);
@@ -200,9 +201,8 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
         <Button
           // fixed issue readonly
           disabled={!canEditDoc || template.attribute.readonly === "Y"}
-          //  id 
+          //  id
           id={rowIdx + "_" + colIdx + "_" + template.label}
-          
           label={checkHasValue ? nameFile : "Upload"}
           onClick={() => {
             if (checkHasValue) {
@@ -213,8 +213,6 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
           }}
           className="r"
           type="button"
-          
-          
           style={{
             borderTopLeftRadius: "6px",
             borderBottomLeftRadius: "6px",
@@ -291,12 +289,10 @@ export const AttachmentControlComponent: React.FC<Props> = ({
   buttonType,
   ...props
 }) => {
-
   return (
     <>
       <Controller
         name={name}
-        
         control={control}
         rules={{
           required:

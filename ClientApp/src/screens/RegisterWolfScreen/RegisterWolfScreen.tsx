@@ -3,8 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import { FiChevronLeft } from "react-icons/fi";
 import { useHistory } from "react-router";
 import { RegisterWolfAccount } from "../../Services/AuthorizedService";
-import LogoLoading from "../../assets/LoadingWOLFmini.gif";
-type Props = { PathLogo: any };
+type Props = { PathLogo: any; responeConfig: any };
 
 const RegisterWolfScreen = (props: Props) => {
   const {
@@ -215,7 +214,7 @@ const RegisterWolfScreen = (props: Props) => {
       {!loading ? (
         <>{!displayPopup ? form() : popupRespone()}</>
       ) : (
-        <img src={LogoLoading} alt="loading..." />
+        <img src={props.responeConfig?.pathLoading} alt="loading..." />
       )}
     </div>
   );

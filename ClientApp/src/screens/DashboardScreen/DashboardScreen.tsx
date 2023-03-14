@@ -17,7 +17,6 @@ import {
   MapDataEndpoint,
 } from "../../Services/ReportService";
 import { DashboardCard } from "./DashboardCard/DashboardCard";
-import LogoLoading from "../../assets/LoadingWOLFmini.gif";
 import "./DashboardScreen.css";
 import { DashboardCalendar } from "./DashboardCalendar/DashboardCalendar";
 import { Button } from "primereact/button";
@@ -29,7 +28,7 @@ import {
   GetDashboardKeyEndpoint,
   GetDashboardFilterGroupBy,
   GetDashboardDefaultFilterConFig,
-  // GetDashboardFilterProject,
+  LoginConfiguration,
 } from "../../Services/ConfigurationService";
 import { RiFilterOffLine } from "react-icons/ri";
 import withPerMission from "../../components/HOC/withPermission";
@@ -45,7 +44,9 @@ import {
 import { GrFormNextLink } from "react-icons/gr";
 import { IoCalendarOutline } from "react-icons/io5";
 import { useUserContext } from "../../Context/UserContext";
-interface Props {}
+interface Props {
+  responeConfig: any;
+}
 
 const DashboardScreen = (props: Props) => {
   const itemFilter: any = {
@@ -53,6 +54,7 @@ const DashboardScreen = (props: Props) => {
     value: [],
   };
 
+  const [responeConfig, setResponeConfig] = useState<any>();
   const op = useRef<OverlayPanel>(null);
   const ref = useRef<any>(null);
   const ref2 = useRef<any>(null);
@@ -91,6 +93,7 @@ const DashboardScreen = (props: Props) => {
   }, []);
   async function fetchData() {
     setIsFetchData(true);
+    var responseConfig = await LoginConfiguration();
     var _filter = await GetDashboardFilterStatus();
     // var _filterProject = await GetDashboardFilterProject();
     var _responeDefaultAdvanced = await defaultAdvancedFilter(_filter);
@@ -115,6 +118,7 @@ const DashboardScreen = (props: Props) => {
     setSelectedFilter(_advancedFilter[0]);
     setFilterGroupBy(_filterGroupBy[0]);
     setOnLoading(false);
+    setResponeConfig(responseConfig);
   }
   async function mapDataOptionFilter(_advancedFilter: any, _filter: any) {
     var _dataArray: any[] = [];
@@ -944,7 +948,7 @@ const DashboardScreen = (props: Props) => {
           <div className="set-margin-css-dashboard">{getHeader()}</div>
           {onLoading ? (
             <div className="logo-loading cursor-loading">
-              <img src={LogoLoading} alt="loading..." />
+              <img src={props.responeConfig?.pathLoading} alt="loading..." />
             </div>
           ) : (
             <div className="content">
@@ -973,6 +977,7 @@ const DashboardScreen = (props: Props) => {
                         setValueDropdownInCalendar={setValueDropdownInCalendar}
                         valueDropdownInCalendar={valueDropdownInCalendar}
                         endpoint={endpoint}
+                        responeConfig={responeConfig}
                       />
                     )}
                   {onSelectView === "3" && dashboard && (
