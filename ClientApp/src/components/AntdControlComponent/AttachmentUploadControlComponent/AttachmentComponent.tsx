@@ -200,7 +200,7 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
       <div className="set-button-close">
         <Button
           // fixed issue readonly
-
+          disabled={!canEditDoc || template.attribute.readonly === "Y"}
           //  id
           id={rowIdx + "_" + colIdx + "_" + template.label}
           label={checkHasValue ? nameFile : "Upload"}
