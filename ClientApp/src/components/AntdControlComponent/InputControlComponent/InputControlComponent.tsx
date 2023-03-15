@@ -191,13 +191,6 @@ export const InputTableComponent: React.FC<TableInputProps> = ({
                   : false,
               message: `${template.label} is required.`,
             },
-            {
-              validator: (_, value) => {
-                console.log("val=>", value);
-
-                return Promise.resolve();
-              },
-            },
           ]}
         >
           <Input
