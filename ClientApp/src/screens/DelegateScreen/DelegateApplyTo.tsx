@@ -91,6 +91,20 @@ const DelegateApplyTo = (props: Props) => {
             selectionMode="multiple"
             headerStyle={{ width: "3em" }}
           ></Column>
+          {/* doc code */}
+            <Column
+            field="DoccumentCode"
+            filter
+            filterPlaceholder="Search by Doccument Code"
+            header={
+              <tr>
+                <th>
+                  <p className="row headtext">DoccumentCode</p>
+                  <p className="row subtext">รหัสเอกสาร</p>
+                </th>
+              </tr>
+            }
+          ></Column>
           <Column
             field="TemplateName"
             filter
