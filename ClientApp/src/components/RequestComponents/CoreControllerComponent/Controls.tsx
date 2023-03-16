@@ -10,6 +10,7 @@ import useAlert from "../../../hooks/useAlert";
 import { IAutoNumberAttibute } from "../../../IRequestModel/IAutoNumberFormat";
 import { IMemoDetailModel } from "../../../IRequestModel/IMemoDetailModel";
 import { AttachmentControlComponent } from "../../AntdControlComponent/AttachmentUploadControlComponent/AttachmentComponent";
+import { AutoNumber } from "../../AntdControlComponent/AutoNumberFix/AutoNumberFix";
 import { DatePickerControlComponent } from "../../AntdControlComponent/DatePickerControlComponent/DatePickerControlComponent";
 import { InputControlComponent } from "../../AntdControlComponent/InputControlComponent/InputControlComponent";
 import { InputNumberControlComponent } from "../../AntdControlComponent/InputNumberControlComponent/InputNumberControlComponent";
@@ -489,7 +490,7 @@ const Controls: FC<Props> = ({
           //incomplete
 
           return (
-            <InputControlComponent
+            <AutoNumber
               {...{ canEditDoc, checkActionPage, buttonType, onControlChange }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
