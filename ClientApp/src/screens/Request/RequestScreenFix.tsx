@@ -1120,9 +1120,9 @@ const RequestScreenFix = () => {
     };
     for (let i = 0; i < logics?.length; i++) {
       const logic = logics[i];
-      if (logic.logictype === "datasourceload") {
-        console.log("logic=>", logic);
+      console.log("logic=>", logic);
 
+      if (logic.logictype === "datasourceload") {
         const jsonValue: any =
           logic.jsonvalue &&
           logic.jsonvalue.length > 0 &&
@@ -1404,6 +1404,7 @@ const RequestScreenFix = () => {
       .catch(() => false);
     return response;
   };
+
   const onCheckUserRolePermissionInLogic = (
     userRoles: IRolePermission[],
     accessRoles: {

@@ -3,6 +3,7 @@ import {
   IAutoNumberFormat,
   IFormat,
 } from "../IRequestModel/IAutoNumberFormat";
+import { IMemoDetailModel } from "../IRequestModel/IMemoDetailModel";
 import { GetAutoNumber } from "../Services/RequestControlService";
 
 export async function genAutoNum(
@@ -144,26 +145,35 @@ export async function genAutoNum(
   }
 }
 
-const genStringForAutoNumber = (formats: IFormat[]) => {
-  console.log("auto=>formats", formats);
-  return formats;
-};
+export function getValueControl(
+  controlID: string,
+  memoDetail: IMemoDetailModel
+) {
+  let strValue: string = "";
 
-const checkIsAutoHavePF = (
-  templateLabel: string,
-  formats: IAutoNumberFormat[]
-) => {
-  let isTrue: boolean = false;
+  switch (controlID.toLowerCase()) {
+    case "requestor id":
+      strValue = memoDetail.requestor.EmployeeId.toString();
+      break;
+    case "requestor code":
+      strValue = memoDetail.requestor.EmployeeCode;
+      break;
+    case "requestor name":
+      strValue = memoDetail.requestor.NameEn;
+      break;
+    case "requestor email":
+      strValue = memoDetail.requestor.Email;
+      break;
+    case "requestor position":
+      strValue = memoDetail.requestor.PositionNameEn;
+      break;
+    case "requestor department":
+      strValue = memoDetail.requestor.DepartmentNameEn;
+      break;
+    default:
+      // handle default case here
+      break;
+  }
 
-  formats.forEach((formats: IAutoNumberFormat) => {
-    formats.format.forEach((fm: IFormat) => {
-      if (fm.type !== "pf") {
-        if (fm.label === templateLabel) {
-          isTrue = false;
-        }
-      }
-    });
-  });
-
-  return isTrue;
-};
+  return strValue;
+}
