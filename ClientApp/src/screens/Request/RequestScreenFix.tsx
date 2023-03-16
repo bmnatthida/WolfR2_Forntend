@@ -106,6 +106,7 @@ const RequestScreenFix = () => {
   const [dataTreeSelectProps, setDataTreeSelectProps] = useState<any>({});
   const [isControlLoading, setIsControlLoading] = useState(false);
   const [empByUserId, setEmpByUserId] = useState<any>();
+  const [templateDescrip, setTemplateDescrip] = useState<any[]>([]);
 
   //Check Can Edit
   const [canEditDoc, setCanEditDoc] = useState<boolean>(false);
@@ -1120,9 +1121,9 @@ const RequestScreenFix = () => {
     };
     for (let i = 0; i < logics?.length; i++) {
       const logic = logics[i];
-      if (logic.logictype === "datasourceload") {
-        console.log("logic=>", logic);
+      console.log("logic=>", logic);
 
+      if (logic.logictype === "datasourceload") {
         const jsonValue: any =
           logic.jsonvalue &&
           logic.jsonvalue.length > 0 &&
@@ -1404,6 +1405,7 @@ const RequestScreenFix = () => {
       .catch(() => false);
     return response;
   };
+
   const onCheckUserRolePermissionInLogic = (
     userRoles: IRolePermission[],
     accessRoles: {
@@ -1876,7 +1878,7 @@ const RequestScreenFix = () => {
           };
           setRefOptions([..._refDoc.filter((e: any) => e)]);
           setRefAttribute({ ...refObject });
-
+          console.log("ref=>listRefDocDetails", listRefDocDetails);
           if (_RefID !== "") {
             const results = refObject.option.filter(
               (refDoc: any) => refDoc.DocumentNo === _RefID
@@ -1885,14 +1887,20 @@ const RequestScreenFix = () => {
             previousRefTempSelected.current = results;
             setRefTempSelected(results);
           } else if (listRefDocDetails?.length > 0) {
-            const refDocsDetail = listRefDocDetails;
+            const refDocsDetail: any[] = listRefDocDetails;
             // DAR-EDIT-2022-000001
+            console.log("ref=>refObject.option", refObject.option);
 
-            let results = refObject.option.filter(
+            let results = refDocs.filter(
               (refDoc: any) =>
-                refDocsDetail.some(
-                  (docDetail: any) => docDetail.doc_no === refDoc.DocumentNo
+                refDocsDetail.find(
+                  (docDetail: any) => docDetail.memoRefdoc_id === refDoc.MemoId
                 ) || refDoc.DocumentNo === _RefID
+              // refDocsDetail.some((docDetail: any) => {
+              //   console.log("ref=>docDetail", docDetail);
+
+              //   return docDetail.Document_no === refDoc.DocumentNo;
+              // }) || refDoc.DocumentNo === _RefID
             );
 
             if (results.length === 0) {
@@ -1906,6 +1914,12 @@ const RequestScreenFix = () => {
                 });
               });
               results = await GetMemoDetailOnlyById(dataJson);
+              console.log(
+                "results",
+                display,
+                results,
+                display[2] !== "Information DocumentNo"
+              );
               if (display[2] !== "Information DocumentNo") {
                 results = results.map((ref: any) => {
                   if (ref !== null) {
@@ -1932,7 +1946,7 @@ const RequestScreenFix = () => {
                           }
                         });
                       });
-
+                      console.log("results", results, ref, refDocsDetail);
                       if (typeof ref[display[2]] === "string") {
                         let res: any = {
                           MemoId: ref.memoid,
@@ -1976,9 +1990,9 @@ const RequestScreenFix = () => {
     // console.log("listFileAttachDetails=>", listFileAttachDetails);
     // console.log("listRefDocDetails=>", listRefDocDetails);
     // console.log("---------------------RefDoc Attibute-----------------------");
-    // console.log("refAttibute=>", refAttribute);
-    // console.log("refTempSelected=>", refTempSelected);
-    // console.log("searchRefDocData=>", searchRefDocData);
+    console.log("refAttibute=>", refAttribute);
+    console.log("refTempSelected=>", refTempSelected);
+    console.log("searchRefDocData=>", searchRefDocData);
 
     // console.log("---------------------MasterData-----------------------");
     // console.log("masterSignature=>", masterSignature);
@@ -2108,6 +2122,9 @@ const RequestScreenFix = () => {
     // variables RequestScreen
     console.log(formData, "formData");
     console.log(data, "formData");
+    console.log("template", templateDescrip);
+    console.log("val=>templateDescrip", templateDescrip);
+
     const _submitType = data.buttonType;
     let _memoDetail: IMemoDetailModel = memoDetail;
     let _lineApproval: any[] = lineApproval;
@@ -2125,17 +2142,6 @@ const RequestScreenFix = () => {
 
     const _validation = Validation(_submitType, memoDetail, lineApproval);
 
-    if (CheckValidField(formData)) {
-      if (CheckValidField(formData)[0] > CheckValidField(formData)[1]) {
-        toggleAlert({
-          type: "error",
-          message: "Require field error",
-          description: rr.Value4,
-          duration: 6,
-        });
-      }
-    }
-
     if (_validation.length >= 1) {
       toggleAlert({
         description: `Please fill ${_validation.join(" , ")}`,
@@ -2147,6 +2153,17 @@ const RequestScreenFix = () => {
     setLoad(true);
 
     if (!isTextFromValue) {
+      if (CheckValidField(formData)) {
+        if (CheckValidField(formData)[0] > CheckValidField(formData)[1]) {
+          toggleAlert({
+            type: "error",
+            message: "Require field error",
+            description: rr.Value4,
+            duration: 6,
+          });
+        }
+      }
+
       formData.items.map((item: any) => {
         item.layout.map((layout: any) => {
           if (layout.data.value === null) {

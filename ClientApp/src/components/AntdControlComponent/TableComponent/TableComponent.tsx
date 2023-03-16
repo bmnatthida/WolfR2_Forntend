@@ -309,10 +309,11 @@ const EditableCell: React.FC<EditableCellProps> = ({
         } else if (type === "at") {
           childNode = (
             <AttachmentTableComponent
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{ checkActionPage, buttonType }}
               inputRef={inputRef}
               saveFunc={save}
               name={dataIndex}
+              canEditDoc={true}
               template={_col.control.template}
               value={record[dataIndex]}
               isEditing={editing}

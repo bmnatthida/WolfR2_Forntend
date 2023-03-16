@@ -377,64 +377,68 @@ export const TreeSelectNewRequest = (props: Props) => {
   };
   const onFilterChange = (text: string) => {
     setCheckActionFavorite(false);
-    let _groupDataTemplate = groupDataTemplate;
-    console.log(groupDataTemplate, "groupDataTemplate");
+    if (groupDataTemplate) {
+      if (groupDataTemplate.length > 0) {
+        let _groupDataTemplate = groupDataTemplate;
+        console.log(groupDataTemplate, "groupDataTemplate");
 
-    if (!text) {
-      setCheckFilter(false);
-      let fav_cookie: any = window.localStorage.getItem("favorite");
-      fav_cookie = JSON.parse(fav_cookie);
-      _groupDataTemplate[0].data = fav_cookie;
-      setSearchTemplate([..._groupDataTemplate]);
-    } else {
-      setCheckFilter(true);
-    }
-    const _searchTemplate = _groupDataTemplate.filter(
-      (_data: any, idx: any) => {
-        if (_data.header === "Favorite") {
-          return true;
+        if (!text) {
+          setCheckFilter(false);
+          let fav_cookie: any = window.localStorage.getItem("favorite");
+          fav_cookie = JSON.parse(fav_cookie);
+          _groupDataTemplate[0].data = fav_cookie;
+          setSearchTemplate([..._groupDataTemplate]);
+        } else {
+          setCheckFilter(true);
         }
-        for (let i = 0; i < _data.data.length; i++) {
-          if (
-            _data.data[i]?.TemplateName?.toLowerCase().indexOf(
-              text.toLowerCase()
-            ) !== -1 ||
-            _data.data[i]?.TemplateNameWithCode?.toLowerCase().indexOf(
-              text.toLowerCase()
-            ) !== -1 ||
-            _data.header?.toLowerCase().indexOf(text.toLowerCase()) !== -1
-          ) {
-            return true;
+        const _searchTemplate = _groupDataTemplate.filter(
+          (_data: any, idx: any) => {
+            if (_data.header === "Favorite") {
+              return true;
+            }
+            for (let i = 0; i < _data.data.length; i++) {
+              if (
+                _data.data[i]?.TemplateName?.toLowerCase().indexOf(
+                  text.toLowerCase()
+                ) !== -1 ||
+                _data.data[i]?.TemplateNameWithCode?.toLowerCase().indexOf(
+                  text.toLowerCase()
+                ) !== -1 ||
+                _data.header?.toLowerCase().indexOf(text.toLowerCase()) !== -1
+              ) {
+                return true;
+              }
+            }
+          }
+        );
+        const filteredList: any = [];
+
+        for (let i = 0; i < _searchTemplate.length; i++) {
+          const filteredGroup = _searchTemplate[i];
+          const filtered = filteredGroup.data.filter((_data: any, idx: any) => {
+            if (
+              _data?.TemplateName?.toLowerCase().indexOf(text.toLowerCase()) !==
+                -1 ||
+              _data?.TemplateNameWithCode?.toLowerCase().indexOf(
+                text.toLowerCase()
+              ) !== -1 ||
+              _data?.GroupTemplateName?.toLowerCase().indexOf(
+                text.toLowerCase()
+              ) !== -1
+            ) {
+              return true;
+            }
+          });
+          if (filtered.length > 0) {
+            filteredList.push({
+              header: filteredGroup.header,
+              data: filtered,
+            });
           }
         }
-      }
-    );
-    const filteredList: any = [];
-
-    for (let i = 0; i < _searchTemplate.length; i++) {
-      const filteredGroup = _searchTemplate[i];
-      const filtered = filteredGroup.data.filter((_data: any, idx: any) => {
-        if (
-          _data?.TemplateName?.toLowerCase().indexOf(text.toLowerCase()) !==
-            -1 ||
-          _data?.TemplateNameWithCode?.toLowerCase().indexOf(
-            text.toLowerCase()
-          ) !== -1 ||
-          _data?.GroupTemplateName?.toLowerCase().indexOf(
-            text.toLowerCase()
-          ) !== -1
-        ) {
-          return true;
-        }
-      });
-      if (filtered.length > 0) {
-        filteredList.push({
-          header: filteredGroup.header,
-          data: filtered,
-        });
+        setSearchTemplate([...filteredList]);
       }
     }
-    setSearchTemplate([...filteredList]);
   };
   const onVisibleChange = (visible: boolean) => {
     setIsOpen(visible);

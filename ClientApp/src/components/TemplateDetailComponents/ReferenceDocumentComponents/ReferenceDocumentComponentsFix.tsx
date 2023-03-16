@@ -108,6 +108,26 @@ export const ReferenceDocumentComponentsFix = (props: Props) => {
     const dataFilter = props.listRefTemplateProps.listRefTemplate.filter(
       (item: any) => _event !== item
     );
+    const obj = JSON.parse(
+      props.listRefTemplateProps.templateForm.RefDocColumn
+    );
+
+    console.log(
+      "Ref",
+      obj,
+      props.listRefTemplateProps.templateForm.RefDocColumn
+    );
+
+    const filterRefDocColum = obj.filter(
+      (value: any) => !value.Value.includes(_event.DocumentCode)
+    );
+    console.log("filterRefDocColum", filterRefDocColum);
+
+    console.log("_event", _event);
+
+    props.listRefTemplateProps.templateForm.RefDocColumn =
+      JSON.stringify(filterRefDocColum);
+
     props.listRefTemplateProps.listRefTemplate = dataFilter;
     props.listRefTemplateProps.templateForm.RefTemplate =
       JSON.stringify(dataFilter);

@@ -6,6 +6,7 @@ import {
   TemplateDescContextProvider,
 } from "../../../Context/TemplateDescContext";
 import { formatColumn } from "../../../Helper/formatColumn";
+import useAlert from "../../../hooks/useAlert";
 import { IAutoNumberAttibute } from "../../../IRequestModel/IAutoNumberFormat";
 import { IMemoDetailModel } from "../../../IRequestModel/IMemoDetailModel";
 import { AttachmentControlComponent } from "../../AntdControlComponent/AttachmentUploadControlComponent/AttachmentComponent";
@@ -75,7 +76,7 @@ const Controls: FC<Props> = ({
     control,
     name: `items[${nestIndex}].layout`,
   });
-
+  const { toggleAlert } = useAlert();
   return (
     <>
       {/* <button type="button" onClick={onLogs}></button> */}
@@ -363,7 +364,16 @@ const Controls: FC<Props> = ({
                             }
                           );
                           console.log("table=>pass", pass);
-
+                          if (!pass) {
+                            toggleAlert({
+                              type: "error",
+                              message: "Require field error",
+                              description:
+                                "Please fill all Require field in table :" +
+                                layout.template.label,
+                              duration: 6,
+                            });
+                          }
                           return pass;
                         } else {
                           return true;
