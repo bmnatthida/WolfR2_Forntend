@@ -106,6 +106,7 @@ const RequestScreenFix = () => {
   const [dataTreeSelectProps, setDataTreeSelectProps] = useState<any>({});
   const [isControlLoading, setIsControlLoading] = useState(false);
   const [empByUserId, setEmpByUserId] = useState<any>();
+  const [templateDescrip, setTemplateDescrip] = useState<any[]>([]);
 
   //Check Can Edit
   const [canEditDoc, setCanEditDoc] = useState<boolean>(false);
@@ -2120,6 +2121,9 @@ const RequestScreenFix = () => {
     // variables RequestScreen
     console.log(formData, "formData");
     console.log(data, "formData");
+    console.log("template", templateDescrip);
+    console.log("val=>templateDescrip", templateDescrip);
+
     const _submitType = data.buttonType;
     let _memoDetail: IMemoDetailModel = memoDetail;
     let _lineApproval: any[] = lineApproval;
@@ -2137,17 +2141,6 @@ const RequestScreenFix = () => {
 
     const _validation = Validation(_submitType, memoDetail, lineApproval);
 
-    if (CheckValidField(formData)) {
-      if (CheckValidField(formData)[0] > CheckValidField(formData)[1]) {
-        toggleAlert({
-          type: "error",
-          message: "Require field error",
-          description: rr.Value4,
-          duration: 6,
-        });
-      }
-    }
-
     if (_validation.length >= 1) {
       toggleAlert({
         description: `Please fill ${_validation.join(" , ")}`,
@@ -2159,6 +2152,17 @@ const RequestScreenFix = () => {
     setLoad(true);
 
     if (!isTextFromValue) {
+      if (CheckValidField(formData)) {
+        if (CheckValidField(formData)[0] > CheckValidField(formData)[1]) {
+          toggleAlert({
+            type: "error",
+            message: "Require field error",
+            description: rr.Value4,
+            duration: 6,
+          });
+        }
+      }
+
       formData.items.map((item: any) => {
         item.layout.map((layout: any) => {
           if (layout.data.value === null) {
