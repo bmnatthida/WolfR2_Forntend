@@ -93,25 +93,27 @@ const TemplateVersionComponent = (props: Props) => {
               </div>
             )}
             {props.status === "Draft" ||
-              props.status === "Recall" ||
-              (props.status === "Recall" && (
-                <ButtonComponents
-                  setIconProps={"pi pi-times"}
-                  setClassNameProps={"p-button-text-position"}
-                  onClickProps={() => {
-                    console.log(props.status, "statusstatus");
-                    props.setSelectedTemplateVersion(null);
-                  }}
-                  setStyleProps={{
-                    backgroundColor: "red",
-                    border: "1px solid red",
-                    borderTopRightRadius: "6px",
-                    borderBottomRightRadius: "6px",
-                    boxShadow: "none",
-                    height: "38px",
-                  }}
-                />
-              ))}
+            props.status === "Recall" ||
+            props.status === "Rework" ? (
+              <ButtonComponents
+                setIconProps={"pi pi-times"}
+                setClassNameProps={"p-button-text-position"}
+                onClickProps={() => {
+                  console.log(props.status, "statusstatus");
+                  props.setSelectedTemplateVersion(null);
+                }}
+                setStyleProps={{
+                  backgroundColor: "red",
+                  border: "1px solid red",
+                  borderTopRightRadius: "6px",
+                  borderBottomRightRadius: "6px",
+                  boxShadow: "none",
+                  height: "38px",
+                }}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </Col>
       </Row>

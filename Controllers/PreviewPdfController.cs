@@ -99,7 +99,7 @@ namespace WolfR2.Controllers
                     listFileAttachDetails = request.MemoPage.listFileAttachDetails,
                     listFormName = request.MemoPage.listFormName,
                     listHistoryDetails = request.MemoPage.listHistoryDetails,
-                    UserPrincipalName = request.MemoPage.UserPrincipalName,
+                    UserPrincipalName = request.MemoPage.memoDetail.actor.Email,
                     ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
                     SecretId = "",
                 };
@@ -107,7 +107,7 @@ namespace WolfR2.Controllers
                 {
                     MemoPage = memoPageModel,
                     IsPreview = true,
-                    UserPrincipalName = request.MemoPage.UserPrincipalName,
+                    UserPrincipalName = request.MemoPage.memoDetail.actor.Email,
                     ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
 
                 };
