@@ -72,44 +72,12 @@ export async function genAutoNum(
         console.log("auto=>str", { str, choiceFormat });
 
         if (str.length === choiceFormat.format.length) {
-          if (!str.includes("--Select--") && !str.includes("--select--")) {
+          if (!str.includes("--Select--") && !str.includes("--select--") && !str.includes("-- Please Select --") && !str.includes("---Please Select---") && !str.includes("---please select---") && !str.includes("--please Select--")) {
             isCheck = true;
           }
         }
       }
-      // else {
-      //   formats.map((ft: any) => {
-      //     if (ft.condition.length === 0) {
-      //       ft.format.map((format: any) => {
-      //         _control.forEach((item: any, rowIdx: number) => {
-      //           item.layout.forEach(async (layout: any) => {
-      //             if (format.type === "pf") {
-      //               if (!str.includes(format.label)) {
-      //                 str.push(format.label);
-      //               }
-      //             } else if (layout.template.label === format.label) {
-      //               let value: string = layout.data.value;
-      //               if (value) {
-      //                 if (value.indexOf("(") > 0 && value.indexOf(")")) {
-      //                   str.push(
-      //                     value.substring(
-      //                       value.indexOf("(") + 1,
-      //                       value.indexOf(")")
-      //                     )
-      //                   );
-      //                 } else {
-      //                   str.push(value);
-      //                 }
-      //               }
-      //             }
-      //           });
-      //         });
-      //       });
-      //     } else {
-      //       console.log("auto=>str", { str, ft });
-      //     }
-      //   });
-      // }
+     
 
       if (isCheck) {
         const showSymbol = autoNumFormat.showSymbol;
