@@ -5,10 +5,13 @@ import { FilterMatchMode, FilterOperator } from "primereact/api";
 type Props = {
   delegateData: any;
   setDelegateData: any;
+  delegateDoc:any;
+  setDelegateDoc:any;
 };
 
 const DelegateApplyTo = (props: Props) => {
   const [delegateTemplate, setDelegateTemplate] = useState<any[]>([]);
+  const [delegateDocCode, setDelegateDocCode] = useState<any[]>([]);
   const [selectedCustomers, setSelectedCustomers] = useState<any[]>([]);
   useEffect(() => {
     fetchDelegateTemplate();
@@ -16,6 +19,7 @@ const DelegateApplyTo = (props: Props) => {
   const fetchDelegateTemplate = async () => {
     const dataJson = {
       ApproverId: props.delegateData.DelegateList.ApproverId,
+      DocCode:props.delegateData.DelegateList.DocumentCode,
     };
     const dd = await fetch(
       "api/DelegateList/GetByDelegateTemplateByApproverId",
@@ -49,6 +53,7 @@ const DelegateApplyTo = (props: Props) => {
         }
         setSelectedCustomers([...selected]);
         setDelegateTemplate([...templateData]);
+        // setDelegateDocCode([...delegateDoc])
       });
   };
 
@@ -93,13 +98,13 @@ const DelegateApplyTo = (props: Props) => {
           ></Column>
           {/* doc code */}
             <Column
-            field="DoccumentCode"
+            field="DocumentCode"
             filter
-            filterPlaceholder="Search by Doccument Code"
+            filterPlaceholder="Search by Document Code"
             header={
               <tr>
                 <th>
-                  <p className="row headtext">DoccumentCode</p>
+                  <p className="row headtext">Document Code</p>
                   <p className="row subtext">รหัสเอกสาร</p>
                 </th>
               </tr>
