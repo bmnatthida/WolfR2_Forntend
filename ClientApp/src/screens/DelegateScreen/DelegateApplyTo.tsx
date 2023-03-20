@@ -11,7 +11,6 @@ type Props = {
 
 const DelegateApplyTo = (props: Props) => {
   const [delegateTemplate, setDelegateTemplate] = useState<any[]>([]);
-  const [delegateDocCode, setDelegateDocCode] = useState<any[]>([]);
   const [selectedCustomers, setSelectedCustomers] = useState<any[]>([]);
   useEffect(() => {
     fetchDelegateTemplate();
@@ -19,7 +18,6 @@ const DelegateApplyTo = (props: Props) => {
   const fetchDelegateTemplate = async () => {
     const dataJson = {
       ApproverId: props.delegateData.DelegateList.ApproverId,
-      DocCode:props.delegateData.DelegateList.DocumentCode,
     };
     const dd = await fetch(
       "api/DelegateList/GetByDelegateTemplateByApproverId",
@@ -53,7 +51,6 @@ const DelegateApplyTo = (props: Props) => {
         }
         setSelectedCustomers([...selected]);
         setDelegateTemplate([...templateData]);
-        // setDelegateDocCode([...delegateDoc])
       });
   };
 
@@ -71,7 +68,12 @@ const DelegateApplyTo = (props: Props) => {
               value: null,
               matchMode: FilterMatchMode.CONTAINS,
             },
-          }}
+            DocumentCode:{
+              value:null,
+              matchMode:FilterMatchMode.CONTAINS,
+            }
+            }
+          }
           tableStyle={{
             border: "1px solid #e6e6e6",
             outlineColor: "#e6e6e6",
