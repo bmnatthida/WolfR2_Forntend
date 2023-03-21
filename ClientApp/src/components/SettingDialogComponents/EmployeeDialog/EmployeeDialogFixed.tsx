@@ -431,7 +431,7 @@ const EmployeeDialogFix: FC<Props> = ({
         (e: any) => e.EmployeeId == currentCode
       );
       if (emp) {
-        if (getValues("Lang") === "EN") {
+        if (userData?.Lang === "EN") {
           val = emp.NameEn;
         } else {
           val = emp.NameTh;
