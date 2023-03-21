@@ -42,7 +42,6 @@ export async function genAutoNum(
           break;
         }
       }
-
       if (choiceFormat !== null) {
         choiceFormat.format.map((format: any) => {
           _control.forEach((item: any, rowIdx: number) => {
@@ -70,15 +69,14 @@ export async function genAutoNum(
           });
         });
         console.log("auto=>str", { str, choiceFormat });
-
+        console.log("auto=>strlength",str.length);
         if (str.length === choiceFormat.format.length) {
-          if (!str.includes("--Select--") && !str.includes("--select--") && !str.includes("-- Please Select --") && !str.includes("---Please Select---") && !str.includes("---please select---") && !str.includes("--please Select--")) {
+          if (!str.includes("--Select--") && !str.includes("--select--") 
+          && !str.includes("-- Please Select --") && !str.includes("-- Please Select --") ) {
             isCheck = true;
           }
         }
       }
-     
-
       if (isCheck) {
         const showSymbol = autoNumFormat.showSymbol;
         let prefix = "";
@@ -92,7 +90,6 @@ export async function genAutoNum(
         requestBody.Digit = autoNumFormat.digit;
         requestBody.TemplateId = template_id;
         const dd = await GetAutoNumber(requestBody);
-
         if (dd.Message !== undefined) {
         } else {
           _control[autoNumberAttibute.rowIndex].layout[

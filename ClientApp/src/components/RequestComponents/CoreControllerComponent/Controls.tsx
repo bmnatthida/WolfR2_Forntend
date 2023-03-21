@@ -78,6 +78,7 @@ const Controls: FC<Props> = ({
     name: `items[${nestIndex}].layout`,
   });
   const { toggleAlert } = useAlert();
+  
   return (
     <>
       {/* <button type="button" onClick={onLogs}></button> */}
@@ -100,12 +101,14 @@ const Controls: FC<Props> = ({
           _colAction = 4;
         }
         let _isCanEdit = canEditDoc;
+        // console.log("autoNumFormat=>",autoNumFormat?.formats);
         const findInAutoFormat = autoNumFormat?.formats?.find((e) =>
           e.format.find((l) => l.label === layout.template.label)
         );
         if (findInAutoFormat) {
-          if (memoDetail.status !== "New Request") {
+          if (memoDetail.status !== "New Request" && memoDetail.status !== "Draft") {
             canEditDoc = false;
+            // canEditDoc = true;
           }
         }
         if (layout.template.type === "l" && layout.isShow) {
@@ -190,7 +193,7 @@ const Controls: FC<Props> = ({
           // }
         } else if (layout.template.type === "dd" && layout.isShow) {
           // incomeplete
-
+          // console.log("canEditDoc=>"+layout.label,canEditDoc);
           return (
             <SelectDropdownControlComponent
               {...{ canEditDoc, checkActionPage, buttonType }}
