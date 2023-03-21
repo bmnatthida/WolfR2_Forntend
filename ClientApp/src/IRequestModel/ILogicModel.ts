@@ -108,9 +108,15 @@ export type ILogicTypeSourceRelated = {
   }[];
   fields: { field: string }[];
   table: string;
+  autoloadvaluelabel: { label: string; value: string };
   relatedvalue: { label: string; value: string }[];
   tablestatus: boolean;
   label: string;
+  labelactions: labelAction[];
+};
+export type labelAction = {
+  label: string;
+  labelintablestatus: string;
 };
 export type ILogicTypeReference = {
   label: string;
