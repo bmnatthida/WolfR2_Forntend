@@ -813,7 +813,7 @@ const RequestScreenFix = () => {
     _requestor?: any
   ) => {
     try {
-      console.log({ logicType, jsonCondition, amount, memoDetail });
+      console.log("logic=>", { logicType, jsonCondition, amount, memoDetail });
 
       if (logicType === "ref") {
         setMemoDetail((prevState: any) => ({

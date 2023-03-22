@@ -160,45 +160,39 @@ export const onChanceRef = (
           template_desc.map((item: any, rowIdx: number) => {
             item.layout.map((_layout: any, colIdx: number) => {
               valibCol.map((col: any) => {
-                if (col.ControlValue) {
-                  if (
-                    col.TypeControl === "Table" &&
-                    _layout.template.type === "tb"
-                  ) {
-                    if (col.Key === _layout.template.label) {
-                      if (
-                        JSON.stringify(_layout.data.row) !==
-                        JSON.stringify(col.ControlValue)
-                      ) {
-                        _layout.template.attribute.column.forEach(
-                          (originCol: any, _colIdx: number) => {
-                            col.ControlValue.map((refCol: any) => {
-                              if (refCol[_colIdx].value === null) {
-                                if (
-                                  originCol.control.template.attribute
-                                    .default !== ""
-                                ) {
-                                  refCol[_colIdx].value =
-                                    originCol.control.template.attribute.default;
-                                }
+                if (!col.ControlValue) return;
+                if (
+                  col.TypeControl === "Table" &&
+                  _layout.template.type === "tb"
+                ) {
+                  if (col.Key === _layout.template.label) {
+                    if (
+                      JSON.stringify(_layout.data.row) !==
+                      JSON.stringify(col.ControlValue)
+                    ) {
+                      _layout.template.attribute.column.forEach(
+                        (originCol: any, _colIdx: number) => {
+                          col.ControlValue.map((refCol: any) => {
+                            if (refCol[_colIdx].value === null) {
+                              if (
+                                originCol.control.template.attribute.default !==
+                                ""
+                              ) {
+                                refCol[_colIdx].value =
+                                  originCol.control.template.attribute.default;
                               }
-                            });
-                          }
-                        );
+                            }
+                          });
+                        }
+                      );
 
-                        // if (col.ControlValue[colIdx] === null) {
-                        //   console.log("ref=>_layout", _layout);
-                        // }
-                        // console.log("ref=>");
-                        _layout.data.row = [...col.ControlValue];
-                      }
+                      _layout.data.row = [...col.ControlValue];
                     }
                   }
                 } else {
                   if (col.Key === _layout.template.label) {
                     if (_layout.data?.value !== col.ControlValue?.value) {
                       _layout.data = col.ControlValue;
-                      console.log("col_ControlValue", col.ControlValue);
                     }
                   }
                 }

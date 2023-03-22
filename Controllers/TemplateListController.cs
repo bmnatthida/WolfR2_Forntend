@@ -196,6 +196,8 @@ namespace WolfR2.Controllers
             }
             catch (Exception ex)
             {
+                LogFile.WriteLogFile("GetTemplateFromDDL | api/Template/TemplateFromDDL | ex : " + Newtonsoft.Json.JsonConvert.SerializeObject(ex), module);
+
                 throw ex;
             }
         }
@@ -1034,12 +1036,12 @@ namespace WolfR2.Controllers
                                     if (user?.Lang == "EN")
                                     {
                                         approval.EmployeeName = empData.NameEn;
-                                        approval.Position=empData.PositionNameEn;
+                                        approval.Position = empData.PositionNameEn;
                                     }
                                     else
                                     {
                                         approval.EmployeeName = empData.NameTh;
-                                        approval.Position=empData.PositionNameTh;
+                                        approval.Position = empData.PositionNameTh;
                                     }
                                 }
                             }

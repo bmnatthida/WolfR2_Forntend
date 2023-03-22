@@ -5,6 +5,8 @@ import { FilterMatchMode, FilterOperator } from "primereact/api";
 type Props = {
   delegateData: any;
   setDelegateData: any;
+  delegateDoc:any;
+  setDelegateDoc:any;
 };
 
 const DelegateApplyTo = (props: Props) => {
@@ -66,7 +68,12 @@ const DelegateApplyTo = (props: Props) => {
               value: null,
               matchMode: FilterMatchMode.CONTAINS,
             },
-          }}
+            DocumentCode:{
+              value:null,
+              matchMode:FilterMatchMode.CONTAINS,
+            }
+            }
+          }
           tableStyle={{
             border: "1px solid #e6e6e6",
             outlineColor: "#e6e6e6",
@@ -90,6 +97,20 @@ const DelegateApplyTo = (props: Props) => {
           <Column
             selectionMode="multiple"
             headerStyle={{ width: "3em" }}
+          ></Column>
+          {/* doc code */}
+            <Column
+            field="DocumentCode"
+            filter
+            filterPlaceholder="Search by Document Code"
+            header={
+              <tr>
+                <th>
+                  <p className="row headtext">Document Code</p>
+                  <p className="row subtext">รหัสเอกสาร</p>
+                </th>
+              </tr>
+            }
           ></Column>
           <Column
             field="TemplateName"

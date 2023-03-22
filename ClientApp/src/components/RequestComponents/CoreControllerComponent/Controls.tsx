@@ -10,6 +10,7 @@ import useAlert from "../../../hooks/useAlert";
 import { IAutoNumberAttibute } from "../../../IRequestModel/IAutoNumberFormat";
 import { IMemoDetailModel } from "../../../IRequestModel/IMemoDetailModel";
 import { AttachmentControlComponent } from "../../AntdControlComponent/AttachmentUploadControlComponent/AttachmentComponent";
+import { AutoNumber } from "../../AntdControlComponent/AutoNumberFix/AutoNumberFix";
 import { DatePickerControlComponent } from "../../AntdControlComponent/DatePickerControlComponent/DatePickerControlComponent";
 import { InputControlComponent } from "../../AntdControlComponent/InputControlComponent/InputControlComponent";
 import { InputNumberControlComponent } from "../../AntdControlComponent/InputNumberControlComponent/InputNumberControlComponent";
@@ -77,13 +78,13 @@ const Controls: FC<Props> = ({
     name: `items[${nestIndex}].layout`,
   });
   const { toggleAlert } = useAlert();
+  
   return (
     <>
       {/* <button type="button" onClick={onLogs}></button> */}
       {fields.map((layout: any, layoutIdx: number) => {
         // const layouts = fieldslayout;
         // console.log({ nestIndex, layoutIdx });
-
         const layoutLength = fields.length;
         const grid_size = 12 / layoutLength;
         let _colText = 0;
@@ -99,14 +100,25 @@ const Controls: FC<Props> = ({
           _colAction = 4;
         }
         let _isCanEdit = canEditDoc;
-        const findInAutoFormat = autoNumFormat?.formats?.find((e) =>
-          e.format.find((l) => l.label === layout.template.label)
+        console.log("autoNumFormat=>",autoNumFormat?.formats);
+        console.log("layouttemplate=>",layout.template.label);
+        console.log("template=>",layout.template);
+        console.log("layout=>",layoutLength);
+        console.log("colAct=>",_colAction);
+        // console.log("templateType=>",layout.template.type);
+        // console.log("LLabel=>", );
+        if (memoDetail.status !== "New Request" && memoDetail.status === "Draft") {
+         autoNumFormat?.formats?.forEach((e) =>
+          e.format.find((l) => {if(l.label === layout.template.label) _isCanEdit=false} )
         );
-        if (findInAutoFormat) {
-          if (memoDetail.status !== "New Request") {
-            canEditDoc = false;
-          }
         }
+        // if (findInAutoFormat) {
+        //   console.log("colAct=>",findInAutoFormat);
+        //   if (memoDetail.status !== "New Request" && memoDetail.status === "Draft") {
+        //     canEditDoc = false;
+        //     // canEditDoc = true;
+        //   }
+        // }
         if (layout.template.type === "l" && layout.isShow) {
           return (
             <MainTextComponents
@@ -133,7 +145,7 @@ const Controls: FC<Props> = ({
                 buttonType={buttonType}
                 rowIdx={nestIndex}
                 colIdx={layoutIdx}
-                canEditDoc={canEditDoc}
+                canEditDoc={_isCanEdit}
                 colText={_colText}
                 colAction={_colAction}
                 // onChangeEditForm={onChangeEditForm}
@@ -150,7 +162,7 @@ const Controls: FC<Props> = ({
         } else if (layout.template.type === "c" && layout.isShow) {
           return (
             <InputNumberControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{  checkActionPage, buttonType }}
               name={`items[${nestIndex}].layout[${layoutIdx}].data.value`}
               control={control}
               //  defaultValue={value}
@@ -165,12 +177,13 @@ const Controls: FC<Props> = ({
               colAction={_colAction}
               onControlChange={onControlChange}
               controlUpdate={controlUpdate}
+              canEditDoc={_isCanEdit}
             />
           );
         } else if (layout.template.type === "ta" && layout.isShow) {
           return (
             <InputTextAreaControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{  checkActionPage, buttonType }}
               name={`items[${nestIndex}].layout[${layoutIdx}].data.value`}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
@@ -184,15 +197,16 @@ const Controls: FC<Props> = ({
               control={control}
               // errorValid={error_corecontroll}
               // statusMemoDetail={props.statusMemoDetail}
+              canEditDoc={_isCanEdit}
             />
           );
           // }
         } else if (layout.template.type === "dd" && layout.isShow) {
           // incomeplete
-
+          // console.log("canEditDoc=>"+layout.label,canEditDoc);
           return (
             <SelectDropdownControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{ checkActionPage, buttonType }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               colIdx={layoutIdx}
@@ -206,12 +220,13 @@ const Controls: FC<Props> = ({
               controlUpdate={controlUpdate}
               // errorValid={error_corecontroll}
               // statusMemoDetail={props.statusMemoDetail}
+              canEditDoc={_isCanEdit}
             />
           );
         } else if (layout.template.type === "cb" && layout.isShow) {
           return (
             <MainCheckboxComponents
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{  checkActionPage, buttonType }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               // key={layoutIdx}
@@ -225,12 +240,13 @@ const Controls: FC<Props> = ({
               name={`items[${nestIndex}].layout[${layoutIdx}].data`}
               // errorValid={error_corecontroll}
               // statusMemoDetail={props.statusMemoDetail}
+              canEditDoc={_isCanEdit}
             />
           );
         } else if (layout.template.type === "at" && layout.isShow) {
           return (
             <AttachmentControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{  checkActionPage, buttonType }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               // key={layoutIdx}
@@ -242,6 +258,7 @@ const Controls: FC<Props> = ({
               colAction={_colAction}
               control={control}
               name={`items[${nestIndex}].layout[${layoutIdx}].data.value`}
+              canEditDoc={_isCanEdit}
             />
             // <AttachmentComponent
             //   key={layout.id} // important to include key with field's id
@@ -263,7 +280,7 @@ const Controls: FC<Props> = ({
         } else if (layout.template.type === "t" && layout.isShow) {
           return (
             <InputControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType, onControlChange }}
+              {...{  checkActionPage, buttonType, onControlChange }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               colIdx={layoutIdx}
@@ -273,6 +290,7 @@ const Controls: FC<Props> = ({
               colAction={_colAction}
               name={`items[${nestIndex}].layout[${layoutIdx}].data.value`}
               control={control}
+              canEditDoc={_isCanEdit}
               // errorValid={error_corecontroll}
               // statusMemoDetail={props.statusMemoDetail}
             />
@@ -297,7 +315,7 @@ const Controls: FC<Props> = ({
         } else if (layout.template.type === "r" && layout.isShow) {
           return (
             <RadioControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{  checkActionPage, buttonType }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               // key={layoutIdx}
@@ -310,6 +328,7 @@ const Controls: FC<Props> = ({
               onControlChange={onControlChange}
               name={`items[${nestIndex}].layout[${layoutIdx}].data.value`}
               control={control}
+              canEditDoc={_isCanEdit}
             />
           );
         } else if (layout.template.type === "tb" && layout.isShow) {
@@ -397,12 +416,12 @@ const Controls: FC<Props> = ({
                       <div className={`set-layout-required`}>
                         <TableComponent
                           {...{
-                            canEditDoc,
                             checkActionPage,
                             buttonType,
                             tableOptions,
                             setTableOptions,
                           }}
+                          canEditDoc={_isCanEdit}
                           onControlChange={onControlChange}
                           _columns={column}
                           _data={newData}
@@ -449,7 +468,7 @@ const Controls: FC<Props> = ({
         } else if (layout.template.type === "d" && layout.isShow) {
           return (
             <DatePickerControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType }}
+              {...{  checkActionPage, buttonType }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               colIdx={layoutIdx}
@@ -462,6 +481,7 @@ const Controls: FC<Props> = ({
               control={control}
               // errorValid={error_corecontroll}
               // statusMemoDetail={props.statusMemoDetail}
+              canEditDoc={_isCanEdit}
             />
           );
         } else if (layout.template.type === "bt" && layout.isShow) {
@@ -469,7 +489,7 @@ const Controls: FC<Props> = ({
 
           return (
             <ButtonComponent
-              {...{ canEditDoc, checkActionPage }}
+              {...{  checkActionPage }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               colIdx={layoutIdx}
@@ -483,13 +503,14 @@ const Controls: FC<Props> = ({
               documentNo={documentNo}
               // errorValid={error_corecontroll}
               // statusMemoDetail={props.statusMemoDetail}
+              canEditDoc={_isCanEdit}
             />
           );
         } else if (layout.template.type === "an" && layout.isShow) {
           //incomplete
 
           return (
-            <InputControlComponent
+            <AutoNumber
               {...{ canEditDoc, checkActionPage, buttonType, onControlChange }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
@@ -510,7 +531,7 @@ const Controls: FC<Props> = ({
           // setRvsPosition({ rowIdx: i, colIdx: idx });
           return (
             <InputControlComponent
-              {...{ canEditDoc, checkActionPage, buttonType, onControlChange }}
+              {...{  checkActionPage, buttonType, onControlChange }}
               key={layout.id} // important to include key with field's id
               rowIdx={nestIndex}
               colIdx={layoutIdx}
@@ -522,6 +543,7 @@ const Controls: FC<Props> = ({
               colAction={_colAction}
               name={`items[${nestIndex}].layout[${layoutIdx}].data.value`}
               control={control}
+              canEditDoc={_isCanEdit}
             />
           );
         } else if (layout.template.type === "im" && layout.isShow) {
@@ -531,7 +553,7 @@ const Controls: FC<Props> = ({
               rowIdx={nestIndex}
               colIdx={layoutIdx}
               buttonType={buttonType}
-              canEditDoc={canEditDoc}
+              canEditDoc={_isCanEdit}
               // onChangeEditForm={onChangeEditForm}
               template={layout.template}
               data={layout.data}

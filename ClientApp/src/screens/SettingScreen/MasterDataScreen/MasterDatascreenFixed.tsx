@@ -347,7 +347,7 @@ const MasterDatascreenFixed = () => {
                 <DynamicTable
                   tableName={apiName}
                   dataSource={dynamicData}
-                  canEdit={isAdmin || apiName === "TemplateList"}
+                  canEdit={isAdmin || apiName}
                   setItemsCount={setItemsCount}
                   actionBodyTemplate={actionBodyTemplate}
                   reloadData={fecthData}

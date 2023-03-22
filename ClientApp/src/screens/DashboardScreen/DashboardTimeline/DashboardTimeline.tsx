@@ -63,7 +63,8 @@ export const DashboardTimeline = (props: Props) => {
             bgColor: "rgba(225, 166, 244, 0.6)",
             itemProps: {
               "data-tip": _data2["Memo_MemoSubject"],
-              onDoubleClick: () => {
+
+              onMouseUp: () => {
                 window.open(
                   `${baseUrl}/Request?MemoID=${_data2["Memo_MemoId"]}`,
                   "_blank",

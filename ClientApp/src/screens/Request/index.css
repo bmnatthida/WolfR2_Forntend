@@ -136,7 +136,7 @@
 }
 .show-tablet-navbar-request-min-1024 {
   background-color: #fff;
-  position: sticky;
+  /* position: sticky; */
   top: 135px;
   z-index: 999;
   padding: 0 39px 10px;
