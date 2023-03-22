@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./LoginScreen.css";
 import { Carousel, Spin } from "antd";
 import { AccountInfo } from "@azure/msal-browser";
-import WolfSlideLeft from "../../assets/wolf-slide-left.png";
-import WolfSlideRight from "../../assets/wolf-slide-right.png";
 import { useMsal, useIsAuthenticated } from "@azure/msal-react";
 import { useHistory, useLocation } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -19,7 +17,7 @@ import { useTranslation } from "react-i18next";
 interface Props {
   PathLogo: string;
   IsMulti: string;
-  responeConfig: any;
+  PathCarousel: string[];
 }
 interface Emp {
   EmployeeCode: String;
@@ -27,15 +25,12 @@ interface Emp {
   Email: String;
 }
 
-const CarouItem = [
-  "https://qar2.wolfapprove.com/TempAttachment/ykhq1uf0oeaf9bl4kjg27/25660307171440_wolf-slide-left.png",
-  "https://qar2.wolfapprove.com/TempAttachment/ykhq1uf0oeaf9bl4kjg27/25660307171449_wolf-slide-right.png",
-];
 export const LoginScreen = (props: Props) => {
   const [currentUser, setCurrentUser] = useState<AccountInfo>();
   const [onLoading, setOnLoading] = useState<boolean>(false);
   // const [user, setUser] = useState<any>();
   const [remarkValid, setRemarkValid] = useState("");
+  const [carouselItem, setcarouselItem] = useState<any>(props.PathCarousel);
   const { instance, inProgress, accounts } = useMsal();
   const isAuthenticated = useIsAuthenticated();
   const [sessionState, setSessionState] = useSessionContext();
@@ -234,23 +229,14 @@ export const LoginScreen = (props: Props) => {
     <div className="login-screens">
       <div className="login-container">
         <div className="image-slider-container">
-          {/* <Carousel autoplay className="img-carousel">
-            {CarouItem.map((_carousel: any, idx: number) => {
+          <Carousel autoplay className="img-carousel">
+            {carouselItem.map((_carousel: any, idx: number) => {
               return (
                 <div className="slide-content">
                   <img src={_carousel} alt="slide" />
                 </div>
               );
             })}
-          </Carousel> */}
-
-          <Carousel autoplay className="img-carousel">
-            <div className="slide-content">
-              <img src={WolfSlideLeft} alt="slide" />
-            </div>
-            <div className="slide-content">
-              <img src={WolfSlideRight} alt="slide" />
-            </div>
           </Carousel>
         </div>
 

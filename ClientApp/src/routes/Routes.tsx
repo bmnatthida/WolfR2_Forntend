@@ -101,7 +101,7 @@ const Routes = (props: Props) => {
           {...{ setIsLoadPackage: props.setIsLoadPackage }}
           PathLogo={props.responeConfig.pathLogoLogin}
           IsMulti={props.responeConfig.isMulti}
-          responeConfig={responeConfig}
+          PathCarousel={props.responeConfig.pathCarousel}
         />
       );
     } else if (props.responeConfig?.type === "LoginGoogle") {
