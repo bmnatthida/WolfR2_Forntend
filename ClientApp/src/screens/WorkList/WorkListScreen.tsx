@@ -428,7 +428,6 @@ const WorkListScreen = (props: Props) => {
     const actor = {
       EmployeeId: userData.EmployeeId,
     };
-    window.scrollTo(0, 0);
     setToggleDetail(false);
     let _dataAttachfiles = await GetAllAttachFiles({ memoid: memoId });
 

@@ -70,6 +70,7 @@ export const DetailContentScreen: FC<Props> = ({
       animate={{ x: [1000, 0] }}
       exit={{ x: [0, 1000] }}
     >
+      <div className="floating-container">
       <div className="header-container">
         <div
           className={`header-content-button${page === 1 ? " -active" : ""}`}
@@ -161,6 +162,7 @@ export const DetailContentScreen: FC<Props> = ({
           }
           pageName={"WorkList"}
         />
+      </div>
       </div>
     </motion.div>
   );
