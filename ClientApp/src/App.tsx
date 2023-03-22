@@ -252,7 +252,7 @@ const App = (props: Props) => {
           <AlertContextProvider>
             <SessionContextProvider>
               <AdminEditCompletedMemoProvider>
-                <LoadComponent />
+                <LoadComponent responeConfig={responeConfig} />
                 <LoadPackageComponent
                   {...{ isLoadPackage, setIsLoadPackage }}
                 />
