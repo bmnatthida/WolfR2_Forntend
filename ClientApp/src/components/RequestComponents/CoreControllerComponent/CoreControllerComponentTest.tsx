@@ -1119,304 +1119,326 @@ export const CoreControllerComponentTest: FC<Props> = ({
       relateGroup: [],
       data: [],
     };
+    try {
+      let isSetLineApprove = false;
+      const controlString = JSON.stringify(_control);
+      let newControl = JSON.parse(controlString);
+      console.log("logic=>controlValue", controlValue, controlTemplate);
 
-    let isSetLineApprove = false;
-    const controlString = JSON.stringify(_control);
-    let newControl = JSON.parse(controlString);
+      if (logic) {
+        //find logic that control have
 
-    //find logic that control have
-
-    if (logic.logictype === "datasourcerelated") {
-      const responseData = await onProcessLogicDataSourceRelated(
-        logic,
-        controlTemplate,
-        controlValue,
-        isInTable
-      );
-
-      if (responseData) {
-        //check if this control in table
-        if (controlTemplate.type === "tb" && isInTable) {
-          //format value to data in template type = table
-          const ee = returnToValure(controlTemplate, controlValue);
-
-          let newColumn: any = {};
-
-          for (
-            let i = 0;
-            i < responseData.responseDataSourceLoadRelated.relateGroup.length;
-            i++
-          ) {
-            //put data to specific row
-            const relateGroup =
-              responseData.responseDataSourceLoadRelated.relateGroup[i];
-            newControl[controlValue.rowTemplate].layout[
-              controlValue.colTemplate
-            ].data.row[relateGroup.row] = ee;
-
-            newControl[controlValue.rowTemplate].layout[
-              controlValue.colTemplate
-            ].data.row[relateGroup.row][relateGroup.col].value =
-              relateGroup.valueRelate;
-
-            //format value to row value
-            newColumn = formatToColumns(
-              controlTemplate.attribute.column,
-              newControl[controlValue.rowTemplate].layout[
-                controlValue.colTemplate
-              ].data.row[relateGroup.row]
-            );
-          }
-
-          const responseDataTable = {
-            ...newColumn,
-            key: controlValue.key,
-          };
-
-          return { type: "table", value: responseDataTable };
-        } else {
-          for (
-            let i = 0;
-            i < responseData.responseDataSourceLoadRelated.relateGroup.length;
-            i++
-          ) {
-            const relateGroup =
-              responseData.responseDataSourceLoadRelated.relateGroup[i];
-
-            for (
-              let j = 0;
-              j < responseData.responseDataSourceLoadRelated.data.length;
-              j++
-            ) {
-              const relateData =
-                responseData.responseDataSourceLoadRelated.data[j];
-
-              newControl[relateGroup.row].layout[relateGroup.col].data.value =
-                relateData[relateGroup.relateValue.value];
-            }
-          }
-          return { type: "control", value: newControl };
-
-          // setValue("items", [..._control]);
-        }
-      }
-    } else if (logic.logictype === "reference") {
-      const responseData = await onProcessLogicReference(
-        logic,
-        controlTemplate,
-        controlValue,
-        newControl
-      );
-
-      if (responseData) {
-        //map data from api response
-        const permittedValues = responseData.data.map(function (value: any) {
-          let res: any = {};
-          for (let i = 0; i < responseData.loadTo.length; i++) {
-            const field = responseData.loadTo[i];
-            res[field["TBColumn"]] = value[field["MSTColumn"]];
-          }
-          return res;
-        });
-        let resRow: any[] = [];
-
-        if (permittedValues) {
-          for (let i = 0; i < permittedValues.length; i++) {
-            const perValue = permittedValues[i];
-
-            //create empty table data as response api length
-            let colData = new Array(
-              templateDesc?.items[responseData.row].layout[
-                responseData.col
-              ].template.attribute.column.length
-            ).fill({ value: "" });
-
-            //loop for put data to table
-            for (const [key, value] of Object.entries(perValue)) {
-              //loop throught table template column length
-              for (
-                let j = 0;
-                j <
-                templateDesc?.items[responseData.row].layout[responseData.col]
-                  .template.attribute.column.length;
-                j++
-              ) {
-                const _tableCol =
-                  templateDesc?.items[responseData.row].layout[responseData.col]
-                    .template.attribute.column[j];
-
-                // if column label = key of data response, put data in
-                if (_tableCol.label === key) {
-                  colData[j] = { value };
-                }
-              }
-            }
-
-            resRow.push(colData);
-          }
-
-          newControl[responseData.row].layout[responseData.col].data.row =
-            resRow;
-          return { type: "control", value: newControl };
-        }
-      }
-    } else if (logic.logictype === "datalineapprove" && !isSetLineApprove) {
-      console.log("logic=>logic", logic);
-      console.log("logic=>sumRes", sumRes);
-
-      const responseData = await onProcessLogicLineApprove(
-        logic,
-        controlTemplate,
-        controlValue,
-        newControl
-      );
-      console.log("logic=>datalineapprove", responseData);
-
-      if (responseData) {
-        isSetLineApprove = true;
-        setJsonConditions = responseData;
-        getLineApproveForAmount(
-          sumRes._amount,
-          responseData,
-          "datalineapprove",
-          controlTemplate
-        );
-        setIsControlLoading(false);
-        // return { type: "lineapprove", value: responseData };
-      }
-    } else if (logic.logictype === "datareladtoloaddata") {
-      const responseData = await onProcessLogicDataRelatedToLoadData(
-        logic,
-        controlTemplate,
-        controlValue,
-        newControl,
-        isInTable
-      );
-      if (responseData) {
-        if (responseData.data) {
-          if (!isInTable) {
-            newControl[responseData.loadTo.row].layout[
-              responseData.loadTo.col
-            ].template.attribute.items = responseData.data.data;
-            return { type: "control", value: newControl };
-          } else {
-            if (checkIfGetData(responseData.data.data)) {
-              let positionControl: { row: number; col: number } = {
-                row: -1,
-                col: -1,
-              };
-              for (let i = 0; i < newControl.length; i++) {
-                const items = newControl[i];
-                for (let j = 0; j < items.layout.length; j++) {
-                  const layout = items.layout[j];
-                  if (layout.template.label === controlTemplate.label) {
-                    positionControl = { row: i, col: j };
-                  }
-                }
-              }
-              //addCheckedToArray
-              const mapDataItem: any[] = [];
-              for (
-                let index = 0;
-                index < responseData.data.data.length;
-                index++
-              ) {
-                const element = responseData.data.data[index];
-                mapDataItem.push({
-                  checked: index === 0 ? "Y" : "N",
-                  ...element,
-                });
-              }
-              let actionCol = null;
-              let targetCol = null;
-
-              if (responseData.actionFrom.col !== -1) {
-                let _tableOptions = [...tableOptions];
-
-                actionCol =
-                  controlTemplate.attribute.column[
-                    responseData.actionFrom?.col
-                  ];
-                targetCol =
-                  controlTemplate.attribute.column[responseData.loadTo.col];
-                const options = tableOptions.find(
-                  (e) =>
-                    e.actionsCol.rowIdx === responseData.actionFrom.row &&
-                    e.actionsCol.colIdx === responseData.actionFrom.col
-                );
-                if (options) {
-                  _tableOptions.map((e) => {
-                    if (
-                      e.actionsCol.rowIdx === responseData.actionFrom.row &&
-                      e.actionsCol.colIdx === responseData.actionFrom.col
-                    ) {
-                      e.targetCol.options = responseData.data.data;
-                    }
-                  });
-                } else {
-                  _tableOptions.push({
-                    actionsCol: {
-                      label: actionCol.label,
-                      rowIdx: controlValue.key,
-                      colIdx: responseData.actionFrom.col,
-                      value: controlValue[actionCol.label],
-                    },
-                    targetCol: {
-                      label: targetCol.label,
-                      rowIdx: controlValue.key,
-                      colIdx: responseData.loadTo.col,
-                      options: responseData.data.data,
-                    },
-                  });
-                }
-                setTableOptions([..._tableOptions]);
-              }
-
-              return {
-                type: "table_dd_to_dd",
-                value: mapDataItem,
-                controls: {
-                  row: positionControl.row,
-                  layout: positionControl.col,
-                  columnTb: responseData.loadTo.col,
-                },
-              };
-            }
-          }
-        }
-      }
-    } else if (logic.logictype === "dataajaxloadtable") {
-      console.log("logic=>logic", logic);
-
-      const responseData = await onProcessLogicAjax(
-        logic,
-        controlTemplate,
-        controlValue,
-        isInTable
-      );
-      if (responseData) {
-        for (
-          let i = 0;
-          i < responseData.responseDataSourceLoadRelated.relateGroup.length;
-          i++
-        ) {
-          const processData = formatKeyLogicData(
-            responseData.responseDataSourceLoadRelated
+        if (logic.logictype === "datasourcerelated") {
+          const responseData = await onProcessLogicDataSourceRelated(
+            logic,
+            controlTemplate,
+            controlValue,
+            isInTable
           );
 
-          _control[processData.relateGroup[i].row].layout[
-            processData.relateGroup[i].col
-          ].template.attribute.column[
-            processData.relateGroup[i].tableCol
-          ].control.template.attribute.items = processData.data;
+          if (responseData) {
+            //check if this control in table
+            if (controlTemplate.type === "tb" && isInTable) {
+              //format value to data in template type = table
+              const ee = returnToValure(controlTemplate, controlValue);
+
+              let newColumn: any = {};
+
+              for (
+                let i = 0;
+                i <
+                responseData.responseDataSourceLoadRelated.relateGroup.length;
+                i++
+              ) {
+                //put data to specific row
+                const relateGroup =
+                  responseData.responseDataSourceLoadRelated.relateGroup[i];
+                newControl[controlValue.rowTemplate].layout[
+                  controlValue.colTemplate
+                ].data.row[relateGroup.row] = ee;
+
+                newControl[controlValue.rowTemplate].layout[
+                  controlValue.colTemplate
+                ].data.row[relateGroup.row][relateGroup.col].value =
+                  relateGroup.valueRelate;
+
+                //format value to row value
+                newColumn = formatToColumns(
+                  controlTemplate.attribute.column,
+                  newControl[controlValue.rowTemplate].layout[
+                    controlValue.colTemplate
+                  ].data.row[relateGroup.row]
+                );
+              }
+
+              const responseDataTable = {
+                ...newColumn,
+                key: controlValue.key,
+              };
+
+              return { type: "table", value: responseDataTable };
+            } else {
+              console.log("logic=>datasourcerelated", responseData);
+
+              for (
+                let i = 0;
+                i <
+                responseData.responseDataSourceLoadRelated.relateGroup.length;
+                i++
+              ) {
+                const relateGroup =
+                  responseData.responseDataSourceLoadRelated.relateGroup[i];
+
+                for (
+                  let j = 0;
+                  j < responseData.responseDataSourceLoadRelated.data.length;
+                  j++
+                ) {
+                  const relateData =
+                    responseData.responseDataSourceLoadRelated.data[j];
+
+                  newControl[relateGroup.row].layout[
+                    relateGroup.col
+                  ].data.value = relateData[relateGroup.relateValue.value];
+                }
+              }
+              return { type: "control", value: newControl };
+
+              // setValue("items", [..._control]);
+            }
+          }
+        } else if (logic.logictype === "reference") {
+          const responseData = await onProcessLogicReference(
+            logic,
+            controlTemplate,
+            controlValue,
+            newControl
+          );
+
+          if (responseData) {
+            //map data from api response
+            const permittedValues = responseData.data.map(function (
+              value: any
+            ) {
+              let res: any = {};
+              for (let i = 0; i < responseData.loadTo.length; i++) {
+                const field = responseData.loadTo[i];
+                res[field["TBColumn"]] = value[field["MSTColumn"]];
+              }
+              return res;
+            });
+            let resRow: any[] = [];
+
+            if (permittedValues) {
+              for (let i = 0; i < permittedValues.length; i++) {
+                const perValue = permittedValues[i];
+
+                //create empty table data as response api length
+                let colData = new Array(
+                  templateDesc?.items[responseData.row].layout[
+                    responseData.col
+                  ].template.attribute.column.length
+                ).fill({ value: "" });
+
+                //loop for put data to table
+                for (const [key, value] of Object.entries(perValue)) {
+                  //loop throught table template column length
+                  for (
+                    let j = 0;
+                    j <
+                    templateDesc?.items[responseData.row].layout[
+                      responseData.col
+                    ].template.attribute.column.length;
+                    j++
+                  ) {
+                    const _tableCol =
+                      templateDesc?.items[responseData.row].layout[
+                        responseData.col
+                      ].template.attribute.column[j];
+
+                    // if column label = key of data response, put data in
+                    if (_tableCol.label === key) {
+                      colData[j] = { value };
+                    }
+                  }
+                }
+
+                resRow.push(colData);
+              }
+
+              newControl[responseData.row].layout[responseData.col].data.row =
+                resRow;
+              return { type: "control", value: newControl };
+            }
+          }
+        } else if (logic.logictype === "datalineapprove" && !isSetLineApprove) {
+          console.log("logic=>logic", logic);
+          console.log("logic=>sumRes", sumRes);
+
+          const responseData = await onProcessLogicLineApprove(
+            logic,
+            controlTemplate,
+            controlValue,
+            newControl
+          );
+          console.log("logic=>datalineapprove", responseData);
+
+          if (responseData) {
+            isSetLineApprove = true;
+            setJsonConditions = responseData;
+            getLineApproveForAmount(
+              sumRes._amount,
+              responseData,
+              "datalineapprove",
+              controlTemplate
+            );
+            setIsControlLoading(false);
+            // return { type: "lineapprove", value: responseData };
+          }
+        } else if (logic.logictype === "datareladtoloaddata") {
+          const responseData = await onProcessLogicDataRelatedToLoadData(
+            logic,
+            controlTemplate,
+            controlValue,
+            newControl,
+            isInTable
+          );
+
+          if (responseData) {
+            if (responseData.data) {
+              if (!isInTable) {
+                newControl[responseData.loadTo.row].layout[
+                  responseData.loadTo.col
+                ].template.attribute.items = responseData.data.data;
+
+                return { type: "control", value: newControl };
+              } else {
+                if (checkIfGetData(responseData.data.data)) {
+                  let positionControl: { row: number; col: number } = {
+                    row: -1,
+                    col: -1,
+                  };
+                  for (let i = 0; i < newControl.length; i++) {
+                    const items = newControl[i];
+                    for (let j = 0; j < items.layout.length; j++) {
+                      const layout = items.layout[j];
+                      if (layout.template.label === controlTemplate.label) {
+                        positionControl = { row: i, col: j };
+                      }
+                    }
+                  }
+                  //addCheckedToArray
+                  const mapDataItem: any[] = [];
+                  for (
+                    let index = 0;
+                    index < responseData.data.data.length;
+                    index++
+                  ) {
+                    const element = responseData.data.data[index];
+                    mapDataItem.push({
+                      checked: index === 0 ? "Y" : "N",
+                      ...element,
+                    });
+                  }
+                  let actionCol = null;
+                  let targetCol = null;
+
+                  if (responseData.actionFrom.col !== -1) {
+                    let _tableOptions = [...tableOptions];
+
+                    actionCol =
+                      controlTemplate.attribute.column[
+                        responseData.actionFrom?.col
+                      ];
+                    targetCol =
+                      controlTemplate.attribute.column[responseData.loadTo.col];
+                    const options = tableOptions.find(
+                      (e) =>
+                        e.actionsCol.rowIdx === responseData.actionFrom.row &&
+                        e.actionsCol.colIdx === responseData.actionFrom.col
+                    );
+                    if (options) {
+                      _tableOptions.map((e) => {
+                        if (
+                          e.actionsCol.rowIdx === responseData.actionFrom.row &&
+                          e.actionsCol.colIdx === responseData.actionFrom.col
+                        ) {
+                          e.targetCol.options = responseData.data.data;
+                        }
+                      });
+                    } else {
+                      _tableOptions.push({
+                        actionsCol: {
+                          label: actionCol.label,
+                          rowIdx: controlValue.key,
+                          colIdx: responseData.actionFrom.col,
+                          value: controlValue[actionCol.label],
+                        },
+                        targetCol: {
+                          label: targetCol.label,
+                          rowIdx: controlValue.key,
+                          colIdx: responseData.loadTo.col,
+                          options: responseData.data.data,
+                        },
+                      });
+                    }
+                    setTableOptions([..._tableOptions]);
+                  }
+
+                  return {
+                    type: "table_dd_to_dd",
+                    value: mapDataItem,
+                    controls: {
+                      row: positionControl.row,
+                      layout: positionControl.col,
+                      columnTb: responseData.loadTo.col,
+                    },
+                  };
+                }
+              }
+            }
+          }
+        } else if (logic.logictype === "dataajaxloadtable") {
+          console.log("logic=>logic", logic);
+
+          const responseData = await onProcessLogicAjax(
+            logic,
+            controlTemplate,
+            controlValue,
+            isInTable
+          );
+          if (responseData) {
+            for (
+              let i = 0;
+              i < responseData.responseDataSourceLoadRelated.relateGroup.length;
+              i++
+            ) {
+              const processData = formatKeyLogicData(
+                responseData.responseDataSourceLoadRelated
+              );
+
+              _control[processData.relateGroup[i].row].layout[
+                processData.relateGroup[i].col
+              ].template.attribute.column[
+                processData.relateGroup[i].tableCol
+              ].control.template.attribute.items = processData.data;
+            }
+
+            reset({
+              items: _control,
+            });
+          }
         }
-
-        reset({
-          items: _control,
-        });
       }
+    } catch (error) {
+      console.log(
+        "onProcessLogic=>error",
+        error,
+        "Logic=> " + logic,
+        "value=> ",
+        controlValue
+      );
     }
-
     return { type: null, value: null };
   };
 
