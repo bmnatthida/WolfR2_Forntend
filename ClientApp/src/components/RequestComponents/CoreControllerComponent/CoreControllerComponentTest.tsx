@@ -330,6 +330,8 @@ export const CoreControllerComponentTest: FC<Props> = ({
         });
       });
 
+      getLineApproveForAmount(_amount, controlTemplate);
+
       return {
         _amount: _amount,
         isSum: isSum,
