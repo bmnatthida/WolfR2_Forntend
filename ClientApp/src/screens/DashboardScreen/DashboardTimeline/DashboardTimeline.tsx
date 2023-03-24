@@ -46,14 +46,14 @@ export const DashboardTimeline = (props: Props) => {
             start: moment(
               new Date(
                 moment(
-                  moment(_data2[props.endpoint[5]], "DD MMMM yyyy")
+                  moment(_data2[props.endpoint[7]], "DD MMMM yyyy")
                 ).format("yyyy/MM/DD")
               )
             ),
             end: moment(
               new Date(
                 moment(
-                  moment(_data2[props.endpoint[5]], "DD MMMM yyyy").add(
+                  moment(_data2[props.endpoint[7]], "DD MMMM yyyy").add(
                     1,
                     "days"
                   )

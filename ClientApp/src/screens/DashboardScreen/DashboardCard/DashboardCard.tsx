@@ -2,6 +2,8 @@ import { InputText } from "primereact/inputtext";
 import React, { useEffect, useState } from "react";
 import { RiDatabase2Line } from "react-icons/ri";
 import { useHistory } from "react-router";
+import { Popover, Tooltip } from "antd";
+
 interface Props {
   dashboard: any;
   statusCard: any;
@@ -73,35 +75,51 @@ export const DashboardCard = (props: Props) => {
                       });
 
                       return (
-                        <div
-                          key={_item.Memo_MemoId}
-                          className="set-css-in-card-list set-cursor-pointer-css"
-                          onClick={() => {
-                            window.open(
-                              `/Request?MemoID=${_item[props.endpoint[0]]}`,
-                              "_blank",
-                              "noreferrer"
-                            );
-                          }}
+                        <Tooltip
+                          placement="bottom"
+                          title={_item[props.endpoint[5]]}
+                          className="set-radius-tooltip"
+                          color="black"
                         >
-                          <div className="row">
-                            <div className="col-md-6">
-                              <span className="set-font-css-text-in-card set-underline">
-                                {_item[props.endpoint[1]]}
-                              </span>
-                            </div>
+                          <div
+                            key={_item.Memo_MemoId}
+                            className="set-css-in-card-list set-cursor-pointer-css"
+                            onClick={() => {
+                              window.open(
+                                `/Request?MemoID=${_item[props.endpoint[0]]}`,
+                                "_blank",
+                                "noreferrer"
+                              );
+                            }}
+                          >
+                            <div className="row">
+                              <div className="col-md-6">
+                                <span className="set-font-css-text-in-card set-underline">
+                                  {_item[props.endpoint[1]]}
+                                </span>
+                              </div>
 
-                            <div
-                              className="col-md-5 set-css-card-like-a-button"
-                              style={{ background: colorValue }}
-                            >
-                              <span className="set-font-css-dash-board">
-                                {_item[props.endpoint[2]]}
-                              </span>
+                              <div
+                                className="col-md-5 set-css-card-like-a-button"
+                                style={{ background: colorValue }}
+                              >
+                                <span className="set-font-css-dash-board">
+                                  {_item[props.endpoint[2]]}
+                                </span>
+                              </div>
                             </div>
+                            <span className="set-font-css-text-in-card">
+                              {_item[props.endpoint[3]]}
+                            </span>
+                            <span className="set-font-css-text-in-card">
+                              {_item[props.endpoint[6]]}
+                            </span>
+                            <span className="set-font-css-text-in-card">
+                              {_item[props.endpoint[7]]}
+                            </span>
+                            {/* {MapDataFromEndpoint(_item)} */}
                           </div>
-                          {MapDataFromEndpoint(_item)}
-                        </div>
+                        </Tooltip>
                       );
                     })}
                   </div>

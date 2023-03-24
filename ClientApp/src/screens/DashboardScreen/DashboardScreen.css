@@ -76,8 +76,13 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-
   color: #000000;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.set-radius-tooltip {
+  border-radius: 10px;
 }
 .set-underline {
   text-decoration-line: underline;

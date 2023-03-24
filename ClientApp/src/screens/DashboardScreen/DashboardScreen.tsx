@@ -29,7 +29,6 @@ import {
   GetDashboardKeyEndpoint,
   GetDashboardFilterGroupBy,
   GetDashboardDefaultFilterConFig,
-  // GetDashboardFilterProject,
 } from "../../Services/ConfigurationService";
 import { RiFilterOffLine } from "react-icons/ri";
 import withPerMission from "../../components/HOC/withPermission";
@@ -42,9 +41,11 @@ import {
   GetAllEmployee,
   GetAllEmployeeByLanguage,
 } from "../../Services/EmployeeService";
+import { GetAllProject } from "../../Services/ProjectService";
 import { GrFormNextLink } from "react-icons/gr";
 import { IoCalendarOutline } from "react-icons/io5";
 import { useUserContext } from "../../Context/UserContext";
+
 interface Props {}
 
 const DashboardScreen = (props: Props) => {
@@ -76,6 +77,7 @@ const DashboardScreen = (props: Props) => {
   const [selectedEmployee, setSelectedEmployee] = useState<any>();
   const [dates, setDates] = useState<any>();
   const [project, setProject] = useState<any>();
+  const [selectedProject, setSelectedProject] = useState<any>();
   const [selectedStatus, setSelectedStatus] = useState<any>();
   const [keyEnter, setKeyEnter] = useState<boolean>(false);
   const [onClickFilter, setOnClickFilter] = useState<boolean>(false);
@@ -92,7 +94,7 @@ const DashboardScreen = (props: Props) => {
   async function fetchData() {
     setIsFetchData(true);
     var _filter = await GetDashboardFilterStatus();
-    // var _filterProject = await GetDashboardFilterProject();
+    var _filterProject = await GetAllProject();
     var _responeDefaultAdvanced = await defaultAdvancedFilter(_filter);
     var _endpoint = await GetDashboardKeyEndpoint();
     var _advancedFilter = await GetDashboardAdvancedFilter();
@@ -106,12 +108,12 @@ const DashboardScreen = (props: Props) => {
     setData(_mapGroupData);
     setDashboard(headData);
     fetchDataEmployee();
+    fetchProject();
     setDataAdvancedFilter(_advancedFilter);
     setDataFilterGroupBy(_filterGroupBy);
     setStatusCard(_statusCard);
     setEndpoint(_endpoint);
     defaultFilterStatus(_filter);
-    // defaultFilterProject(_filterProject);
     setSelectedFilter(_advancedFilter[0]);
     setFilterGroupBy(_filterGroupBy[0]);
     setOnLoading(false);
@@ -142,6 +144,15 @@ const DashboardScreen = (props: Props) => {
         });
         _dataArray2.push(response[0]);
       }
+      // for (let i = 0; i < _attribute.length; i++) {
+      //   const element = _attribute[i];
+      //   var response = _advancedFilter.filter((item: any) => {
+      //     if (element.dropdown.project === item.project) {
+      //       return item;
+      //     }
+      //   });
+      //   _dataArray3.push(response[0]);
+      // }
       let ss: any[] = [];
       for (let i = 0; i < _dataArray.length; i++) {
         const options = _dataArray[i];
@@ -186,6 +197,7 @@ const DashboardScreen = (props: Props) => {
       setDataAdvancedFilterList(zz);
     }
   }, [filterAttribute, dataAdvancedFilter]);
+
   async function defaultAdvancedFilter(_filterStatus: any) {
     var _defaultFilter = await GetDashboardDefaultFilterConFig();
     var requestData: any[] = [];
@@ -331,6 +343,8 @@ const DashboardScreen = (props: Props) => {
   }
   async function fetchDataEmployee() {
     var _employee = await GetAllEmployee();
+    console.log("_employee", _employee);
+
     var array: any[] = [];
     _employee.map((_data: any) => {
       array.push({
@@ -340,6 +354,19 @@ const DashboardScreen = (props: Props) => {
     });
 
     setEmployeeList([...array]);
+  }
+  async function fetchProject() {
+    var _Project = await GetAllProject();
+    console.log("_Project", _Project);
+
+    var arrayProject: any[] = [];
+    _Project.map((_data: any) => {
+      arrayProject.push({
+        ProjectName: _data["ProjectName"],
+      });
+    });
+
+    setProject([...arrayProject]);
   }
   async function defaultFilterStatus(_filter: any) {
     let _filterStatus: any;
@@ -359,18 +386,7 @@ const DashboardScreen = (props: Props) => {
   async function timeoutHandler() {
     await sleep(1);
   }
-  // async function defaultFilterProject(_filter: any) {
-  //   let _filterProject: any;
-  //   const resultCard = _filter.map((_data: any) => {
-  //     const [value, display, defaultValue] = _data.split("||");
-  //     _filterProject = {
-  //       value: value,
-  //       display: display,
-  //     };
-  //     return _filterProject;
-  //   });
-  //   setItemsStatus(resultCard);
-  // }
+
   function globalFilterInput(_data: any) {
     if (!filter) {
       return _data;
@@ -391,6 +407,8 @@ const DashboardScreen = (props: Props) => {
   }
   async function advancedSearch(_data: any) {
     setOnLoading(true);
+    console.log("_data", _data, filterAttribute);
+
     if (filterAttribute?.items[0]?.value?.length === 0) {
       return _data;
     } else if (filterAttribute?.items[0]?.value?.length !== 0) {
@@ -409,9 +427,15 @@ const DashboardScreen = (props: Props) => {
           _isHasStatus = true;
           _filterParameter = "Equals";
         }
+        if (_dropdown.dropdown.type === "project") {
+          _fieldText = selectedProject;
+          _filterParameter = "Equals";
+          console.log("projectIF", _fieldText, _filterParameter);
+        }
         if (_dropdown.dropdown.type === "name") {
           _fieldText = selectedEmployee;
           _filterParameter = "Equals";
+          console.log("EmployeeIF", _fieldText, _filterParameter);
         } else if (_dropdown.dropdown.type === "status") {
           _filterParameter = "Equals";
           let statusValue: any = "";
@@ -437,8 +461,9 @@ const DashboardScreen = (props: Props) => {
         }
         result.push({
           ID: 0,
-          FieldCode: _dropdown?.dropdown?.name,
-          FieldDisplay: _dropdown?.dropdown?.name,
+          FieldCode: _dropdown?.dropdown?.name || _dropdown?.dropdown?.project,
+          FieldDisplay:
+            _dropdown?.dropdown?.name || _dropdown?.dropdown?.project,
           IsExcludeBlankData: true,
           FieldType: _fieldType,
           IsEquals: false,
@@ -464,6 +489,7 @@ const DashboardScreen = (props: Props) => {
       var responeTest = await MapDataEndpoint(dd);
       return responeTest;
     }
+    setOnLoading(false);
   }
 
   useEffect(() => {
@@ -799,17 +825,34 @@ const DashboardScreen = (props: Props) => {
                           }}
                         />
                       )}
-                      {/* {filterAttribute?.items[idx]?.dropdown?.type ===
+                      {filterAttribute?.items[idx]?.dropdown?.type ===
                         "project" && (
                         <MultiSelect
-                          style={{ borderRadius: "6px" }}
+                          className="width-100-multi-select"
                           display="chip"
-                          optionLabel={"display"}
+                          optionLabel={"ProjectName"}
                           value={filterAttribute?.items[idx]?.value[0]}
                           options={project}
+                          placeholder="Select Project"
+                          filter
                           onChange={(e: any) => {
                             setTimeout(timeoutHandler, 10000);
-                            setSelectedStatus(e.value);
+                            var projectValue: any = "";
+                            e.value?.map((_data: any) => {
+                              var _dataByProject: any;
+                              _dataByProject = _data.ProjectName;
+                              <>
+                                {e.value?.length > 1
+                                  ? e.value?.slice(-1)[0] == _dataByProject
+                                    ? `${(projectValue =
+                                        projectValue + _dataByProject)}`
+                                    : `${(projectValue =
+                                        projectValue + _dataByProject + ";|;")}`
+                                  : (projectValue =
+                                      projectValue + _dataByProject)}
+                              </>;
+                            });
+                            setSelectedProject(projectValue);
                             setFilterAttribute((prevState: any) => ({
                               ...prevState,
                               items: filterAttribute.items.map(
@@ -824,11 +867,8 @@ const DashboardScreen = (props: Props) => {
                               ),
                             }));
                           }}
-                          placeholder="Select Project"
-                          filter
-                          className="set-layout-dd-filter-dashboard width-100-multi-select"
                         />
-                      )} */}
+                      )}
                     </div>
 
                     {idx !== 0 && (
