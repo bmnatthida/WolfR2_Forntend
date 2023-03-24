@@ -183,7 +183,7 @@ namespace WolfR2.Controllers
                         ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
                         DocumentCode = memoModel.DocumentCode
                     };
-                    LogFile.WriteLogFile("RolesController GetTemplateByDocTypeCod | api/Template/TemplateByDocTypeCode | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempRequestModel), module);
+                    LogFile.WriteLogFile("MemoController GetTemplateByDocTypeCod | api/Template/TemplateByDocTypeCode | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempRequestModel), module);
 
                     var tempResult = await CoreAPI.post(_baseUrl + "api/Template/TemplateByDocTypeCode", null, tempRequestModel);
                     listFormName.Add(JsonConvert.DeserializeObject<ListFormNameDto>(tempResult, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }));
@@ -199,9 +199,12 @@ namespace WolfR2.Controllers
                         ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
                         TemplateId = memoModel.TemplateId
                     };
-                    LogFile.WriteLogFile("RolesController GetById | api/Template/TemplateByid | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempRequestModel), module);
+                    LogFile.WriteLogFile("MemoController GetById | api/Template/TemplateByid | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempRequestModel), module);
 
                     var tempResult = await CoreAPI.post(_baseUrl + "api/Template/TemplateByid", null, tempRequestModel);
+
+                    LogFile.WriteLogFile("MemoController   api/Template/TemplateByid | tempResult : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempResult), module);
+
 
                     listFormName.Add(JsonConvert.DeserializeObject<ListFormNameDto>(tempResult, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }));
                 }
@@ -213,9 +216,10 @@ namespace WolfR2.Controllers
                         ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
                         TemplateId = memoDetailDto.template_id
                     };
-                    LogFile.WriteLogFile("RolesController GetById | api/Template/TemplateByid | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempRequestModel), module);
+                    LogFile.WriteLogFile("MemoController api/Template/TemplateByid | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempRequestModel), module);
 
                     var tempResult = await CoreAPI.post(_baseUrl + "api/Template/TemplateByid", null, tempRequestModel);
+                    LogFile.WriteLogFile("MemoController   api/Template/TemplateByid | tempResult : " + Newtonsoft.Json.JsonConvert.SerializeObject(tempResult), module);
 
 
                     listFormName.Add(JsonConvert.DeserializeObject<ListFormNameDto>(tempResult, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }));
@@ -239,11 +243,14 @@ namespace WolfR2.Controllers
                     refDocs = listRefDoc,
                 };
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(responeDto);
+                LogFile.WriteLogFile("MemoController GetMemoDetail | result : " + result, module);
+
                 return Ok(result);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                LogFile.WriteLogFile("MemoController GetMemoDetail | Exceptionl : " + ex, module);
                 throw (ex);
             }
         }
