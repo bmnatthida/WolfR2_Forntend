@@ -70,10 +70,8 @@ namespace WolfR2.Controllers
         [HttpPost("GetMemoById")]
         public async Task<ActionResult> GetMemoById(MemoModel memoModel)
         {
-            try 
+            var requestModel = new MemoModel
             {
-                var requestModel = new MemoModel
-                {
                 UserPrincipalName = memoModel.UserPrincipalName,
                 ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
                 memoid = memoModel.memoid,
@@ -81,14 +79,10 @@ namespace WolfR2.Controllers
                 SecretId = memoModel.SecretId,
                 actor = memoModel.actor
             };
-                var result = await CoreAPI.post(_baseUrl + "api/Memo/MemoDetail", null, requestModel);
-                return Ok(result);
-            }
-            catch (Exception e)
-            {
-                LogFile.WriteLogFile("MemoController GetMemoById | api/Memo/MemoDetail | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(requestModel), module);
-                throw (e);
-            }
+            LogFile.WriteLogFile("MemoController GetMemoById | api/Memo/MemoDetail | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(requestModel), module);
+
+            var result = await CoreAPI.post(_baseUrl + "api/Memo/MemoDetail", null, requestModel);
+            return Ok(result);
         }
         /// <summary>
         /// ดึงข้อมูลของ MemoDetail จากMemoid

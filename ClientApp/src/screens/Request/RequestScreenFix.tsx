@@ -479,9 +479,10 @@ const RequestScreenFix = () => {
         actor: userDataByQuery ? userDataByQuery : userData,
       };
       let requestDetail = await GetMemoDetail(requestBody);
+      console.log("request=>requestDetail", requestDetail);
 
       const _isTextForm: boolean =
-        requestDetail.requestDetails.listFormNames[0].IsTextForm;
+        requestDetail?.requestDetails?.listFormNames[0].IsTextForm;
       let logic = await LoadLogic(
         requestDetail?.requestDetails.memoDetail.template_id !== 0
           ? requestDetail?.requestDetails.memoDetail.template_id
