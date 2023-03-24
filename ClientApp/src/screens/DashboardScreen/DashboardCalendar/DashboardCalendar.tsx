@@ -5,7 +5,6 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import moment from "moment";
 import { MultiSelect } from "primereact/multiselect";
-import LogoLoading from "../../../assets/LoadingWOLFmini.gif";
 import { GetDashboardFilterStatus } from "../../../Services/ConfigurationService";
 interface Props {
   dashboard: any;
@@ -14,6 +13,7 @@ interface Props {
   setValueDropdownInCalendar: any;
   valueDropdownInCalendar: any;
   endpoint: any;
+  responeConfig: any;
 }
 
 export const DashboardCalendar = (props: Props) => {
@@ -203,7 +203,7 @@ export const DashboardCalendar = (props: Props) => {
     <div>
       {onLoading || props.dashboard === undefined ? (
         <div className="logo-loading cursor-loading">
-          <img src={LogoLoading} alt="loading..." />
+          <img src={props.responeConfig?.pathLoading} alt="loading..." />
         </div>
       ) : (
         <div className="demo-app">

@@ -174,6 +174,7 @@ export const InputTableComponent: React.FC<TableInputProps> = ({
       </div>
     );
   }
+
   return (
     <>
       <Tooltip title={children[1]} placement="topLeft">

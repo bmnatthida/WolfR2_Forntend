@@ -99,7 +99,7 @@ namespace WolfR2.Controllers
                     listFileAttachDetails = request.MemoPage.listFileAttachDetails,
                     listFormName = request.MemoPage.listFormName,
                     listHistoryDetails = request.MemoPage.listHistoryDetails,
-                    UserPrincipalName = _configuration.GetValue<string>("AppSettings:UserPrincipalName"),
+                    UserPrincipalName = request.MemoPage.memoDetail.actor.Email,
                     ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
                     SecretId = "",
                 };
@@ -107,22 +107,10 @@ namespace WolfR2.Controllers
                 {
                     MemoPage = memoPageModel,
                     IsPreview = true,
-                    UserPrincipalName = _configuration.GetValue<string>("AppSettings:UserPrincipalName"),
+                    UserPrincipalName = request.MemoPage.memoDetail.actor.Email,
                     ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
 
                 };
-                //var memoPageModel = new MemoPageRequestModel
-                //{
-                //    memoDetail = request.MemoPage.memoDetail,
-                //    listApprovalDetails = request.MemoPage.listApprovalDetails,
-                //    listFileAttachDetails = request.MemoPage.listFileAttachDetails,
-                //    listFormName = request.MemoPage.listFormName,
-                //    listHistoryDetails = request.MemoPage.listHistoryDetails,
-                //    UserPrincipalName = _configuration.GetValue<string>("AppSettings:UserPrincipalName"),
-                //    ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
-                //    SecretId = "",
-                //};
-                //memoPageModel.memoDetail.connectionString = _configuration.GetValue<string>("AppSettings:ConnectionString");
                 LogFile.WriteLogFile("PreviewPdfController previewPdf | api/services/preview?returnType=pdf | _memoPageModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(_memoPageModel), module);
 
                 var result = await CoreAPI.post(_baseUrl + "api/services/preview?returnType=pdf", null, _memoPageModel);

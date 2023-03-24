@@ -156,6 +156,9 @@ namespace WolfR2.Controllers
                 {
                     PathLogoNav = _configuration.GetValue<string>("ReactConfiguration:LoginSetting:PathLogoNav"),
                     PathLogoLogin = _configuration.GetValue<string>("ReactConfiguration:LoginSetting:PathLogoLogin"),
+                    PathLoading = _configuration.GetValue<string>("ReactConfiguration:LoginSetting:PathLoading"),
+                    PathCarousel = _configuration.GetSection("ReactConfiguration:LoginSetting:PathCarousel").Get<string[]>(),
+                    PathNavbarColor = _configuration.GetValue<string>("ReactConfiguration:LoginSetting:PathNavbarColor"),
                     Type = _configuration.GetValue<string>("ReactConfiguration:LoginSetting:Type"),
                     IsMulti = _configuration.GetValue<string>("ReactConfiguration:LoginSetting:IsMulti"),
                     CssConfig = new

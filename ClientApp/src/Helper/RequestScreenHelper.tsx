@@ -3,6 +3,7 @@ import {
   IAutoNumberFormat,
   IFormat,
 } from "../IRequestModel/IAutoNumberFormat";
+import { IMemoDetailModel } from "../IRequestModel/IMemoDetailModel";
 import { GetAutoNumber } from "../Services/RequestControlService";
 
 export async function genAutoNum(
@@ -42,7 +43,6 @@ export async function genAutoNum(
           break;
         }
       }
-
       if (choiceFormat !== null) {
         choiceFormat.format.map((format: any) => {
           _control.forEach((item: any, rowIdx: number) => {
@@ -70,47 +70,14 @@ export async function genAutoNum(
           });
         });
         console.log("auto=>str", { str, choiceFormat });
-
+        console.log("auto=>strlength",str.length);
         if (str.length === choiceFormat.format.length) {
-          if (!str.includes("--Select--") && !str.includes("--select--")) {
+          if (!str.includes("--Select--") && !str.includes("--select--") 
+          && !str.includes("-- Please Select --") && !str.includes("-- Please Select --") ) {
             isCheck = true;
           }
         }
       }
-      // else {
-      //   formats.map((ft: any) => {
-      //     if (ft.condition.length === 0) {
-      //       ft.format.map((format: any) => {
-      //         _control.forEach((item: any, rowIdx: number) => {
-      //           item.layout.forEach(async (layout: any) => {
-      //             if (format.type === "pf") {
-      //               if (!str.includes(format.label)) {
-      //                 str.push(format.label);
-      //               }
-      //             } else if (layout.template.label === format.label) {
-      //               let value: string = layout.data.value;
-      //               if (value) {
-      //                 if (value.indexOf("(") > 0 && value.indexOf(")")) {
-      //                   str.push(
-      //                     value.substring(
-      //                       value.indexOf("(") + 1,
-      //                       value.indexOf(")")
-      //                     )
-      //                   );
-      //                 } else {
-      //                   str.push(value);
-      //                 }
-      //               }
-      //             }
-      //           });
-      //         });
-      //       });
-      //     } else {
-      //       console.log("auto=>str", { str, ft });
-      //     }
-      //   });
-      // }
-
       if (isCheck) {
         const showSymbol = autoNumFormat.showSymbol;
         let prefix = "";
@@ -124,7 +91,6 @@ export async function genAutoNum(
         requestBody.Digit = autoNumFormat.digit;
         requestBody.TemplateId = template_id;
         const dd = await GetAutoNumber(requestBody);
-
         if (dd.Message !== undefined) {
         } else {
           _control[autoNumberAttibute.rowIndex].layout[
@@ -144,26 +110,35 @@ export async function genAutoNum(
   }
 }
 
-const genStringForAutoNumber = (formats: IFormat[]) => {
-  console.log("auto=>formats", formats);
-  return formats;
-};
+export function getValueControl(
+  controlID: string,
+  memoDetail: IMemoDetailModel
+) {
+  let strValue: string = "";
 
-const checkIsAutoHavePF = (
-  templateLabel: string,
-  formats: IAutoNumberFormat[]
-) => {
-  let isTrue: boolean = false;
+  switch (controlID.toLowerCase()) {
+    case "requestor id":
+      strValue = memoDetail.requestor.EmployeeId.toString();
+      break;
+    case "requestor code":
+      strValue = memoDetail.requestor.EmployeeCode;
+      break;
+    case "requestor name":
+      strValue = memoDetail.requestor.NameEn;
+      break;
+    case "requestor email":
+      strValue = memoDetail.requestor.Email;
+      break;
+    case "requestor position":
+      strValue = memoDetail.requestor.PositionNameEn;
+      break;
+    case "requestor department":
+      strValue = memoDetail.requestor.DepartmentNameEn;
+      break;
+    default:
+      // handle default case here
+      break;
+  }
 
-  formats.forEach((formats: IAutoNumberFormat) => {
-    formats.format.forEach((fm: IFormat) => {
-      if (fm.type !== "pf") {
-        if (fm.label === templateLabel) {
-          isTrue = false;
-        }
-      }
-    });
-  });
-
-  return isTrue;
-};
+  return strValue;
+}

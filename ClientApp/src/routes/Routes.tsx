@@ -42,6 +42,7 @@ import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import TimeStampScreen from "../screens/TimeStamp/TimeStampScreen";
 import PreviewAttachmentScreen from "../screens/PreviewAttachmentScreen/PreviewAttachmentScreen";
 import RequestActionMemo from "../screens/RequestActionMemo/RequestActionMemo";
+import { LoginConfiguration } from "../Services/ConfigurationService";
 
 interface Props {
   responeConfig: any;
@@ -50,6 +51,7 @@ interface Props {
 }
 
 const Routes = (props: Props) => {
+  const [responeConfig, setResponeConfig] = useState<any>();
   const [isVerify, setIsVerify] = useState<boolean>(false);
   const [initialPath, setInitialPath] = useState<string>("");
   const [Nav, setNav] = useState<any>([]);
@@ -82,9 +84,11 @@ const Routes = (props: Props) => {
     setRedirectPath: setRedirectPath,
   };
   const fetchApp = async () => {
+    const responseConfig = await LoginConfiguration();
     const response = await CheckAppSetting();
     const canEditProfile = await CheckCanEditProfile();
     const canDownLoadPdf = await CheckCanDownloadPdf();
+    setResponeConfig(responseConfig);
     if (props.responeConfig?.type === "LoginAzure") {
       window.localStorage.setItem("isWolf", "false");
 
@@ -97,6 +101,7 @@ const Routes = (props: Props) => {
           {...{ setIsLoadPackage: props.setIsLoadPackage }}
           PathLogo={props.responeConfig.pathLogoLogin}
           IsMulti={props.responeConfig.isMulti}
+          PathCarousel={props.responeConfig.pathCarousel}
         />
       );
     } else if (props.responeConfig?.type === "LoginGoogle") {
@@ -136,7 +141,10 @@ const Routes = (props: Props) => {
             />
           </Route>
           <Route path={"/RegisterWolfScreen"}>
-            <RegisterWolfScreen PathLogo={props.responeConfig.pathLogoLogin} />
+            <RegisterWolfScreen
+              PathLogo={props.responeConfig.pathLogoLogin}
+              responeConfig={responeConfig}
+            />
           </Route>
           <PrivateRoute
             {...defaultProtectedRouteProps}
@@ -157,13 +165,13 @@ const Routes = (props: Props) => {
             <TimeStampScreen />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path="/Default">
-            <WorkListScreen />
+            <WorkListScreen responeConfig={responeConfig} />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path="/DynamicReport">
             <ReportScreenFix />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path="/TemplateDetail">
-            <TemplateDetailScreen />
+            <TemplateDetailScreen responeConfig={responeConfig} />
           </PrivateRoute>
           <PrivateRoute
             {...defaultProtectedRouteProps}
@@ -178,13 +186,13 @@ const Routes = (props: Props) => {
             <EmailTemplateDetailScreen />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path="/request/copy">
-            <ReportScreen />
+            <ReportScreen responeConfig={responeConfig} />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path="/PreviewTemplate">
             <PreviewTemplateScreen />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path={"/Delegate"}>
-            <DelegateScreen />
+            <DelegateScreen responeConfig={responeConfig} />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path={"/Settings"}>
             <MasterDatascreenFixed />
@@ -193,10 +201,10 @@ const Routes = (props: Props) => {
             {...defaultProtectedRouteProps}
             path={"/SimLineApprove"}
           >
-            <SimLineApproveScreen />
+            <SimLineApproveScreen responeConfig={responeConfig} />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path={"/Dashboard"}>
-            <DashboardScreen />
+            <DashboardScreen responeConfig={responeConfig} />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path={"/UnAuthorize"}>
             <UnAurthorization />

@@ -412,7 +412,10 @@ export const NavigationBar = (props: Props) => {
             }}
           />
           <Toast ref={toast} />
-          <div className={`navbar-container ${isActive ? "-active" : ""}`}>
+          <div
+            className={`navbar-container ${isActive ? "-active" : ""}`}
+            style={{ backgroundColor: props.responeConfig?.pathNavbarColor }}
+          >
             <Dropdown
               overlay={menu}
               trigger={["click"]}

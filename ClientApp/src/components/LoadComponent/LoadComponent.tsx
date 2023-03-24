@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router";
-import LogoLoading from "../../assets/LoadingWOLFmini.gif";
 import useLoading from "../../hooks/useLoading";
 
-const LoadComponent = () => {
+interface Props {
+  responeConfig: any;
+}
+const LoadComponent = (props: Props) => {
   const { isLoad, setLoad } = useLoading();
   const location = useLocation();
 
@@ -17,7 +19,7 @@ const LoadComponent = () => {
 
   return (
     <div className="logo-loading cursor-loading">
-      <img src={LogoLoading} alt="loading..." />
+      <img src={props.responeConfig?.pathLoading} alt="loading..." />
     </div>
   );
 };

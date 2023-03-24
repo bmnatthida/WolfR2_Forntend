@@ -38,7 +38,6 @@ import {
   getVersion,
   getVersionTempVC,
 } from "../../Services/MasterDataService";
-import LogoLoading from "../../assets/LoadingWOLFmini.gif";
 import { GetAllDynamic, updateDynamic } from "../../Services/DynamicService";
 import AuthorizationComponent from "../../components/TemplateDetailComponents/AuthorizationComponent/AuthorizationComponent";
 import { TreeSelectNewRequest } from "../../components/TreeSelectNewRequest/TreeSelectNewRequest";
@@ -60,8 +59,9 @@ import { sorterFunc } from "../../Helper/SortingFunction";
 import useAlert from "../../hooks/useAlert";
 import { ReferenceDocumentComponentsFix } from "../../components/TemplateDetailComponents/ReferenceDocumentComponents/ReferenceDocumentComponentsFix";
 
-interface Props {}
-// ../../../assets/LoadingWOLFmini.gif
+interface Props {
+  responeConfig: any;
+}
 const createVersionMasterData: ILstMasterDataList = {
   createdBy: "",
   createdDate: "",
@@ -162,7 +162,7 @@ const createFormControl: ITemplateRequestModel = {
   Authorization_view: [],
 };
 
-const TemplateDetailScreen: React.FC = (props: Props) => {
+const TemplateDetailScreen = (props: Props) => {
   const { toggleAlert } = useAlert();
   const [userData, setUserData] = useUserContext();
   const [groupDataTemplate, setGroupDataTemplate] = useState<any>([]);
@@ -182,7 +182,9 @@ const TemplateDetailScreen: React.FC = (props: Props) => {
   // );
   const toast = useRef<any>();
   let history = useHistory();
-  const [imgLoading, setImgLoading] = useState<any>(LogoLoading);
+  const [imgLoading, setImgLoading] = useState<any>(
+    props.responeConfig?.pathLoading
+  );
   const { url } = useRouteMatch();
   const [sidebarState, setSidebarState] = useState(true);
 

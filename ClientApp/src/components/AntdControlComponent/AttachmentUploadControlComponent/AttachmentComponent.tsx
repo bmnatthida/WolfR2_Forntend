@@ -29,9 +29,13 @@ type Props = {
 
 type InputAttachmentProps = {
   ref?: any;
+  rowIdx?: any;
+  colIdx?: any;
   template: any;
   value?: any;
   status?: any;
+  rowIdx?: number;
+  colIdx?: number;
   onChange: (value: any) => void;
   canEditDoc: boolean;
   checkActionPage: string;
@@ -51,7 +55,6 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
   checkActionPage,
   ...props
 }: InputAttachmentProps) => {
-  
   const toast = useRef<any>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [checkHasValue, setCheckHasValue] = useState<boolean>(false);
@@ -200,9 +203,8 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
         <Button
           // fixed issue readonly
           disabled={!canEditDoc || template.attribute.readonly === "Y"}
-          //  id 
+          //  id
           id={rowIdx + "_" + colIdx + "_" + template.label}
-          
           label={checkHasValue ? nameFile : "Upload"}
           onClick={() => {
             if (checkHasValue) {
@@ -213,8 +215,6 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
           }}
           className="r"
           type="button"
-          
-          
           style={{
             borderTopLeftRadius: "6px",
             borderBottomLeftRadius: "6px",
@@ -233,7 +233,7 @@ export const AttachmentComponent: React.FC<InputAttachmentProps> = ({
             height: "38px",
           }}
         />
-        {checkHasValue && (
+        {checkHasValue && template.attribute.readonly !== "Y" && (
           <div
             className="border-icon"
             style={{
@@ -291,12 +291,10 @@ export const AttachmentControlComponent: React.FC<Props> = ({
   buttonType,
   ...props
 }) => {
-
   return (
     <>
       <Controller
         name={name}
-        
         control={control}
         rules={{
           required:
@@ -328,7 +326,8 @@ export const AttachmentControlComponent: React.FC<Props> = ({
             >
               <div className={`input-component-container`}>
                 <AttachmentComponent
-                  {...{ canEditDoc, checkActionPage }}
+                  {...{ checkActionPage }}
+                  canEditDoc={true}
                   template={template}
                   onChange={onChange}
                   value={value}
@@ -361,7 +360,8 @@ export const AttachmentTableComponent: React.FC<TableInputProps> = ({
     return (
       <div style={{ width: "100%" }} onMouseEnter={onEdit}>
         <AttachmentComponent
-          {...{ canEditDoc, checkActionPage }}
+          {...{ checkActionPage }}
+          canEditDoc={true}
           template={template}
           onChange={saveFunc}
           value={children[1]}
@@ -388,7 +388,8 @@ export const AttachmentTableComponent: React.FC<TableInputProps> = ({
         ]}
       >
         <AttachmentComponent
-          {...{ canEditDoc, checkActionPage }}
+          {...{ checkActionPage }}
+          canEditDoc={true}
           template={template}
           onChange={saveFunc}
           value={value}
