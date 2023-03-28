@@ -6,7 +6,7 @@ export const GetAllEmployee = async () => {
     })
     .catch((err) => {});
 
-  return respone.filter((e: any) => e.IsActive === true);
+  return respone?.filter((e: any) => e.IsActive === true);
 };
 
 export const UpdateEmployee = async (dataJson: any) => {

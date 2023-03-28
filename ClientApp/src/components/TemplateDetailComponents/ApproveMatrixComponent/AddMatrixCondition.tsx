@@ -16,6 +16,7 @@ import { GetAllDynamic } from "../../../Services/DynamicService";
 import { Dropdown } from "primereact/dropdown";
 import SelectDataFormTable from "./SelectDataFormTable";
 import moment from "moment";
+import { Input, InputNumber, Radio } from "antd";
 
 interface Props {
   control: any;
@@ -51,6 +52,9 @@ export default function AddMatrixForm(props: Props) {
   const [dtp, setDtp] = useState<boolean>(false);
   const [doa, setDoa] = useState<boolean>(false);
   const [spc, setSpc] = useState<boolean>(false);
+  const [isParallel, setIsParallel] = useState<boolean>(false);
+  const [parallelType, setParallelType] = useState<string>("");
+  const [approveSlot, setApproveSlot] = useState<number>(-1);
 
   const labelStyle: any = {
     fontStyle: "normal",
@@ -131,7 +135,11 @@ export default function AddMatrixForm(props: Props) {
         setSpc(true);
         props.control._formValues.Specific_Approver = true;
         console.log("rowdata", rowData);
-
+        props.control._formValues.spc_isParallel = rowData.IsParallel;
+        setIsParallel(rowData.IsParallel);
+        props.control._formValues.IsApproveAll = rowData.IsApproveAll;
+        setParallelType(rowData.IsApproveAll ? "all" : "slot");
+        props.control._formValues.approverSlot = rowData.ApproveSlot;
         setSpecficApprovals(rowData.Specific_Approver);
       }
     } catch (error) {
@@ -153,7 +161,6 @@ export default function AddMatrixForm(props: Props) {
         } else if (data.EmployeeId !== undefined) {
           let specific_Approver: any[] = specficApprovals;
           const user = data;
-          console.log("matrix=>", user);
 
           specific_Approver.push({
             TemLineId:
@@ -915,6 +922,76 @@ export default function AddMatrixForm(props: Props) {
                   setIconProps={<FiPlus />}
                   setClassNameProps={"p-button-text-position"}
                 />
+              </Col>
+              <Col>
+                <Row>
+                  <Col>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Controller
+                        name="spc_isParallel"
+                        control={props.control}
+                        render={({ field, fieldState }) => (
+                          <Checkbox
+                            id="isParallel"
+                            checked={isParallel}
+                            onChange={(val) => {
+                              if (!val.target.checked) {
+                                props.control._fields.approverSlot = 0;
+                              }
+                              setIsParallel(val.target.checked);
+                              field.onChange(val.target.checked);
+                            }}
+                          />
+                        )}
+                      />
+                      <TextHeaderComponents
+                        textHeaderProps={"Parallel Approve"}
+                        textSubProps={"อนุมติแบบขนาน"}
+                      />
+                    </div>
+                  </Col>
+                  <Col>
+                    <Controller
+                      name="spc_isApproveAll"
+                      control={props.control}
+                      render={({ field, fieldState }) => (
+                        <Radio.Group
+                          onChange={(e) => {
+                            setParallelType(e.target.value);
+                            field.onChange(e.target.value);
+                          }}
+                          disabled={!isParallel}
+                          value={parallelType}
+                        >
+                          <Radio value={"all"}>Approver All</Radio>
+                          <Radio value={"slot"}>Slot </Radio>
+                        </Radio.Group>
+                      )}
+                    />
+                    <Controller
+                      name="approverSlot"
+                      control={props.control}
+                      render={({ field, fieldState }) => (
+                        <InputNumber
+                          className="input-component"
+                          value={field.value || 0}
+                          disabled={parallelType !== "slot" || !isParallel}
+                          controls={false}
+                          max={specficApprovals.length}
+                          placeholder="Approver Slot"
+                          onChange={(e) => {
+                            field.onChange(e);
+                          }}
+                        />
+                      )}
+                    />
+                  </Col>
+                </Row>
               </Col>
             </>
           )}
