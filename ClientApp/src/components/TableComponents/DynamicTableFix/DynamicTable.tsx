@@ -491,6 +491,8 @@ const DynamicTable = ({
                     ? 250
                     : key.toLowerCase().includes("หน่วยงาน")
                     ? 300
+                    : key.toLowerCase().includes("ชื่อเอกสาร")
+                    ? 350
                     : colWidth,
               });
             }
