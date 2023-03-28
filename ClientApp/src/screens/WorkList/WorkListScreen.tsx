@@ -763,6 +763,8 @@ const WorkListScreen = (props: Props) => {
                 </div>
               </div>
             </div>
+            <div style={{marginTop: "10px"}}></div>
+            <FooterComponents />
           </div>
           {/* <AnimatePresence> */}
           {toggleDetail && (
@@ -779,7 +781,6 @@ const WorkListScreen = (props: Props) => {
         </div>
       </AnimatePresence>
 
-      <FooterComponents />
     </div>
   );
 };
