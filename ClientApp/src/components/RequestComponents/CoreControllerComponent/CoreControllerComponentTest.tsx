@@ -60,7 +60,7 @@ interface Props {
   setIsControlLoading: (valaue: boolean) => void;
   getLineApproveForAmount: (
     amount: number,
-    jsonCondition: string,
+    jsonCondition?: string,
     logicType?: string,
     layout?: any
   ) => void;
@@ -330,7 +330,7 @@ export const CoreControllerComponentTest: FC<Props> = ({
         });
       });
 
-      getLineApproveForAmount(_amount, controlTemplate);
+      getLineApproveForAmount(_amount, undefined, undefined, controlTemplate);
 
       return {
         _amount: _amount,

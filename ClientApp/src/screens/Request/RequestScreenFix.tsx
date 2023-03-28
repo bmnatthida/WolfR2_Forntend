@@ -814,7 +814,12 @@ const RequestScreenFix = () => {
     _requestor?: any
   ) => {
     try {
-      console.log("logic=>", { logicType, jsonCondition, amount, memoDetail });
+      console.log("logic=>", {
+        logicType,
+        json: { jsonCondition: jsonCondition, _jsonConditions: jsonConditions },
+        amount,
+        memoDetail,
+      });
 
       if (logicType === "ref") {
         setMemoDetail((prevState: any) => ({
@@ -864,7 +869,7 @@ const RequestScreenFix = () => {
         const dataJsonApproverType = {
           TemplateId: memoDetail.template_id,
         };
-        console.log("ref=>", {
+        console.log("logic=>", {
           dataJsonApproverType,
           jsonCondition,
           jsonConditions,
