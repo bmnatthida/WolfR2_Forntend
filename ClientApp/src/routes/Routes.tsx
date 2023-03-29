@@ -21,6 +21,7 @@ import DelegateScreen from "../screens/DelegateScreen/DelegateScreen";
 import EmailTemplateDetailScreen from "../screens/SettingsSpecScreen/EmailTemplateDetailScreen";
 import SimLineApproveScreen from "../screens/SettingScreen/SimLineApproveScreen/SimLineApproveScreen";
 import DashboardScreen from "../screens/DashboardScreen/DashboardScreen";
+import { LogApi } from "../screens/LogApi/LogApi";
 import EmailTemplateListScreen from "../screens/SettingsSpecScreen/EmailTemplateListScreen/EmailTemplateListScreen";
 import { PreviewTemplateScreen } from "../screens/TemplateDetailScreen/PreviewTemplateScreen";
 import { LoginGoogle } from "../screens/LoginScreen/LoginGoogle";
@@ -208,6 +209,9 @@ const Routes = (props: Props) => {
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path={"/UnAuthorize"}>
             <UnAurthorization />
+          </PrivateRoute>
+          <PrivateRoute {...defaultProtectedRouteProps} path={"/Logapi"}>
+            <LogApi />
           </PrivateRoute>
           <PrivateRoute {...defaultProtectedRouteProps} path="*">
             <ErrorPageComponent />
