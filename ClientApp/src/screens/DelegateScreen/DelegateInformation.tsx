@@ -95,26 +95,26 @@ const DelegateInformation = (props: Props) => {
   useEffect(() => {
     let _date = new Array(2);
     let _attachmentData = props.delegateData.AttachmentList;
-    const _approver = employeeData.filter(
+    const _approver = employeeData.find(
       (data: any) =>
         data.EmployeeId === props.delegateData.DelegateList.ApproverId
     );
-    const _delegater = employeeData.filter(
+    const _delegater = employeeData.find(
       (data: any) =>
         data.EmployeeId === props.delegateData.DelegateList.DelegateToId
     );
     if (_approver.length > 0) {
       setApprover((prevState: any) => ({
         ...prevState,
-        name: _approver[0].NameTh,
-        ApproverId: _approver[0].EmployeeId,
+        name: userData.Lang === "EN" ? approver.NameEn : approver.NameTh,
+        ApproverId: _approver.EmployeeId,
       }));
     }
     if (_delegater.length > 0) {
       setDelegater((prevState: any) => ({
         ...prevState,
-        name: _delegater[0].NameTh,
-        DelegateToId: _delegater[0].EmployeeId,
+        name: userData.Lang === "EN" ? _delegater.NameEn : _delegater.NameTh,
+        DelegateToId: _delegater.EmployeeId,
       }));
     }
     for (let i = 0; i < _attachmentData.length; i++) {
@@ -504,11 +504,11 @@ const DelegateInformation = (props: Props) => {
     // fetchDataEmployee();
   }
   const onEmployeeSelect = (event: any, label: any) => {
-    console.log(event, label);
+    console.log(userData.Lang === "EN" ? event.data.NameEn : event.data.NameTh);
     if (label === "approver") {
       setApprover((prevState: any) => ({
         ...prevState,
-        name: event.data.NameTh,
+        name: userData.Lang === "EN" ? event.data.NameEn : event.data.NameTh,
         ApproverId: event.data.EmployeeId,
       }));
       props.setDelegateData((prevState: any) => ({
@@ -522,7 +522,7 @@ const DelegateInformation = (props: Props) => {
     if (label === "delegate") {
       setDelegater((prevState: any) => ({
         ...prevState,
-        name: event.data.NameTh,
+        name: userData.Lang === "EN" ? event.data.NameEn : event.data.NameTh,
         DelegateToId: event.data.EmployeeId,
       }));
       props.setDelegateData((prevState: any) => ({
@@ -556,6 +556,9 @@ const DelegateInformation = (props: Props) => {
                 width: "100% ",
                 display: "flex",
                 justifyContent: "space-between",
+              }}
+              onClick={() => {
+                console.log(approver);
               }}
             >
               <InputTextComponents
@@ -839,7 +842,9 @@ const DelegateInformation = (props: Props) => {
                 }
               ></Column>
               <Column
-                field="ActorId.NameTh"
+                field={
+                  userData.Lang === "En" ? "ActorId.NameEn" : "ActorId.NameTh"
+                }
                 header={
                   <tr>
                     <th>

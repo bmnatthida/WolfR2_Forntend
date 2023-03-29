@@ -134,7 +134,6 @@ export default function AddMatrixForm(props: Props) {
       } else if (rowData.Type === "Specific Approver") {
         setSpc(true);
         props.control._formValues.Specific_Approver = true;
-        console.log("rowdata", rowData);
         props.control._formValues.spc_isParallel = rowData.IsParallel;
         setIsParallel(rowData.IsParallel);
         props.control._formValues.IsApproveAll = rowData.IsApproveAll;

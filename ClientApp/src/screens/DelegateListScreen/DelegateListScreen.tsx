@@ -230,14 +230,14 @@ function DelegateListScreen() {
     if (label === "approver") {
       setApprover((prevState: any) => ({
         ...prevState,
-        name: event.data.NameTh,
+        name: userData.Lang === "EN" ? event.data.NameEn : event.data.NameTh,
         ApproverId: event.data.EmployeeId,
       }));
     }
     if (label === "delegate") {
       setDelegater((prevState: any) => ({
         ...prevState,
-        name: event.data.NameTh,
+        name: userData.Lang === "EN" ? event.data.NameEn : event.data.NameTh,
         DelegateToId: event.data.EmployeeId,
       }));
     }
