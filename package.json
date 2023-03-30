@@ -1,11 +1,12 @@
 {
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "react-beautiful-dnd": "^13.1.0",
     "react-google-recaptcha": "^2.1.0",
-    "react-idle-timer": "^5.2.0"
+    "react-idle-timer": "^5.2.0",
+    "react-tooltip": "^5.10.1"
   },
   "devDependencies": {
     "@types/react-google-recaptcha": "^2.1.3"
   }
-
 }

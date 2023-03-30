@@ -8,6 +8,10 @@ import Timeline, {
 } from "react-calendar-timeline";
 import "react-calendar-timeline/lib/Timeline.css";
 import { RiDatabase2Line } from "react-icons/ri";
+import "react-tooltip/dist/react-tooltip.css";
+import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import { Tooltip } from "antd";
+
 type Props = { dashboard: any; onLoading: any; statusCard: any; endpoint: any };
 
 export const DashboardTimeline = (props: Props) => {
@@ -176,6 +180,15 @@ export const DashboardTimeline = (props: Props) => {
     groupLabelKey: "title",
   };
 
+  var [sideBarWidth, setSideBarWidth] = useState(150);
+
+  function handleresize() {
+    if (sideBarWidth >= 151) {
+      setSideBarWidth(sideBarWidth - 50);
+    } else {
+      setSideBarWidth(sideBarWidth);
+    }
+  }
   return (
     <div
       onClick={() => {
@@ -197,13 +210,48 @@ export const DashboardTimeline = (props: Props) => {
               canMove={false}
               canResize={false}
               stackItems
+              sidebarWidth={sideBarWidth}
             >
               <TimelineHeaders className="sticky">
                 <SidebarHeader>
                   {({ getRootProps }) => {
                     return (
-                      <div className="set-body-in-calendar" {...getRootProps()}>
-                        Group By
+                      <div>
+                        <div
+                          style={{
+                            width: sideBarWidth + 0 + "px",
+                            border: "thin solid #c52020",
+                            height: "20px",
+                          }}
+                        >
+                          <Tooltip
+                            placement="bottom"
+                            title={"คลิกลดช่อง Groupby"}
+                          >
+                            <MinusCircleOutlined
+                              onClick={(e) => handleresize()}
+                              className="set-icon"
+                            />
+                          </Tooltip>
+                          {"  "}
+                          <Tooltip
+                            placement="bottom"
+                            title={"คลิกขยายช่อง Groupby"}
+                          >
+                            <PlusCircleOutlined
+                              onClick={(e) =>
+                                setSideBarWidth(sideBarWidth + 50)
+                              }
+                              className="set-icon"
+                            />
+                          </Tooltip>
+                        </div>
+                        <div
+                          className="set-body-in-calendar"
+                          {...getRootProps()}
+                        >
+                          Group By
+                        </div>
                       </div>
                     );
                   }}
