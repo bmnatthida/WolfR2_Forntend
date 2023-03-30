@@ -61,9 +61,14 @@ export const GetMemoDetail = async (dataJson: any) => {
     },
     body: JSON.stringify(dataJson),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      return response.json();
+    })
     .then((data) => {
       return data;
+    })
+    .catch((err) => {
+      console.log("GetMemoDetail=>err", err);
     });
   return respone;
 };

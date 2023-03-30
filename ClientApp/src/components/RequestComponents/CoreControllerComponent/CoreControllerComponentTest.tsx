@@ -60,7 +60,7 @@ interface Props {
   setIsControlLoading: (valaue: boolean) => void;
   getLineApproveForAmount: (
     amount: number,
-    jsonCondition: string,
+    jsonCondition?: string,
     logicType?: string,
     layout?: any
   ) => void;
@@ -330,7 +330,7 @@ export const CoreControllerComponentTest: FC<Props> = ({
         });
       });
 
-      getLineApproveForAmount(_amount, controlTemplate);
+      getLineApproveForAmount(_amount, undefined, undefined, controlTemplate);
 
       return {
         _amount: _amount,
@@ -891,14 +891,9 @@ export const CoreControllerComponentTest: FC<Props> = ({
         console.log("logic2=>jsonValue,", jsonValue, controlValue);
 
         conditions.forEach((e) => {
-          console.log("logic2=>e", e);
-
           for (let k = 0; k < _control.length; k++) {
             const item = _control[k];
-
             if (e.label === item.label) {
-              console.log("logic2=>item", item);
-
               _dataJson.push({
                 Key: item.label,
                 Value: controlValue[e.label],
@@ -907,7 +902,6 @@ export const CoreControllerComponentTest: FC<Props> = ({
             }
           }
         });
-        console.log("logic=>_dataJson", _dataJson);
 
         responseDataSourceLoadRelated.data = await onDatareladToLoadData(
           _dataJson
@@ -1055,12 +1049,6 @@ export const CoreControllerComponentTest: FC<Props> = ({
 
     if (dataJson) {
       if (dataJson.length > 0) {
-        console.log(
-          "logic=>check",
-          isFirstRun.current,
-          checkIfLogicsHaveValue(dataJson)
-        );
-
         if (isFirstRun.current || checkIfLogicsHaveValue(dataJson)) {
           const rawData: any = await onDatareladToLoadData(dataJson);
 

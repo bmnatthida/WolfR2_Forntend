@@ -188,6 +188,8 @@ export default function ApproveMatrix(props: any) {
           reset();
         }
         if (data.Specific_Approver) {
+          console.log("matrix=>data", data);
+
           approveType = 20;
           const approval: any = {
             Seq: allSelected.length + 1,
@@ -198,9 +200,14 @@ export default function ApproveMatrix(props: any) {
                 ? { Conditions: data.Conditions }
                 : null,
             Type: "Specific Approver",
+            IsParallel: data.spc_isParallel,
+            IsApproveAll: data.spc_isApproveAll === "all",
+            ApproveSlot:
+              data.spc_isApproveAll === "slot" ? data.approverSlot : null,
           };
 
           allSelected.push(approval);
+          console.log("matrix=>", allSelected);
 
           setAllApprovals([...allSelected]);
           toggleDialog();
@@ -320,6 +327,7 @@ export default function ApproveMatrix(props: any) {
 
     allApprovals.map((approval: any, index: number) => {
       let LstCondition: any[] = [];
+      console.log("matrix=>approval", approval);
       if (
         approval.Conditions !== undefined &&
         approval.Conditions !== null &&
@@ -391,6 +399,9 @@ export default function ApproveMatrix(props: any) {
           ModifiedDate: moment(new Date()).format("DD MMM YYYY"),
           ModifiedBy: userData.employeeData.EmployeeId.toString(),
           IsActive: true,
+          IsParallel: approval.IsParallel,
+          IsApproveAll: approval.IsApproveAll,
+          ApproveSlot: approval.ApproveSlot,
         };
         TemLineApprove.push(_approval);
       }

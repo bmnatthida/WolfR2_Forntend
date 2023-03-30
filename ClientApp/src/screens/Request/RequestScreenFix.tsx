@@ -479,9 +479,10 @@ const RequestScreenFix = () => {
         actor: userDataByQuery ? userDataByQuery : userData,
       };
       let requestDetail = await GetMemoDetail(requestBody);
+      console.log("request=>requestDetail", requestDetail);
 
       const _isTextForm: boolean =
-        requestDetail.requestDetails.listFormNames[0].IsTextForm;
+        requestDetail?.requestDetails?.listFormNames[0].IsTextForm;
       let logic = await LoadLogic(
         requestDetail?.requestDetails.memoDetail.template_id !== 0
           ? requestDetail?.requestDetails.memoDetail.template_id
@@ -813,7 +814,12 @@ const RequestScreenFix = () => {
     _requestor?: any
   ) => {
     try {
-      console.log("logic=>", { logicType, jsonCondition, amount, memoDetail });
+      console.log("logic=>", {
+        logicType,
+        json: { jsonCondition: jsonCondition, _jsonConditions: jsonConditions },
+        amount,
+        memoDetail,
+      });
 
       if (logicType === "ref") {
         setMemoDetail((prevState: any) => ({
@@ -863,7 +869,7 @@ const RequestScreenFix = () => {
         const dataJsonApproverType = {
           TemplateId: memoDetail.template_id,
         };
-        console.log("ref=>", {
+        console.log("logic=>", {
           dataJsonApproverType,
           jsonCondition,
           jsonConditions,

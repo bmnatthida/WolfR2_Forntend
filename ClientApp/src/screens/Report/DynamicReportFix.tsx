@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Ripple } from "primereact/ripple";
@@ -66,6 +67,9 @@ const DynamicReportFix = (props: Props) => {
   const [gettingReport, setGettingreport] = useState<boolean>(true);
   const history = useHistory();
   const [userData] = useUserContext();
+  const [link, setLink] = useState<any>();
+  const _userData = JSON.parse(window.localStorage.getItem("userData") || "");
+  const _sharepointSiteURL = _userData.SharepointSiteURL;
 
   useEffect(() => {
     fecthData();
@@ -77,6 +81,63 @@ const DynamicReportFix = (props: Props) => {
   //     setReportName(reportName);
   //   }
   // }, [_isAutoReport]);
+
+  function openWindow() {
+    var pathArray = link.split("/");
+    const _link = link
+      ? link.charAt(0) !== "/" && !_sharepointSiteURL
+        ? "/" + link
+        : link
+      : "";
+
+    const protocol = window.location.protocol;
+    if (_sharepointSiteURL) {
+      if (_link.startsWith(_sharepointSiteURL)) {
+        console.log("att=>", _link);
+
+        window.open(`${_link}`, "_blank", "noreferrer");
+      } else {
+        console.log("att=>", `${_sharepointSiteURL}${_link}`);
+
+        window.open(`${_sharepointSiteURL}${_link}`, "_blank", "noreferrer");
+      }
+    } else if (_userData.TinyURL) {
+      if (
+        _link.includes("www") ||
+        _link.includes(".com") ||
+        _link.includes(".tv") ||
+        _link.includes(".net") ||
+        _link.includes("https") ||
+        _link.includes("http") ||
+        _link.includes(".com") ||
+        _link.includes(".co.th")
+      ) {
+        if (_link.includes("https")) {
+          window.open(
+            `https://${_link.replaceAll("https://", "")}`,
+            "_blank",
+            "noreferrer"
+          );
+        } else if (_link.includes("http")) {
+          window.open(
+            `http://${_link.replaceAll("http://", "")}`,
+            "_blank",
+            "noreferrer"
+          );
+        } else {
+          window.open(`https://${_link}`, "_blank", "noreferrer");
+        }
+      } else {
+        window.open(
+          `${protocol}//${_userData.TinyURL}${_link}`,
+          "_blank",
+          "noreferrer"
+        );
+      }
+    } else if (!_userData.TinyURL) {
+      window.open(`${_link}`, "_blank", "noreferrer");
+    }
+  }
 
   const fecthData = async () => {
     const dd = await CheckAutoReport();
@@ -104,7 +165,10 @@ const DynamicReportFix = (props: Props) => {
         let numCols: string[] = [];
         let dateCols: string[] = [];
         let edCols: string[] = [];
+        let atCols: string[] = [];
         fieldCollection.forEach((col: any, index: number) => {
+          console.log("col=>col", col);
+
           if (
             col.FieldTypeFilterDynamic === "c" ||
             col.FieldTypeFilterStatic === "Number"
@@ -117,6 +181,8 @@ const DynamicReportFix = (props: Props) => {
             dateCols.push(col);
           } else if (col.FieldTypeFilterDynamic === "ed") {
             edCols.push(col);
+          } else if (col.FieldTypeFilterDynamic === "at") {
+            atCols.push(col);
           }
         });
 
@@ -152,6 +218,24 @@ const DynamicReportFix = (props: Props) => {
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(data[col.key], "text/html");
                 data[col.key] = doc.body.innerText;
+              }
+            });
+          });
+        }
+        if (atCols.length > 0) {
+          atCols.forEach((col: any) => {
+            _dataDynamic.dt_Report.map((data: any) => {
+              if (data[col.key] && data[col.key] !== "") {
+                const [nameFile, linkFile] = data[col.key].split("|");
+                setLink(linkFile);
+                data[col.key] = (
+                  <Button
+                    label={nameFile}
+                    onClick={() => {
+                      openWindow();
+                    }}
+                  />
+                );
               }
             });
           });

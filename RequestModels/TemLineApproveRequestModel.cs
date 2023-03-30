@@ -22,6 +22,10 @@ namespace WolfR2.RequestModels
         public string? ModifiedDate { get; set; }
         public string? ModifiedBy { get; set; }
         public bool? IsActive { get; set; }
+        public bool? IsParallel { get; set; }
+        public bool? IsApproveAll { get; set; }
+        public int? ApproveSlot { get; set; }
+
 
         //[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         //public List?<LstCondition> LstCondition { get; set; }

@@ -23,6 +23,17 @@ export const GetDashboardKeyEndpoint = async () => {
   return resultCard;
 };
 
+export const GetDashboardEndpoints = async () => {
+  const result = await fetch("/api/Configuration/Dashboard/Endpoint")
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => {});
+
+  return result;
+};
+
 export const GetDashboardFilterStatus = async () => {
   const result = await fetch("/api/Configuration/Dashboard/FilterStatus")
     .then((response) => response.json())
@@ -33,15 +44,6 @@ export const GetDashboardFilterStatus = async () => {
   return result;
 };
 
-// export const GetDashboardFilterProject = async () => {
-//   const result = await fetch("/api/Configuration/Dashboard/FilterProject")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       return data;
-//     })
-//     .catch((err) => {});
-//   return result;
-// };
 export const GetDashboardAdvancedFilter = async () => {
   const configuration = await fetch(
     "/api/Configuration/Dashboard/AdvancedFilter"

@@ -40,12 +40,14 @@ export const DashboardCalendar = (props: Props) => {
             colorValue = color;
           }
         });
+        console.log("_data2=>", _data2);
+
         array.push({
           id: _data2[props.endpoint[0]],
           status: _data2[props.endpoint[2]],
           title: _data2[props.endpoint[3]],
           date: new Date(
-            moment(moment(_data2[props.endpoint[5]], "DD MMMM yyyy")).format(
+            moment(moment(_data2[props.endpoint[7]], "DD MMMM yyyy")).format(
               "yyyy/MM/DD"
             )
           ),
@@ -55,6 +57,8 @@ export const DashboardCalendar = (props: Props) => {
         });
       });
     });
+    console.log("array=>", array);
+
     setDataCalendar([...array]);
     setDefaultValueDashboard([...array]);
     setOnLoading(false);
