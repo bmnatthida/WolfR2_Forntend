@@ -177,6 +177,9 @@ const InformationComponentFix: FC<Props> = ({
   const [userData, setUserData] = useUserContext();
   const [hideProject, setIsHideProject] = useState(false);
   const [hideBranch, setIsHideBranch] = useState(false);
+  const [hideTo, setIsHideTo] = useState(false);
+  const [hideCc, setIsHideCc] = useState(false);
+  const [hideSubject, setIsHideSubject] = useState(false);
   const [typeEmployeeDialog, setTypeEmployeeDialog] = useState<string>("");
   const [filteredEmployee, setFilteredEmployee] = useState<any>([]);
   const [filterCompany, setFilterCompany] = useState<any>();
@@ -206,9 +209,21 @@ const InformationComponentFix: FC<Props> = ({
         if (_finFo.Value3) {
           setIsHideProject(true);
         }
-        if (_finFo.Value5) {
-          setIsHideBranch(true);
-        }
+        if(_finFo.Value5 !== ""){
+          const _showBranch = _finFo.Value5.split("|");
+          if (_showBranch[0]=="true") {
+            setIsHideBranch(true);
+          }
+          if (_showBranch[1] ==="true") {
+            setIsHideTo(true);
+          }
+          if (_showBranch[2] ==="true") {
+            setIsHideCc(true);
+          }
+          if (_showBranch[3] ==="true") {
+            setIsHideSubject(true);
+          }
+        }  
       }
     }
   }
@@ -555,7 +570,10 @@ const InformationComponentFix: FC<Props> = ({
             </>
           )}
         </Row>
+
         <Row className="">
+          {!hideTo && (
+            <>
           <Col xs={12} xl={2}>
             <tr>
               <th>
@@ -568,7 +586,7 @@ const InformationComponentFix: FC<Props> = ({
               </th>
             </tr>
           </Col>
-
+          
           <Col xs={12} xl={10}>
             <div
               className="p-inputgroup "
@@ -610,8 +628,13 @@ const InformationComponentFix: FC<Props> = ({
               />
             </div>
           </Col>
+          </>
+          )}
         </Row>
+
         <Row className="">
+          {!hideCc && (
+            <>
           <Col xs={12} xl={2}>
             <tr>
               <th>
@@ -665,6 +688,8 @@ const InformationComponentFix: FC<Props> = ({
               />
             </div>
           </Col>
+          </>
+          )}
         </Row>
         {!hideProject && (
           <Row className=" ">
@@ -702,6 +727,8 @@ const InformationComponentFix: FC<Props> = ({
           </Row>
         )}
         <Row className=" ">
+          {!hideSubject && (
+            <>
           <Col xs={12} sm={12} xl={2}>
             <tr>
               <th>
@@ -737,6 +764,8 @@ const InformationComponentFix: FC<Props> = ({
               disabledProps={!canEditDoc}
             />
           </Col>
+          </>
+          )}
         </Row>
         {refAttribute?.mode && refAttribute?.position === "Top" && (
           <>
