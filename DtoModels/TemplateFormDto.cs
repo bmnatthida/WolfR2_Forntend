@@ -8,6 +8,7 @@ namespace WolfR2.DtoModels
     public class TemplateFormDto
     {
         public int? TemplateId { get; set; }
+        public int? TemplateIdCopy { get; set; }
         public string GroupTemplateName { get; set; }
         public string TemplateName { get; set; }
         public string TemplateNameWithCode { get { return DocumentCode + " : " + TemplateName; } }

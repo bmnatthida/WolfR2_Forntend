@@ -9,7 +9,7 @@ namespace WolfR2.RequestModels
     public class TemplateFormRequestModel:BaseBodyRequestModel
     {
         public int? TemplateId { get; set; }
-
+        public int? TemplateIdCopy { get; set; }
         public string GroupTemplateName { get; set; }
 
         public string TemplateName { get; set; }

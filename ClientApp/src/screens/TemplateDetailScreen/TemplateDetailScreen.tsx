@@ -383,6 +383,7 @@ const TemplateDetailScreen = (props: Props) => {
       let _templateIdList: any = await GetTemplateControlById(dataJson);
       const dataLogic = await LoadLogic(template_id);
       if (_isCopyValue) {
+       // _templateIdList.templateForm.TemplateIdCopy = _templateIdList.templateForm.TemplateIdCopy;
         _templateIdList.templateForm.TemplateId = 0;
         _templateIdList.templateForm.TemplateName =
           _templateIdList.templateForm.TemplateName + "-copy";
