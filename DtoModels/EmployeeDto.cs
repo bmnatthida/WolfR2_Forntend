@@ -45,6 +45,9 @@ namespace WolfR2.DtoModels
 		public string ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
 		public string ADTitle { get; set; }
-          
+        public int? CompanyId { get; set; }
+		public string CompanyNameTh { get; set; }
+		public string CompanyNameEn { get; set; }
+		public string CompanyNameConcat { get; set; }
 	}
 }

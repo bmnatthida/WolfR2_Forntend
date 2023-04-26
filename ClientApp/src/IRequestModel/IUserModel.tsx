@@ -1,4 +1,7 @@
 export type IUserModel = {
+  CompanyId: number;
+  CompanyNameTh: string;
+  CompanyNameEn: string;
   ADTitle: string;
   AccountCode: string;
   AccountName: string;

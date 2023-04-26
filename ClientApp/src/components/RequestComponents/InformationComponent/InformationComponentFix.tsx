@@ -246,6 +246,7 @@ const InformationComponentFix: FC<Props> = ({
       ...prevState,
       company_id: event.data.CompanyId,
       company_name: com_name,
+      checkChangeComp: true
     }));
     setDialogVisibleInCompany(false);
   };

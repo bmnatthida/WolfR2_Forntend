@@ -1638,6 +1638,30 @@ const RequestScreenFix = () => {
     if (!isEmptyObject(requestor)) {
       checkedLeaveTemplateLogic(requestor);
     }
+
+    if (memoDetail?.memoid === 0) {
+      if(memoDetail?.checkChangeComp !== true){
+        if(requestor.CompanyNameTh === "" || requestor.CompanyNameEn === ""){
+          if (masterCompanies.length === 1) {
+            let com_name = masterCompanies[0].CompanyCode + " : ";
+            if (userData.Lang === "EN") {
+              com_name = com_name + masterCompanies[0].NameEn;
+            } else {
+              com_name = com_name + masterCompanies[0].NameTh;
+            }
+            memoDetail.company_name = com_name;
+            memoDetail.company_id = masterCompanies[0].CompanyId;
+          }
+        } else {
+          if (userData.Lang === "EN") {
+            memoDetail.company_name = requestor.CompanyNameEn;
+          } else {
+            memoDetail.company_name = requestor.CompanyNameTh;
+          }
+          memoDetail.company_id = requestor.CompanyId;
+        }
+      }
+    }
   }, [requestor]);
   async function checkedLeaveTemplateLogic(_requestor: any) {
     console.log("leave=>", _requestor);
@@ -1743,15 +1767,24 @@ const RequestScreenFix = () => {
     }
 
     if (memoDetail.memoid === 0) {
-      if (masterCompanies.length === 1) {
-        let com_name = masterCompanies[0].CompanyCode + " : ";
-        if (userData.Lang === "EN") {
-          com_name = com_name + masterCompanies[0].NameEn;
-        } else {
-          com_name = com_name + masterCompanies[0].NameTh;
+      if(userData.CompanyNameTh === "" || userData.CompanyNameEn === ""){
+        if (masterCompanies.length === 1) {
+          let com_name = masterCompanies[0].CompanyCode + " : ";
+          if (userData.Lang === "EN") {
+            com_name = com_name + masterCompanies[0].NameEn;
+          } else {
+            com_name = com_name + masterCompanies[0].NameTh;
+          }
+          memoDetail.company_name = com_name;
+          memoDetail.company_id = masterCompanies[0].CompanyId;
         }
-        memoDetail.company_name = com_name;
-        memoDetail.company_id = masterCompanies[0].CompanyId;
+      } else {
+        if (userData.Lang === "EN") {
+          memoDetail.company_name = userData.CompanyNameEn;
+        } else {
+          memoDetail.company_name = userData.CompanyNameTh;
+        }
+        memoDetail.company_id = userData.CompanyId;
       }
     }
 
