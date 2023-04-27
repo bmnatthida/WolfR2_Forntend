@@ -209,19 +209,27 @@ const InformationComponentFix: FC<Props> = ({
         if (_finFo.Value3) {
           setIsHideProject(true);
         }
-        if(_finFo.Value5 !== ""){
+        if(_finFo.Value5 !== "" && _finFo.Value5 !== null){
           const _showBranch = _finFo.Value5.split("|");
-          if (_showBranch[0]=="true") {
-            setIsHideBranch(true);
+          if(_showBranch.length >= 1){
+            if (_showBranch[0]=="true") {
+              setIsHideBranch(true);
+            }
           }
-          if (_showBranch[1] ==="true") {
-            setIsHideTo(true);
+          if(_showBranch.length >= 2){
+            if (_showBranch[1] ==="true") {
+              setIsHideTo(true);
+            }
           }
-          if (_showBranch[2] ==="true") {
-            setIsHideCc(true);
+          if(_showBranch.length >= 3){
+            if (_showBranch[2] ==="true") {
+              setIsHideCc(true);
+            }
           }
-          if (_showBranch[3] ==="true") {
-            setIsHideSubject(true);
+          if(_showBranch.length >= 4){
+            if (_showBranch[3] ==="true") {
+              setIsHideSubject(true);
+            }
           }
         }  
       }
