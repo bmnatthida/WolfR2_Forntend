@@ -3,6 +3,8 @@ import { DataTable } from "primereact/datatable";
 import { Dialog } from "primereact/dialog";
 import React, { useEffect, useState, FC, useRef } from "react";
 import { InputTextComponents } from "../../../InputTextComponents/InputTextComponents";
+import { ValidateRefTemplate } from "../../../../Services/TemplateService";
+import useAlert from "../../../../hooks/useAlert";
 
 type Props = {
   refAttribute: any;
@@ -85,6 +87,68 @@ const DialogRefTemplateComponent = (props: Props) => {
     setFilterRefTempValue("");
   };
 
+  async function onSelect(refTemp: any){
+   const validate = await ValidateSelected(refTemp);
+
+   if (validate){
+      try {
+        if (refTemp === null) {
+          setRefSelected([...[]]);
+        } else if (!refTemp) {
+          setRefSelected([]);
+        } else if (Array.isArray(refTemp)) {
+          setRefSelected([...refTemp]);
+        } else {
+          if (Array.isArray(refTemp)) {
+            setRefSelected([...refTemp]);
+          } else {
+            if (Array.isArray(refTemp)) {
+              setRefSelected([...refTemp]);
+            } else {
+              let val: any[] = [];
+              val.push(refTemp);
+              setRefSelected([...val]);
+            }
+          }
+        }
+      } catch (error) {
+        console.log("ref=>error", error);
+      }
+    }
+  }
+  const { toggleAlert } = useAlert();
+
+  async function ValidateSelected(refTempSelected: any) {
+    let respone;
+    let valid: boolean = true;
+    let val: any[] = [];
+    if (refTempSelected){
+      if (Array.isArray(refTempSelected)){
+        val = refTempSelected
+      } else {
+        val.push(refTempSelected);
+      }
+     for (let i = 0; i < val.length; i++) {
+      const dataJson = {
+        TemplateId: val[i].TemplateId,
+        Label: val[i].SelectField.label,
+        DocNo: val[i].SelectField.value,
+      }
+      respone = await ValidateRefTemplate(dataJson);
+      if (respone.ValidateRef === false){
+        toggleAlert({
+          description: respone.Message,
+          message: 'Reference documant warning.',
+          type: "warning",
+          duration: 6,
+        });
+        valid = false;
+      }
+     }
+    }
+    return valid;
+  }
+
   return (
     <>
       <Dialog
@@ -110,29 +174,7 @@ const DialogRefTemplateComponent = (props: Props) => {
           value={props.searchRefDocData?.filter((e: any) => e)}
           selection={refSelected}
           onSelectionChange={(e: any) => {
-            try {
-              if (e.value === null) {
-                setRefSelected([...[]]);
-              } else if (!e.value) {
-                setRefSelected([]);
-              } else if (Array.isArray(e.value)) {
-                setRefSelected([...e.value]);
-              } else {
-                if (Array.isArray(e.value)) {
-                  setRefSelected([...e.value]);
-                } else {
-                  if (Array.isArray(e.value)) {
-                    setRefSelected([...e.value]);
-                  } else {
-                    let val: any[] = [];
-                    val.push(e.value);
-                    setRefSelected([...val]);
-                  }
-                }
-              }
-            } catch (error) {
-              console.log("ref=>error", error);
-            }
+            onSelect(e.value);
           }}
           selectionMode={
             props.refAttribute?.mode.toLowerCase() === "single"

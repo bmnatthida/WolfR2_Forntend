@@ -300,3 +300,20 @@ export const LoadLogic = async (template_id: any) => {
     });
   return dataLogic;
 };
+
+export const ValidateRefTemplate = async (dataJson: any) => {
+  const refValid = await fetch("api/TemplateList/ValidateRefTemplate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dataJson),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log("Logic: ", data);
+
+      return data;
+    });
+  return refValid;
+};

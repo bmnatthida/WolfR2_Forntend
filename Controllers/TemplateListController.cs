@@ -1098,5 +1098,31 @@ namespace WolfR2.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost("ValidateRefTemplate")]
+        public async Task<ActionResult> ValidateRefTemplate(TemplateRefValidateRequestModel requestRefValidRequest)
+        {
+            try
+            {
+                var requestModel = new TemplateRefValidateRequestModel
+                {
+                    ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
+                    TemplateId = requestRefValidRequest.TemplateId,
+                    DocNo = requestRefValidRequest.DocNo,
+                    Label = requestRefValidRequest.Label
+                };
+                LogFile.WriteLogFile("RolesController GetAllVersion | api/Memo/ValidateRefTemplate | requestModel : " + Newtonsoft.Json.JsonConvert.SerializeObject(requestModel), module);
+
+                var result = await CoreAPI.post(_baseUrl + "api/Memo/ValidateRefTemplate", null, requestModel);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+        }
     }
 }
