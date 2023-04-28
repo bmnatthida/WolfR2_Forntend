@@ -1106,6 +1106,7 @@ namespace WolfR2.Controllers
             {
                 var requestModel = new TemplateRefValidateRequestModel
                 {
+                    UserPrincipalName = _configuration.GetValue<string>("AppSettings:UserPrincipalName"),
                     ConnectionString = _configuration.GetValue<string>("AppSettings:ConnectionString"),
                     TemplateId = requestRefValidRequest.TemplateId,
                     DocNo = requestRefValidRequest.DocNo,
