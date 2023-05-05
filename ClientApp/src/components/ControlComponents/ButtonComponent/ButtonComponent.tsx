@@ -34,7 +34,9 @@ export default function ButtonComponent(props: Props) {
       if (newUrl.indexOf("/Memo?") !== -1) {
         newUrl = newUrl.replace("/Memo?", "MemoID=0&");
       }
-      if (!newUrl.startsWith("?")) {
+      if (newUrl.startsWith("https")) {
+        newUrl = newUrl;
+      } else if (!newUrl.startsWith("?")) {
         newUrl = "?" + newUrl;
       }
       setUrl(newUrl);
@@ -88,7 +90,11 @@ export default function ButtonComponent(props: Props) {
                   });
                 });
                 str = "&" + param + "=" + val;
-                window.open(`/Request${url + str}`, "_blank", "noreferrer");
+                if (!url.startsWith("https")){
+                  window.open(`/Request${url + str}`, "_blank", "noreferrer");
+                } else{
+                  window.open(`${url}`, "_blank","noreferrer");
+                }
               } else {
                 confirmDialog({
                   message: "กรุณาบันทึกก่อนดำเดินการ",
