@@ -1036,6 +1036,9 @@ const AuthorizationComponent = (props: Props) => {
               }
               placeholder="-- Please Select Role --"
               display="chip"
+              filter
+              resetFilterOnHide
+              showClear
               style={{ width: "100% ", fontSize: "13px" }}
             />
           </Col>
@@ -1223,6 +1226,9 @@ const AuthorizationComponent = (props: Props) => {
               }
               placeholder="-- Please Select Role --"
               display="chip"
+              filter
+              resetFilterOnHide
+              showClear
               style={{ width: "100% ", fontSize: "13px" }}
             />
           </Col>
