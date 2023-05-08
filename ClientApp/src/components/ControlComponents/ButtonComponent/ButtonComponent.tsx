@@ -34,7 +34,7 @@ export default function ButtonComponent(props: Props) {
       if (newUrl.indexOf("/Memo?") !== -1) {
         newUrl = newUrl.replace("/Memo?", "MemoID=0&");
       }
-      if (newUrl.startsWith("https")) {
+      if (newUrl.startsWith("http")) {
         newUrl = newUrl;
       } else if (!newUrl.startsWith("?")) {
         newUrl = "?" + newUrl;
